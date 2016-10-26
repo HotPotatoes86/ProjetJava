@@ -1,14 +1,11 @@
 public class Map {
 
 	private int nbStreet;
-
-	/**
-	 * 
-	 * @param nbStreet
-	 */
+	private Street[] street;
+	
 	public Map(int nbStreet) {
-		// TODO - implement Map.Map
-		throw new UnsupportedOperationException();
+		this.nbStreet = nbStreet;
+		this.street = new Street[nbStreet];
 	}
 
 }

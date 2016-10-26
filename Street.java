@@ -2,6 +2,7 @@ public class Street {
 
 	private int nbHouse;
 	private String streetName;
+	private House[][] house;
 
 	/**
 	 * 
@@ -9,8 +10,9 @@ public class Street {
 	 * @param nb
 	 */
 	public Street(String name, int nb) {
-		// TODO - implement Street.Street
-		throw new UnsupportedOperationException();
+		this.nbHouse = nb;
+		this.streetName = name;
+		this.house = new House[nb][2];
 	}
 
 }
