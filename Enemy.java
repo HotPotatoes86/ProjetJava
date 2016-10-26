@@ -4,5 +4,9 @@ public class Enemy extends NPC {
 		// TODO - implement Enemy.Enemy
 		throw new UnsupportedOperationException();
 	}
+	
+	public void talk(){
+		System.out.println("Bonjour je suis un PNJ méchant");
+	}
 
 }

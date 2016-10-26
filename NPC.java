@@ -4,4 +4,5 @@ public abstract class NPC {
 	protected String NPCname = "Villageois";
 	protected int Attack = 0;
 
+	public abstract void talk();
 }

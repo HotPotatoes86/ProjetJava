@@ -1,8 +1,16 @@
 public class Neutral extends NPC {
 
+	// Nom = Villageois
 	public Neutral() {
-		// TODO - implement Neutral.Neutral
-		throw new UnsupportedOperationException();
+		
+	}
+	
+	public Neutral(String name){
+		this.NPCname = name;
+	}
+	
+	public void talk(){
+		System.out.println("Bonjour je suis un PNJ méchant");
 	}
 
 }

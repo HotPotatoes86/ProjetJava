@@ -7,8 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Game game = new Game();
-		String chaine="";
-		String fichier ="Histoire.txt";
+		String fichier ="Données/Histoire.txt";
 		
 		/* Affichage de l'histoire (dans fichier txt)
 		 * Gestion des exceptions
@@ -21,7 +20,6 @@ public class Main {
 			while ((ligne=br.readLine())!=null){
 				System.out.println(ligne);
 				Thread.sleep(2000); // Temps d'attente entre chaque ligne
-				chaine+=ligne+"\n";
 			}
 			br.close(); 
 		}		
