@@ -7,7 +7,7 @@ public class Game {
 
 	public void main() {
 		this.hero = new Hero("nom");
-		this.map = new Map();
+		this.map = new Map(4); //Difficulté = 4
 		while (this.testjeu()){
 			this.start();
 		}
@@ -20,13 +20,13 @@ public class Game {
 	}
 
 	public boolean testjeu() {
-		if (this.counter < 20 && this.command != QUIT){	// Si le jeu dure moins de 20 tours
+		if (this.counter < 20 && this.command.getDescription() != "quit"){	
+			// Si le jeu dure moins de 20 tours et que le joueur ne veut pas quitter
 			return true;
 		}
 		else{
 			return false;
 		}
-		throw new UnsupportedOperationException();
 	}
 
 }

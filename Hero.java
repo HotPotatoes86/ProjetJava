@@ -1,6 +1,6 @@
 public class Hero {
 
-	private string name;
+	private String name;
 	private int hp = 100;
 	private int attack = 10;
 	private int alcoholLevel = 15;
@@ -9,7 +9,7 @@ public class Hero {
 	 * 
 	 * @param name
 	 */
-	public Hero(string name) {
+	public Hero(String name) {
 		// TODO - implement Hero.Hero
 		throw new UnsupportedOperationException();
 	}
