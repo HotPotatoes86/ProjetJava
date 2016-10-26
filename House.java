@@ -1,6 +1,8 @@
+import java.util.HashMap;
+
 public class House {
 
-	private string houseName;
+	private String houseName;
 	private HashMap<String, Exit> exits;
 
 	public void go() {
@@ -12,7 +14,8 @@ public class House {
 	 * 
 	 * @param string
 	 */
-	public House(name string) {
+	public House(String name) {
+		this.houseName = name;
 		// TODO - implement Place.Place
 		throw new UnsupportedOperationException();
 	}

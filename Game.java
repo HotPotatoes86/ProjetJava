@@ -1,32 +1,28 @@
+import java.util.Scanner;
+
 public class Game {
 
-	private int counter = 0;
-	private Hero hero;
-	private Map map;
-	private Command command;
-
-	public void main() {
-		this.hero = new Hero("nom");
-		this.map = new Map(4); //Difficulté = 4
-		while (this.testjeu()){
-			this.start();
-		}
-		throw new UnsupportedOperationException();
-	}
-
 	public void start() {
+		int counter = 0;
+		//Hero hero = new Hero("nom"); 
+		//Map map = new Map(4);	// Difficulté = 4
 		
-		throw new UnsupportedOperationException();
+		Command command;
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Veuillez saisir une action :");
+		command = Command.valueOf(scanner.next().toUpperCase());
+		scanner.close();
 	}
 
-	public boolean testjeu() {
-		if (this.counter < 20 && this.command.getDescription() != "quit"){	
-			// Si le jeu dure moins de 20 tours et que le joueur ne veut pas quitter
+	public boolean testjeu(int counter, Command command) {
+		if (counter < 20 && command.toString() != "quit"){	
+		// Si le jeu dure moins de 20 tours et que le joueur ne veut pas quitter
 			return true;
 		}
 		else{
 			return false;
 		}
-	}
+	}	
 
 }

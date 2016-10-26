@@ -12,7 +12,8 @@ public enum Command {
         description = value;
     }
 
-    public String getDescription() {
+    @Override
+    public String toString() {
         return description;
     }
 }
