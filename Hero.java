@@ -5,13 +5,8 @@ public class Hero {
 	private int attack = 10;
 	private int alcoholLevel = 15;
 
-	/**
-	 * 
-	 * @param name
-	 */
 	public Hero(String name) {
-		// TODO - implement Hero.Hero
-		throw new UnsupportedOperationException();
+		this.name = name;
 	}
 
 	public void Command() {
