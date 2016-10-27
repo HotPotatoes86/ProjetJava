@@ -1,3 +1,9 @@
 package item;
-public class Weapon extends Object {
+
+public class Weapon implements Item {
+	
+	public void use(){
+		//TODO
+	}
+	
 }

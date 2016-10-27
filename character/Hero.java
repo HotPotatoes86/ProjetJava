@@ -1,4 +1,7 @@
 package character;
+
+import item.Item;
+
 public class Hero {
 
 	private String name;
@@ -10,9 +13,8 @@ public class Hero {
 		this.name = name;
 	}
 
-	public void Command() {
-		// TODO - implement Hero.Command
-		throw new UnsupportedOperationException();
+	public void use(Item item){
+		//TODO
 	}
 
 }

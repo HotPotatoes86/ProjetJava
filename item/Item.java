@@ -1,5 +1,6 @@
 package item;
 
-public class Item {
+public interface Item {
 
+	public void use();
 }

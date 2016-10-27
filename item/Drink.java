@@ -1,3 +1,9 @@
 package item;
-public class Drink extends Object {
+
+public class Drink implements Item {
+	
+	public void use(){
+		//TODO
+	}
+	
 }

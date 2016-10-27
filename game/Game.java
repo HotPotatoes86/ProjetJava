@@ -5,11 +5,11 @@ import map.Map;
 
 public class Game {
 
+	// Nombre de tours
+	private static int counter = 20;
+	
 	public void start() {
-		
-		// Nombre de tours
-		int counter = 20;
-		
+			
 		// Scanner
 		Scanner scanner = new Scanner(System.in);	
 		
@@ -19,6 +19,7 @@ public class Game {
 		System.out.println("2- Moyenne");
 		System.out.println("3- Grande\n");
 		
+		// Taille de la carte par défaut
 		int taille = 2;
 		String[] choix = {"petite","moyenne","grande"};
 		boolean test=false;
@@ -47,16 +48,24 @@ public class Game {
 		 * Le joueur effectue une action
 		 */
 		Command command;
-		System.out.println("\nVeuillez saisir une action :");
-		command = Command.valueOf(scanner.next().toUpperCase());
-		command.action();
+		
+		do{
+			System.out.println("\nVeuillez saisir une action :");
+			command = Command.valueOf(scanner.next().toUpperCase());
+			// On effectue l'action lie a la commande
+			command.action();
+			// Le tour ne passe pas si on regarde l'aide
+			if (command.toString() != "help"){
+				counter--;
+			}
+		}while(this.testjeu(command));
 		
 		// Fermeture du scanner
 		scanner.close();
 	}
 
-	public boolean testjeu(int counter, Command command) {
-		if (counter < 20 && command.toString() != "quit"){	
+	public boolean testjeu(Command command) {
+		if (counter != 0 && command.toString() != "quit"){	
 		// Si le jeu dure moins de 20 tours et que le joueur ne veut pas quitter
 			return true;
 		}
