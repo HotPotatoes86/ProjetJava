@@ -15,10 +15,6 @@ public class House {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param string
-	 */
 	public House(String name) {
 		this.houseName = name;
 		// TODO - implement Place.Place

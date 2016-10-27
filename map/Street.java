@@ -5,11 +5,6 @@ public class Street {
 	private String streetName;
 	private House[][] house;
 
-	/**
-	 * 
-	 * @param name
-	 * @param nb
-	 */
 	public Street(String name, int nb) {
 		this.nbHouse = nb;
 		this.streetName = name;

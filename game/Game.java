@@ -39,10 +39,10 @@ public class Game {
 		// On initialise la map en fonction de sa taille
 		Map map;
 		switch (taille){
-			case 1: map = new Map(2); break;
-			case 2: map = new Map(5); break;
-			case 3: map = new Map(8); break;
-			default: map = new Map(5);break;	
+			case 1: map = new Map(1); break;
+			case 2: map = new Map(3); break;
+			case 3: map = new Map(6); break;
+			default: map = new Map(3);break;	
 		}
 		
 		// Instanciation du heros
