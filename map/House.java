@@ -6,20 +6,28 @@ import item.Item;
 
 public class House {
 
-	private String houseName;
+	private String name;
 	private HashMap<String, Exit> exits;
 	private List<Item> items;
 	private boolean containsHero=false;
-
-	public void go() {
-		// TODO - implement Place.go
-		throw new UnsupportedOperationException();
+	
+	public House(){
+		this.name = "Sans Nom";
 	}
 
 	public House(String name) {
-		this.houseName = name;
+		this.name = name;
 		// TODO - implement Place.Place
 		throw new UnsupportedOperationException();
+	}
+	
+	public void go() {
+		if (this.containsHero){
+			this.containsHero=false;
+		}
+		else{
+			this.containsHero=true;
+		}
 	}
 
 }

@@ -2,17 +2,17 @@ package map;
 public class Street {
 
 	private int nbHouse;
-	private String streetName;
-	private House[][] house;
+	private String name;
+	private StreetPart[] parts;
+	private StreetPart streetPartHero;
 	private boolean containsHero=false;
 
 	public Street(String name, int nb) {
 		this.nbHouse = nb;
-		this.streetName = name;
-		this.house = new House[nb][2];
-		for (House[] h : this.house){
-			h[0] = new House("nom");
-			h[1] = new House("nom");
+		this.name = name;
+		this.parts = new StreetPart[nb];
+		for (StreetPart s : this.parts){
+			s = new StreetPart();
 		}
 	}
 	

@@ -12,14 +12,14 @@ public class Map {
 	private Hero hero;
 	private int nbStreet;
 	private Street streetHero;
-	private Street[] street;
+	private Street[] streets;
 	
 	public Map(Hero hero, int nbStreet) {
 		this.hero = hero;
 		this.nbStreet = nbStreet;
-		this.street = new Street[nbStreet];
+		this.streets = new Street[nbStreet];
 		
-		for (Street s : this.street){
+		for (Street s : this.streets){
 			Random rand = new Random();
 			// Une rue a entre 3 et 8 maisons
 			int taille = rand.nextInt(4)+3;
@@ -49,14 +49,14 @@ public class Map {
 		}
 		
 		// Le hero se trouve sur la premiere rue
-		this.streetHero = this.street[0];
-		this.street[0].moveHeroStreet();
+		this.streetHero = this.streets[0];
+		this.streets[0].moveHeroStreet();
 	}
 	
 	public void moveHero(){
 		// Test si hero au bord de la rue
 		this.streetHero.moveHeroStreet();
-		this.streetHero = this.street[1];
+		this.streetHero = this.streets[1];
 		this.streetHero.moveHeroStreet();
 		// Sinon le hero avance dans la rue
 		
