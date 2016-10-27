@@ -14,20 +14,15 @@ public class Street {
 		for (StreetPart s : this.parts){
 			s = new StreetPart();
 		}
+		this.streetPartHero = parts[0];
 	}
 	
-	public void moveHeroStreet(){
+	public void moveHero(String direction){
 		if (this.containsHero){
 			this.containsHero=false;
 		}
 		else{
 			this.containsHero=true;
-		}
-	}
-	
-	public void moveHeroHouse(){
-		if (this.containsHero){
-			//TODO
 		}
 	}
 

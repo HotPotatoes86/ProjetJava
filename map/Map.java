@@ -50,17 +50,20 @@ public class Map {
 		
 		// Le hero se trouve sur la premiere rue
 		this.streetHero = this.streets[0];
-		this.streets[0].moveHeroStreet();
+		
+		// Fonction qui dit à la street qu'elle contient Hero
 	}
 	
-	public void moveHero(){
+	public void moveHero(String direction){
 		// Test si hero au bord de la rue
-		this.streetHero.moveHeroStreet();
+		this.streetHero.moveHero("");
 		this.streetHero = this.streets[1];
-		this.streetHero.moveHeroStreet();
+		this.streetHero.moveHero("");
 		// Sinon le hero avance dans la rue
 		
 		// ou il rentre dans une maison (ou sort de la maison)
+		
+		// Une fonction pour tout ça = moveHero(), ce serait bien
 		
 	}
 }

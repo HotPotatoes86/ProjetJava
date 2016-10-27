@@ -21,7 +21,7 @@ public class House {
 		throw new UnsupportedOperationException();
 	}
 	
-	public void go() {
+	public void moveHero() {
 		if (this.containsHero){
 			this.containsHero=false;
 		}
