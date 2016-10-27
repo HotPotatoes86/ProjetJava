@@ -17,4 +17,16 @@ public enum Command {
     public String toString() {
         return description;
     }
+    
+    public void action(){
+    	switch (this.description){
+	    	case "help": 
+	    		System.out.println("Commandes possibles :");
+	    		for (Command c : Command.values()){
+	    			System.out.println(c);
+	    		}
+	    		break;
+	    	default: break;
+    	}
+    }
 }
