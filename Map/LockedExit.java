@@ -1,3 +1,4 @@
+package Map;
 public class LockedExit extends Exit {
 
 	private int keyType;

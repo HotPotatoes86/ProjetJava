@@ -1,3 +1,4 @@
+package Character;
 public class Neutral extends NPC {
 
 	// Nom = Villageois

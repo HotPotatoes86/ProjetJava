@@ -1,3 +1,4 @@
+package Map;
 public class SimpleExit extends Exit {
 
 	public SimpleExit() {

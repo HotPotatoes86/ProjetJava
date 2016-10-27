@@ -1,3 +1,4 @@
+package Map;
 public class Street {
 
 	private int nbHouse;

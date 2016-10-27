@@ -1,3 +1,4 @@
+package Character;
 public abstract class NPC {
 
 	protected int HP = 100;

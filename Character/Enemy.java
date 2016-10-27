@@ -1,3 +1,4 @@
+package Character;
 public class Enemy extends NPC {
 
 	public Enemy() {

@@ -1,3 +1,4 @@
+package Map;
 import java.util.Random;
 
 public class Map {

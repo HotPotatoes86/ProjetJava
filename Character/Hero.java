@@ -1,3 +1,4 @@
+package Character;
 public class Hero {
 
 	private String name;

@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import Map.Map;
+
 public class Game {
 
 	public void start() {
