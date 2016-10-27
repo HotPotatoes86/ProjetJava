@@ -1,6 +1,7 @@
 package game;
 import java.util.Scanner;
 
+import character.Hero;
 import map.Map;
 
 public class Game {
@@ -44,6 +45,9 @@ public class Game {
 			default: map = new Map(5);break;	
 		}
 		
+		// Instanciation du heros
+		Hero hero = new Hero();
+		
 		/* Le jeu commence !!
 		 * Le joueur effectue une action
 		 */
@@ -54,6 +58,13 @@ public class Game {
 			command = Command.valueOf(scanner.next().toUpperCase());
 			// On effectue l'action lie a la commande
 			command.action();
+			// On laisse un peu de temps entre chaque action
+			try{
+				Thread.sleep(2000); 
+			}
+			catch (Exception e){
+				System.out.println(e.toString());
+			}
 			// Le tour ne passe pas si on regarde l'aide
 			if (command.toString() != "help"){
 				counter--;
