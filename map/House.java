@@ -17,8 +17,7 @@ public class House {
 
 	public House(String name) {
 		this.name = name;
-		// TODO - implement Place.Place
-		throw new UnsupportedOperationException();
+		// TODO Exits, Items en Random
 	}
 	
 	public void moveHero() {

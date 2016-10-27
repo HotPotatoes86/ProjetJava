@@ -56,14 +56,16 @@ public class Map {
 	
 	public void moveHero(String direction){
 		// Test si hero au bord de la rue
-		this.streetHero.moveHero("");
-		this.streetHero = this.streets[1];
-		this.streetHero.moveHero("");
+		if (this.streetHero.endStreet()){
+			this.streetHero.moveHero();
+			// case choix
+			this.streetHero = this.streets[1];
+			this.streetHero.moveHero();
+		}
 		// Sinon le hero avance dans la rue
-		
-		// ou il rentre dans une maison (ou sort de la maison)
-		
-		// Une fonction pour tout ça = moveHero(), ce serait bien
-		
+		else{
+			this.streetHero.moveHero(direction);
+		}	
 	}
+	
 }

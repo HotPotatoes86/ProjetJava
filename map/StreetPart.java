@@ -9,6 +9,7 @@ public class StreetPart {
 	public StreetPart() {
 		this.houses = new House[2];
 		for (House h : this.houses){
+			//TODO Facteur random pour maison avec/sans nom
 			h = new House();
 		}
 	}
