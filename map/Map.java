@@ -50,14 +50,14 @@ public class Map {
 		
 		// Le hero se trouve sur la premiere rue
 		this.streetHero = this.street[0];
-		this.street[0].moveHero();
+		this.street[0].moveHeroStreet();
 	}
 	
 	public void moveHero(){
 		// Test si hero au bord de la rue
-		this.streetHero.moveHero();
+		this.streetHero.moveHeroStreet();
 		this.streetHero = this.street[1];
-		this.streetHero.moveHero();
+		this.streetHero.moveHeroStreet();
 		// Sinon le hero avance dans la rue
 		
 		// ou il rentre dans une maison (ou sort de la maison)

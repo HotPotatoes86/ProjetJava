@@ -9,6 +9,7 @@ public class House {
 	private String houseName;
 	private HashMap<String, Exit> exits;
 	private List<Item> items;
+	private boolean containsHero=false;
 
 	public void go() {
 		// TODO - implement Place.go
