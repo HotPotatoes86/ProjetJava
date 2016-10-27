@@ -1,3 +1,4 @@
+package game;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -7,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Game game = new Game();
-		String fichier ="Données/Histoire.txt";
+		String fichier ="donnees/Histoire.txt";
 		
 		/* Affichage de l'histoire (dans fichier txt)
 		 * Gestion des exceptions

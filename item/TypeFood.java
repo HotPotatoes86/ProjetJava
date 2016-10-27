@@ -1,3 +1,3 @@
-package Item;
+package item;
 public enum TypeFood {
 }

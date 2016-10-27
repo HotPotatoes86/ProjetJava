@@ -1,8 +1,8 @@
-package Map;
+package map;
 import java.util.HashMap;
 import java.util.List;
 
-import Item.Item;
+import item.Item;
 
 public class House {
 

@@ -1,4 +1,4 @@
-package Character;
+package character;
 public abstract class NPC {
 
 	protected int HP = 100;

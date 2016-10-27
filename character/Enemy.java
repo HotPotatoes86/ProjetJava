@@ -1,4 +1,4 @@
-package Character;
+package character;
 public class Enemy extends NPC {
 
 	public Enemy() {
