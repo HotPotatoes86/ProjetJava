@@ -14,6 +14,9 @@ public class Game {
 		// Scanner
 		Scanner scanner = new Scanner(System.in);	
 		
+		// Instanciation du heros
+		Hero hero = new Hero();
+		
 		// Choix de la taille de la carte
 		System.out.println("\nVeuillez selectionner la taille de la carte :");
 		System.out.println("1- Petite");
@@ -39,14 +42,11 @@ public class Game {
 		// On initialise la map en fonction de sa taille
 		Map map;
 		switch (taille){
-			case 1: map = new Map(1); break;
-			case 2: map = new Map(3); break;
-			case 3: map = new Map(6); break;
-			default: map = new Map(3);break;	
+			case 1: map = new Map(hero,1); break;
+			case 2: map = new Map(hero,3); break;
+			case 3: map = new Map(hero,6); break;
+			default: map = new Map(hero,3);break;	
 		}
-		
-		// Instanciation du heros
-		Hero hero = new Hero();
 		
 		/* Le jeu commence !!
 		 * Le joueur effectue une action

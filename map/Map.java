@@ -5,12 +5,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
 
+import character.Hero;
+
 public class Map {
 
+	private Hero hero;
 	private int nbStreet;
+	private Street streetHero;
 	private Street[] street;
 	
-	public Map(int nbStreet) {
+	public Map(Hero hero, int nbStreet) {
+		this.hero = hero;
 		this.nbStreet = nbStreet;
 		this.street = new Street[nbStreet];
 		
@@ -42,6 +47,20 @@ public class Map {
 			// Instanciation de la rue
 			s = new Street(nom,taille);
 		}
+		
+		// Le hero se trouve sur la premiere rue
+		this.streetHero = this.street[0];
+		this.street[0].moveHero();
 	}
-
+	
+	public void moveHero(){
+		// Test si hero au bord de la rue
+		this.streetHero.moveHero();
+		this.streetHero = this.street[1];
+		this.streetHero.moveHero();
+		// Sinon le hero avance dans la rue
+		
+		// ou il rentre dans une maison (ou sort de la maison)
+		
+	}
 }

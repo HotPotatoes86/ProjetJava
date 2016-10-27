@@ -26,6 +26,8 @@ public enum Command {
 	    			System.out.println(c);
 	    		}
 	    		break;
+	    	case "go":
+	    		break;
 	    	default: break;
     	}
     }
