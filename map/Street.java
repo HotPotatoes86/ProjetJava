@@ -41,6 +41,7 @@ public class Street {
 			this.containsHero=false;
 		}
 		else{
+			System.out.println("Vous arrivez sur la rue " + this.name);
 			this.containsHero=true;
 		}
 	}

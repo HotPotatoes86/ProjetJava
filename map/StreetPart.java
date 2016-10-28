@@ -1,26 +1,41 @@
 package map;
 
+import java.util.Random;
+
+import character.NPC;
+
 public class StreetPart {
 
 	private House[] houses;
-	private House houseHero = null;
+	private NPC npc=null; // = une personne que l'on croise dans la rue
 	private boolean containsHero=false;
 
 	public StreetPart() {
 		this.houses = new House[2];
 		for (House h : this.houses){
 			//TODO Facteur random pour maison avec/sans nom
-			h = new House();
+			//Nom = NPC
+			Random rand = new Random();
+			// Une chance sur 2 (1 ou 2)
+			int rdm = rand.nextInt(0)+1;
+			if (rdm==1){
+				h = new House();
+			}
+			else{
+				h = new House("nom");
+			}
 		}
 	}
 	
 	public void moveHero(String direction){
-		if (this.containsHero){
-			this.containsHero=false;
-		}
-		else{
-			this.containsHero=true;
-		}
+		switch (direction){
+			case "left": 
+				this.houses[0].moveHero();
+				break;
+			case "right":
+				this.houses[1].moveHero();
+				break;
+		}	
 	}
 	
 	public void moveHero(){

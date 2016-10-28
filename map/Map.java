@@ -54,6 +54,7 @@ public class Map {
 		// Fonction qui dit a la street qu'elle contient Hero
 	}
 	
+	// A ameliorer, un peu long
 	public void moveHero(String direction){
 		// Test si hero au bord de la rue
 		if (this.streets[this.streetHero].endStreet()){
