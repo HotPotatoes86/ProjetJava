@@ -11,7 +11,7 @@ public class Map {
 
 	private Hero hero;
 	private int nbStreet;
-	private Street streetHero;
+	private int streetHero;
 	private Street[] streets;
 	
 	public Map(Hero hero, int nbStreet) {
@@ -49,22 +49,55 @@ public class Map {
 		}
 		
 		// Le hero se trouve sur la premiere rue
-		this.streetHero = this.streets[0];
+		this.streetHero = 0;
 		
 		// Fonction qui dit a la street qu'elle contient Hero
 	}
 	
 	public void moveHero(String direction){
 		// Test si hero au bord de la rue
-		if (this.streetHero.endStreet()){
-			this.streetHero.moveHero();
-			// case choix
-			this.streetHero = this.streets[1];
-			this.streetHero.moveHero();
+		if (this.streets[this.streetHero].endStreet()){
+			switch (direction){
+				case "left":
+					if (this.streetHero == 0 || this.streetHero == 3){
+						this.streets[this.streetHero].moveHero();
+						this.streetHero++;
+						this.streets[this.streetHero].moveHero();
+					}
+					else if (this.streetHero == 1){
+						this.streets[this.streetHero].moveHero();
+						this.streetHero+=2;
+						this.streets[this.streetHero].moveHero();
+					}
+					else if (this.streetHero == 2 || this.streetHero == 5){
+						this.streets[this.streetHero].moveHero();
+						this.streetHero-=2;
+						this.streets[this.streetHero].moveHero();
+					}break;
+				//TODO Un peu lourd... Faire une fonction ?
+				case "right":
+					if (this.streetHero == 0 || this.streetHero == 3){
+						this.streets[this.streetHero].moveHero();
+						this.streetHero+=2;
+						this.streets[this.streetHero].moveHero();
+					}break;
+				case "forward":
+					if (this.streetHero == 0){
+						this.streets[this.streetHero].moveHero();
+						this.streetHero+=3;
+						this.streets[this.streetHero].moveHero();
+					}break;
+				case "backward":
+					if (this.streetHero == 3){
+						this.streets[this.streetHero].moveHero();
+						this.streetHero-=3;
+						this.streets[this.streetHero].moveHero();
+					}break;
+			}
 		}
 		// Sinon le hero avance dans la rue
 		else{
-			this.streetHero.moveHero(direction);
+			this.streets[this.streetHero].moveHero(direction);
 		}	
 	}
 	

@@ -4,7 +4,7 @@ public class Street {
 	private int nbStreetPart;
 	private String name;
 	private StreetPart[] parts;
-	private StreetPart streetPartHero;
+	private int streetPartHero;
 	private boolean containsHero=false;
 
 	public Street(String name, int nb) {
@@ -14,15 +14,25 @@ public class Street {
 		for (StreetPart s : this.parts){
 			s = new StreetPart();
 		}
-		this.streetPartHero = parts[0];
+		this.streetPartHero = 0;
 	}
 	
 	public void moveHero(String direction){
-		if (this.containsHero){
-			this.containsHero=false;
-		}
-		else{
-			this.containsHero=true;
+		switch (direction){
+			case "forward":
+				this.parts[this.streetPartHero].moveHero();
+				this.streetPartHero++;
+				this.parts[this.streetPartHero].moveHero();
+				break;
+			case "backward":
+				this.parts[this.streetPartHero].moveHero();
+				this.streetPartHero++;
+				this.parts[this.streetPartHero].moveHero();
+				break;
+			case "left":
+			case "right":
+				this.parts[this.streetPartHero].moveHero(direction);
+				break;
 		}
 	}
 	
@@ -36,7 +46,7 @@ public class Street {
 	}
 	
 	public boolean endStreet(){
-		if (this.streetPartHero == this.parts[nbStreetPart-1]){
+		if (this.streetPartHero == nbStreetPart-1){
 			return true;
 		}
 		else{

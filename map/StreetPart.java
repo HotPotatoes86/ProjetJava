@@ -23,4 +23,13 @@ public class StreetPart {
 		}
 	}
 	
+	public void moveHero(){
+		if (this.containsHero){
+			this.containsHero=false;
+		}
+		else{
+			this.containsHero=true;
+		}
+	}
+	
 }
