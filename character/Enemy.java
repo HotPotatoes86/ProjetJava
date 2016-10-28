@@ -7,7 +7,7 @@ public class Enemy extends NPC {
 	}
 	
 	public void talk(){
-		System.out.println("Bonjour je suis un PNJ méchant");
+		System.out.println("Bonjour je suis un PNJ mechant");
 	}
 
 }

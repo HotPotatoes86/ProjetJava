@@ -24,7 +24,7 @@ public class Map {
 			// Une rue a entre 3 et 8 maisons
 			int taille = rand.nextInt(4)+3;
 			
-			// Lire dans les données pour donner un nom a la rue
+			// Lire dans les donnees pour donner un nom a la rue
 			String nom = "";
 			int i = rand.nextInt(10)+1; // 1 à 12
 			String fichier ="donnees/Lieux.txt";
@@ -51,7 +51,7 @@ public class Map {
 		// Le hero se trouve sur la premiere rue
 		this.streetHero = this.streets[0];
 		
-		// Fonction qui dit à la street qu'elle contient Hero
+		// Fonction qui dit a la street qu'elle contient Hero
 	}
 	
 	public void moveHero(String direction){

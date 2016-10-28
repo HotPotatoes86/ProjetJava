@@ -3,7 +3,8 @@ package character;
 import java.util.ArrayList;
 import java.util.List;
 
-import item.*;
+import item.Drink;
+import item.Item;
 
 public class Hero {
 
