@@ -19,6 +19,14 @@ public class Map {
 		this.nbStreet = nbStreet;
 		this.streets = new Street[nbStreet];
 		
+		//pour faire un fichier temporaire : 
+		//FILE temp = File.createTempFile("tmpAdr",".txt");
+		//pour le supprimer a la fin du programme
+		//tempFile.deleteOnExit();
+		//mais après pour copier les adresses dans le temp ca a l'air plutot complexe ...
+		//et pour supprimer une ligne en gros faut refaire un tmp sans la ligne voulu ...
+		//du coup je cherche une autre méthode moins gourmande ...
+		
 		for (Street s : this.streets){
 			Random rand = new Random();
 			// Une rue a entre 3 et 8 maisons
