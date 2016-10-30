@@ -6,4 +6,5 @@ public abstract class NPC {
 	protected int Attack = 0;
 
 	public abstract void talk();
+	public abstract void setHP(int hp);
 }

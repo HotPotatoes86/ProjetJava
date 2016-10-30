@@ -85,8 +85,8 @@ public class Game {
 			catch (Exception e){
 				System.out.println(e.toString());
 			}
-			// Le tour ne passe pas si on regarde l'aide
-			if (command.toString() != "help"){
+			// Le tour passe seulement si le joueur se deplace
+			if (command.toString() == "go"){
 				counter--;
 			}
 		}while(this.testjeu(command));

@@ -4,7 +4,7 @@ public class Street {
 	private int nbStreetPart;
 	private String name;
 	private StreetPart[] parts;
-	private int streetPartHero;
+	private static int streetPartHero=0;
 	private boolean containsHero=false;
 
 	public Street(String name, int nb) {
@@ -14,7 +14,10 @@ public class Street {
 		for (int i=0; i<nb; i++){
 			this.parts[i] = new StreetPart();
 		}
-		this.streetPartHero = 0;
+	}
+	
+	public void setFirstStreet(){
+		this.parts[this.streetPartHero].moveHero();
 	}
 	
 	public void moveHero(String direction){

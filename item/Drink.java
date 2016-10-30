@@ -5,11 +5,11 @@ import character.Hero;
 public class Drink implements Item {
 	
 	private TypeDrink drink;
-	private Hero heros;
+	private Hero hero;
 	
 	public void use(){
-		this.heros.setAlcoholLevel(drink.getAlcoholLevel());
-		this.heros.setAttack(drink.getAttack());
+		this.hero.setAlcoholLevel(drink.getAlcoholLevel());
+		this.hero.setAttack(drink.getAttack());
 	}
 	
 }

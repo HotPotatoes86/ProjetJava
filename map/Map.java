@@ -57,6 +57,8 @@ public class Map {
 		
 		// Le hero se trouve sur la premiere rue
 		this.streetHero = 0;
+		this.streets[this.streetHero].setFirstStreet();
+		this.streets[this.streetHero].moveHero();
 		
 		// Fonction qui dit a la street qu'elle contient Hero
 	}
