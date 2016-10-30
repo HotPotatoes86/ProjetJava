@@ -5,6 +5,7 @@ import java.util.List;
 
 import item.Drink;
 import item.Item;
+import item.Weapon;
 
 public class Hero {
 
@@ -12,6 +13,7 @@ public class Hero {
 	private int attack = 10; //si on boit on fait plus de dégat
 	private int alcoholLevel = 15; //si on boit, le niveau d'alcool monte, si on atteint 100 = coma
 	private List<Item> items;
+	private Weapon weapon = null;
 
 	public Hero() {
 		this.items = new ArrayList<>();
@@ -27,6 +29,14 @@ public class Hero {
 
 	public void setAttack(int attackSup){
 		this.attack += attackSup;
+	}
+	
+	public Weapon getWeapon(){
+		return this.weapon;
+	}
+	
+	public void setWeapon(int attackWeapon){
+		this.attack += attackWeapon;
 	}
 	
 	public void setHp(int hpSup){

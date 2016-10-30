@@ -8,7 +8,7 @@ public class Drink implements Item {
 	private Hero heros;
 	
 	public void use(){
-		this.heros.setAlcoholLevel(drink.getLevel());
+		this.heros.setAlcoholLevel(drink.getAlcoholLevel());
 		this.heros.setAttack(drink.getAttack());
 	}
 	

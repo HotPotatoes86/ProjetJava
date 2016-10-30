@@ -13,7 +13,7 @@ public enum TypeDrink {
         this.attack = dmg;
     }
     
-    public int getLevel(){
+    public int getAlcoholLevel(){
     	return this.alcoholLevel;
     }
     
