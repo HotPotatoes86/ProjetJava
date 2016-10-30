@@ -17,7 +17,7 @@ public class StreetPart {
 			//Nom = NPC
 			Random rand = new Random();
 			// Une chance sur 2 (1 ou 2)
-			int rdm = rand.nextInt(0)+1;
+			int rdm = rand.nextInt(1)+1;
 			if (rdm==1){
 				h = new House();
 			}
@@ -43,6 +43,7 @@ public class StreetPart {
 			this.containsHero=false;
 		}
 		else{
+			System.out.println("Vous arrivez devant des maisons ...");
 			this.containsHero=true;
 		}
 	}

@@ -57,7 +57,27 @@ public class Game {
 			System.out.println("\nVeuillez saisir une action :");
 			command = Command.valueOf(scanner.next().toUpperCase());
 			// On effectue l'action lie a la commande
-			command.action();
+			switch (command.toString()){
+		    	case "help": 
+		    		System.out.println("Commandes possibles :");
+		    		for (Command c : Command.values()){
+		    			System.out.println(c);
+		    		}
+		    		break;
+		    	case "go":
+		    		System.out.println("Veuillez choisir la direction");
+		    		String direction = scanner.next();
+		    		/*if (direction != "forward" || direction !="backward" ||
+		    			direction != "left" || direction != "right"){
+		    			System.out.println(direction);
+		    			System.out.println("Direction incorrecte");
+		    		}
+		    		else{*/
+		    			map.moveHero(direction);
+		    		//}
+		    		break;
+		    	default: break;
+	    	}
 			// On laisse un peu de temps entre chaque action
 			try{
 				Thread.sleep(2000); 

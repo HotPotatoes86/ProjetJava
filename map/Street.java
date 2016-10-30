@@ -33,6 +33,7 @@ public class Street {
 			case "right":
 				this.parts[this.streetPartHero].moveHero(direction);
 				break;
+			default: break;
 		}
 	}
 	
