@@ -11,8 +11,8 @@ public class Street {
 		this.nbStreetPart = nb;
 		this.name = name;
 		this.parts = new StreetPart[nb];
-		for (StreetPart s : this.parts){
-			s = new StreetPart();
+		for (int i=0; i<nb; i++){
+			this.parts[i] = new StreetPart();
 		}
 		this.streetPartHero = 0;
 	}

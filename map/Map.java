@@ -26,15 +26,14 @@ public class Map {
 		//mais apr�s pour copier les adresses dans le temp ca a l'air plutot complexe ...
 		//et pour supprimer une ligne en gros faut refaire un tmp sans la ligne voulu ...
 		//du coup je cherche une autre m�thode moins gourmande ...
-		
-		for (Street s : this.streets){
+		for (int i=0; i<nbStreet; i++){
 			Random rand = new Random();
 			// Une rue a entre 3 et 8 maisons
 			int taille = rand.nextInt(4)+3;
 			
 			// Lire dans les donnees pour donner un nom a la rue
 			String nom = "";
-			int i = rand.nextInt(10)+1; // 1 à 12
+			int compteur = rand.nextInt(10)+1; // 1 à 12
 			String fichier ="donnees/Lieux.txt";
 			
 			try{
@@ -42,9 +41,9 @@ public class Map {
 				InputStreamReader ipsr=new InputStreamReader(ips);
 				BufferedReader br=new BufferedReader(ipsr);
 				String ligne;
-				while (i!=0 && (ligne=br.readLine())!=null){
+				while (compteur!=0 && (ligne=br.readLine())!=null){
 					nom = ligne;
-					i--;
+					compteur--;
 				}
 				br.close(); 
 			}		
@@ -53,7 +52,7 @@ public class Map {
 			}
 			
 			// Instanciation de la rue
-			s = new Street(nom,taille);
+			this.streets[i] = new Street(nom,taille);
 		}
 		
 		// Le hero se trouve sur la premiere rue
