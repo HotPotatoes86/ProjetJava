@@ -1,7 +1,5 @@
 package game;
 
-import java.util.Scanner;
-
 public enum Command {
 	GO("go"),		// Se rend dans une direction (par defaut tout droit)
 	USE("use"),		// Utilise un objet, utilise objet sur objet

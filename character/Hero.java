@@ -3,7 +3,6 @@ package character;
 import java.util.ArrayList;
 import java.util.List;
 
-import item.Drink;
 import item.Item;
 import item.Weapon;
 
