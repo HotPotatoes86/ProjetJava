@@ -1,9 +1,10 @@
 package map;
 public class SimpleExit extends Exit {
 
-	public SimpleExit() {
-		// TODO - implement SimpleExit.SimpleExit
-		throw new UnsupportedOperationException();
+	public SimpleExit(Street st, StreetPart sp, House h) {
+		this.street = st;
+		this.streetPart = sp;
+		this.house = h;
 	}
 
 	public void use() {

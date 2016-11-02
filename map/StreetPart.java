@@ -14,7 +14,7 @@ public class StreetPart {
 	private NPC npc=null; // = une personne que l'on croise dans la rue
 	private boolean containsHero=false;
 
-	public StreetPart() {
+	public StreetPart(Street st) {
 		this.houses = new House[2];
 		for (int i=0; i<2; i++){
 			//TODO Facteur random pour maison avec/sans nom
@@ -46,6 +46,7 @@ public class StreetPart {
 					System.out.println(e.toString());
 				}
 				this.houses[i] = new House(nom);
+				this.houses[i].addExit(st, this);
 			}
 		}
 	}

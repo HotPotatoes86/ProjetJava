@@ -12,8 +12,12 @@ public class Street {
 		this.name = name;
 		this.parts = new StreetPart[nb];
 		for (int i=0; i<nb; i++){
-			this.parts[i] = new StreetPart();
+			this.parts[i] = new StreetPart(this);
 		}
+	}
+	
+	public String getName(){
+		return this.name;
 	}
 	
 	public void setFirstStreet(){
