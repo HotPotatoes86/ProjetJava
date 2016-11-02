@@ -17,7 +17,7 @@ public class Street {
 	}
 	
 	public void setFirstStreet(){
-		this.parts[this.streetPartHero].moveHero();
+		this.parts[this.streetPartHero].setFirst();
 	}
 	
 	public void moveHero(String direction){
