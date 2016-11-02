@@ -65,16 +65,15 @@ public class Game {
 		    		}
 		    		break;
 		    	case "go":
-		    		System.out.println("Veuillez choisir la direction");
-		    		String direction = scanner.next();
-		    		/*if (direction != "forward" || direction !="backward" ||
-		    			direction != "left" || direction != "right"){
-		    			System.out.println(direction);
+		    		String direction = scanner.nextLine();
+		    		if (!direction.equalsIgnoreCase(" forward") && !direction.equalsIgnoreCase(" backward") &&
+		    			!direction.equalsIgnoreCase(" left") && !direction.equalsIgnoreCase(" right")){;
 		    			System.out.println("Direction incorrecte");
 		    		}
-		    		else{*/
-		    			map.moveHero(direction);
-		    		//}
+		    		else{
+		    			// On enleve l'espace devant la direction
+		    			map.moveHero(direction.substring(1,direction.length()));
+		    		}
 		    		break;
 		    	default: break;
 	    	}
