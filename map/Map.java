@@ -69,7 +69,7 @@ public class Map {
 		if (this.streets[this.streetHero].endStreet()){
 			switch (direction){
 				case "left":
-					if (this.streetHero == 0 || this.streetHero == 3){
+					if ((this.streetHero == 0 || this.streetHero == 3) && this.nbStreet != 1){
 						this.streets[this.streetHero].moveHero();
 						this.streetHero++;
 						this.streets[this.streetHero].moveHero();
@@ -83,26 +83,42 @@ public class Map {
 						this.streets[this.streetHero].moveHero();
 						this.streetHero-=2;
 						this.streets[this.streetHero].moveHero();
-					}break;
+					}
+					else{
+						System.out.println("Direction impossible");
+					}
+					break;
 				//TODO Un peu lourd... Faire une fonction ?
 				case "right":
-					if (this.streetHero == 0 || this.streetHero == 3){
+					if ((this.streetHero == 0 || this.streetHero == 3) && this.nbStreet != 1){
 						this.streets[this.streetHero].moveHero();
 						this.streetHero+=2;
 						this.streets[this.streetHero].moveHero();
-					}break;
+					}
+					else{
+						System.out.println("Direction impossible");
+					}
+					break;
 				case "forward":
-					if (this.streetHero == 0){
+					if (this.streetHero == 0 && this.nbStreet == 6){
 						this.streets[this.streetHero].moveHero();
 						this.streetHero+=3;
 						this.streets[this.streetHero].moveHero();
-					}break;
+					}
+					else{
+						System.out.println("Direction impossible");
+					}
+					break;
 				case "backward":
 					if (this.streetHero == 3){
 						this.streets[this.streetHero].moveHero();
 						this.streetHero-=3;
 						this.streets[this.streetHero].moveHero();
-					}break;
+					}
+					else{
+						System.out.println("Direction impossible");
+					}
+					break;
 			}
 		}
 		// Sinon le hero avance dans la rue

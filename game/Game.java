@@ -77,13 +77,6 @@ public class Game {
 		    		break;
 		    	default: break;
 	    	}
-			// On laisse un peu de temps entre chaque action
-			try{
-				Thread.sleep(2000); 
-			}
-			catch (Exception e){
-				System.out.println(e.toString());
-			}
 			// Le tour passe seulement si le joueur se deplace
 			if (command.toString() == "go"){
 				counter--;

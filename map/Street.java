@@ -26,11 +26,17 @@ public class Street {
 				this.parts[this.streetPartHero].moveHero();
 				this.streetPartHero++;
 				this.parts[this.streetPartHero].moveHero();
+				if (this.endStreet()){
+					System.out.println("Vous arrivez au bout de la rue " + this.name);
+				}
 				break;
 			case "backward":
 				this.parts[this.streetPartHero].moveHero();
 				this.streetPartHero++;
 				this.parts[this.streetPartHero].moveHero();
+				if (this.endStreet()){
+					System.out.println("Vous arrivez au bout de la rue " + this.name);
+				}
 				break;
 			case "left":
 			case "right":
