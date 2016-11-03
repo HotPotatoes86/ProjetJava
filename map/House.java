@@ -37,7 +37,7 @@ public class House {
 			rdm = rand.nextInt(10)+1;
 			// Cree une cle qui correspond
 			// Pour les portes verrouillees faire hashmap pour le type de cle ?
-			this.exits.put(st.getName(), new LockedExit(rdm));
+			this.exits.put(st.getName(), new LockedExit(rdm,st,sp,this));
 		}
 	}
 	
