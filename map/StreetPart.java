@@ -28,7 +28,7 @@ public class StreetPart {
 			else{
 				// Lire dans les donnees pour donner un nom a la rue
 				String nom = "";
-				int compteur = rand.nextInt(29)+1; // 1 à 31
+				int compteur = rand.nextInt(31)+1; // 1 à 31
 				String fichier ="donnees/Noms.txt";
 							
 				try{

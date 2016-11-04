@@ -1,7 +1,10 @@
 package character;
+
+import java.util.Random;
+
 public class Enemy extends NPC {
 
-	private int Attack;
+	private int attack;
 	
 	// Nom = villageois
 	public Enemy() {
@@ -9,7 +12,9 @@ public class Enemy extends NPC {
 	}
 	
 	public Enemy(String name) {
-		
+		Random rand = new Random();
+		// Une attaque entre 10 et 25
+		this.attack = rand.nextInt(16)+10;
 	}
 	
 	public void talk(){

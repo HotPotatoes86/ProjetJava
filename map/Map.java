@@ -29,11 +29,11 @@ public class Map {
 		for (int i=0; i<nbStreet; i++){
 			Random rand = new Random();
 			// Une rue a entre 3 et 8 maisons
-			int taille = rand.nextInt(4)+3;
+			int taille = rand.nextInt(6)+3;
 			
 			// Lire dans les donnees pour donner un nom a la rue
 			String nom = "";
-			int compteur = rand.nextInt(10)+1; // 1 à 12
+			int compteur = rand.nextInt(12)+1; // 1 à 12
 			String fichier ="donnees/Lieux.txt";
 			
 			try{
@@ -50,15 +50,18 @@ public class Map {
 			catch (Exception e){
 				System.out.println(e.toString());
 			}
-			
+			System.out.println(nbStreet-i + " : création rue");
 			// Instanciation de la rue
 			this.streets[i] = new Street(nom,taille);
 		}
 		
 		// Le hero se trouve sur la premiere rue
 		this.streetHero = 0;
+		System.out.println("First Street");
 		this.streets[this.streetHero].setFirstStreet();
+		System.out.println("Move Hero");
 		this.streets[this.streetHero].moveHero();
+		System.out.println("Fin");
 		
 		// Fonction qui dit a la street qu'elle contient Hero
 	}
