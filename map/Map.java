@@ -50,18 +50,16 @@ public class Map {
 			catch (Exception e){
 				System.out.println(e.toString());
 			}
-			System.out.println(nbStreet-i + " : création rue");
+
 			// Instanciation de la rue
 			this.streets[i] = new Street(nom,taille);
 		}
 		
 		// Le hero se trouve sur la premiere rue
 		this.streetHero = 0;
-		System.out.println("First Street");
+		
 		this.streets[this.streetHero].setFirstStreet();
-		System.out.println("Move Hero");
 		this.streets[this.streetHero].moveHero();
-		System.out.println("Fin");
 		
 		// Fonction qui dit a la street qu'elle contient Hero
 	}

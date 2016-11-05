@@ -21,23 +21,23 @@ public class Street {
 	}
 	
 	public void setFirstStreet(){
-		this.parts[this.streetPartHero].setFirst();
+		this.parts[streetPartHero].setFirst();
 	}
 	
 	public void moveHero(String direction){
 		switch (direction){
 			case "forward":
-				this.parts[this.streetPartHero].moveHero();
-				this.streetPartHero++;
-				this.parts[this.streetPartHero].moveHero();
+				this.parts[streetPartHero].moveHero();
+				streetPartHero++;
+				this.parts[streetPartHero].moveHero();
 				if (this.endStreet()){
 					System.out.println("Vous arrivez au bout de la rue " + this.name);
 				}
 				break;
 			case "backward":
-				this.parts[this.streetPartHero].moveHero();
-				this.streetPartHero++;
-				this.parts[this.streetPartHero].moveHero();
+				this.parts[streetPartHero].moveHero();
+				streetPartHero++;
+				this.parts[streetPartHero].moveHero();
 				if (this.endStreet()){
 					System.out.println("Vous arrivez au bout de la rue " + this.name);
 				}
@@ -61,7 +61,7 @@ public class Street {
 	}
 	
 	public boolean endStreet(){
-		if (this.streetPartHero == nbStreetPart-1){
+		if (streetPartHero == nbStreetPart-1){
 			return true;
 		}
 		else{

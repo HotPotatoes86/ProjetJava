@@ -45,8 +45,11 @@ public class StreetPart {
 				catch (Exception e){
 					System.out.println(e.toString());
 				}
+				
 				this.houses[i] = new House(nom);
-				this.houses[i].addExit(st, this);
+				
+				//TODO a corrige
+				//this.houses[i].addExit(st, this);
 			}
 		}
 	}
