@@ -1,11 +1,15 @@
 package map;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import character.NPC;
+import item.Drink;
+import item.Food;
 import item.Item;
+import item.Weapon;
 
 public class House {
 
@@ -23,6 +27,23 @@ public class House {
 		this.name = name;
 		this.exits = new HashMap<>();
 		// TODO Items en Random
+	}
+	
+	public List<Item> ItemGenerator(){
+		List<Item> items = new ArrayList<>();
+		Random rand = new Random();
+		int nbItem = rand.nextInt(3);
+		for(int i=0; i<nbItem; i++){
+			int typeItem = rand.nextInt(3)+1;
+			if (typeItem == 1){
+				items.add(new Drink());
+			}else if (typeItem == 2){
+				items.add(new Food());
+			}else if (typeItem == 3){
+				items.add(new Weapon());
+			}
+		}
+		return items;
 	}
 	
 	public void addExit(Street st, StreetPart sp){
