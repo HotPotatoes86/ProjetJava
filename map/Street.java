@@ -36,7 +36,7 @@ public class Street {
 				break;
 			case "backward":
 				this.parts[streetPartHero].moveHero();
-				streetPartHero++;
+				streetPartHero--;
 				this.parts[streetPartHero].moveHero();
 				if (this.endStreet()){
 					System.out.println("Vous arrivez au bout de la rue " + this.name);

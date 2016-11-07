@@ -26,14 +26,16 @@ public class House {
 	public House(String name) {
 		this.name = name;
 		this.exits = new HashMap<>();
-		// TODO Items en Random
+		this.items = this.ItemGenerator();
 	}
 	
 	public List<Item> ItemGenerator(){
 		List<Item> items = new ArrayList<>();
 		Random rand = new Random();
-		int nbItem = rand.nextInt(3);
+		// nombre d'items, de 0 a 4
+		int nbItem = rand.nextInt(4);
 		for(int i=0; i<nbItem; i++){
+			// De 1 a 3 = type de l'objet
 			int typeItem = rand.nextInt(3)+1;
 			if (typeItem == 1){
 				items.add(new Drink());
