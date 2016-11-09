@@ -2,7 +2,7 @@ package game;
 import java.util.Scanner;
 
 import character.Hero;
-import map.Map;
+import map.*;
 
 public class Game {
 
@@ -14,8 +14,7 @@ public class Game {
 		// Scanner
 		Scanner scanner = new Scanner(System.in);	
 		
-		// Instanciation du heros
-		Hero hero = new Hero();
+		Hero hero;
 		
 		// Choix de la taille de la carte
 		System.out.println("\nVeuillez selectionner la taille de la carte :");
@@ -42,12 +41,16 @@ public class Game {
 		// On initialise la map en fonction de sa taille
 		Map map;
 		switch (taille){
-			case 1: map = new Map(hero,1); break;
-			case 2: map = new Map(hero,3); break;
-			case 3: map = new Map(hero,6); break;
-			default: map = new Map(hero,3);break;	
+			case 1: map = new Map(1); break;
+			case 2: map = new Map(3); break;
+			case 3: map = new Map(6); break;
+			default: map = new Map(3);break;	
 		}
 		
+		// Instanciation du heros
+		Place p = map.getStreets()[0];	// = première rue
+		Place p2 = ((Street)p).getParts()[0];	// = première streetpart
+		hero = new Hero(p2);
 		/* Le jeu commence !!
 		 * Le joueur effectue une action
 		 */
@@ -72,7 +75,7 @@ public class Game {
 		    		}
 		    		else{
 		    			// On enleve l'espace devant la direction
-		    			map.moveHero(direction.substring(1,direction.length()));
+		    			hero.go(direction.substring(1,direction.length()));
 		    		}
 		    		break;
 		    	default: break;

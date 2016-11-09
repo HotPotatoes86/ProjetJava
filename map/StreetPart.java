@@ -12,9 +12,9 @@ public class StreetPart extends Place{
 
 	private House[] houses;
 	private NPC npc=null; // = une personne que l'on croise dans la rue
-	private boolean containsHero=false;
 
-	public StreetPart(Street st) {
+	public StreetPart(String name) {
+		this.name = name;
 		this.houses = new House[2];
 		for (int i=0; i<2; i++){
 			//TODO Facteur random pour maison avec/sans nom
@@ -47,9 +47,8 @@ public class StreetPart extends Place{
 				}
 				
 				this.houses[i] = new House(nom);
-				
-				//TODO a corrige
-				//this.houses[i].addExit(st, this);
+				//Ajout de Exit de StreetPart vers House (en fonction du type Exit aléatoire)
+				((House)this.houses[i]).addExit(this);
 			}
 		}
 	}
@@ -57,6 +56,10 @@ public class StreetPart extends Place{
 	public void describe(){
 		this.houses[0].describe();
 		this.houses[1].describe();
+	}
+	
+	public void addLockedExit(int rdm, Place p){
+		this.exits.put(p.getName(), new LockedExit(rdm,p));
 	}
 
 }

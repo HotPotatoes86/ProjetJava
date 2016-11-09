@@ -4,9 +4,13 @@ import java.util.HashMap;
 
 public abstract class Place{
 	protected String name;
-	protected HashMap<String,Exit> exits;
+	protected HashMap<String,Exit> exits = new HashMap<>();
 	
 	public abstract void describe();
+	
+	public void addExit(Place p){
+		this.exits.put(p.getName(), new SimpleExit(p));
+	}
 	
 	public String getName(){
 		return this.name;

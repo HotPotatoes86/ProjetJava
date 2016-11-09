@@ -13,7 +13,7 @@ public class Map {
 	private int nbStreet;
 	private Place[] streets;
 	
-	public Map(Hero hero, int nbStreet) {
+	public Map(int nbStreet) {
 		this.nbStreet = nbStreet;
 		this.streets = new Street[nbStreet];
 		
@@ -54,6 +54,41 @@ public class Map {
 		}
 	}
 	
+	public void genereExit(){
+		if (this.nbStreet>1){
+			((Street)this.streets[0]).addExit(1,this.streets[1]);
+			((Street)this.streets[0]).addExit(1,this.streets[2]);
+			((Street)this.streets[1]).addExit(0,this.streets[0]);
+			((Street)this.streets[1]).addExit(0,this.streets[2]);
+			((Street)this.streets[2]).addExit(0,this.streets[0]);
+			((Street)this.streets[2]).addExit(0,this.streets[1]);
+			if (this.nbStreet>3){
+				((Street)this.streets[0]).addExit(1,this.streets[3]);
+				((Street)this.streets[1]).addExit(0,this.streets[3]);
+				((Street)this.streets[2]).addExit(0,this.streets[3]);
+				
+				((Street)this.streets[3]).addExit(0,this.streets[0]);
+				((Street)this.streets[3]).addExit(0,this.streets[1]);
+				((Street)this.streets[3]).addExit(0,this.streets[2]);
+				((Street)this.streets[3]).addExit(1,this.streets[4]);
+				((Street)this.streets[3]).addExit(1,this.streets[5]);
+				
+				((Street)this.streets[4]).addExit(0,this.streets[3]);
+				((Street)this.streets[4]).addExit(0,this.streets[5]);
+				((Street)this.streets[5]).addExit(0,this.streets[3]);
+				((Street)this.streets[5]).addExit(0,this.streets[4]);
+			}
+		}
+	}
+	
+	public Place[] getStreets() {
+		return streets;
+	}
+
+	public void setStreets(Place[] streets) {
+		this.streets = streets;
+	}
+
 	public void go(String direction){
 		this.hero.go(direction);
 	}

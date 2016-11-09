@@ -11,9 +11,27 @@ public class Street extends Place{
 		this.exits = new HashMap<>();
 		this.nbStreetPart = nb;
 		this.name = name;
-		this.parts = new StreetPart[nb];
-		for (int i=0; i<nb; i++){
-			this.parts[i] = new StreetPart(this);
+		this.parts = new StreetPart[this.nbStreetPart];
+		for (int i=0; i<this.nbStreetPart; i++){
+			this.parts[i] = new StreetPart("s"+i);
+		}
+		for (int j=0; j<this.nbStreetPart; j++){
+			// On ajoute une exit vers les streetparts voisines 
+			if (j>0){
+				this.parts[j].addExit(this.parts[j-1]);
+			}
+			if (j<(this.nbStreetPart+1)){
+				//this.parts[j].addExit(this.parts[j+1]);
+			}
+		}
+	}
+	
+	public void addExit(int type, Place p){ // type = debut (0) ou fin de rue (1)
+		if (type == 0){
+			this.parts[0].addExit(p);
+		}
+		else if (type == 5){
+			this.parts[this.nbStreetPart].addExit(p);
 		}
 	}
 	
@@ -47,5 +65,9 @@ public class Street extends Place{
 			}
 		}
 		return p;
+	}
+
+	public Place[] getParts() {
+		return parts;
 	}
 }

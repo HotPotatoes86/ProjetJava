@@ -49,12 +49,14 @@ public class House extends Place{
 		return items;
 	}
 	
+	@Override
 	public void addExit(Place p){
 		Random rand = new Random();
 		// Une chance sur deux que la porte soit verrouillee
 		int rdm = rand.nextInt(2)+1;
 		if (rdm==1){
 			this.exits.put(p.getName(), new SimpleExit(p));
+			p.addExit(this);
 		}
 		else{
 			// Une chance sur 10 = 10 types de clés
@@ -62,6 +64,7 @@ public class House extends Place{
 			// Cree une cle qui correspond
 			// Pour les portes verrouillees faire hashmap pour le type de cle ?
 			this.exits.put(p.getName(), new LockedExit(rdm,p));
+			//((StreetPart)p).addLockedExit(rdm, this);
 		}
 	}
 
