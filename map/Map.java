@@ -11,11 +11,9 @@ public class Map {
 
 	private Hero hero;
 	private int nbStreet;
-	private int streetHero;
-	private Street[] streets;
+	private Place[] streets;
 	
 	public Map(Hero hero, int nbStreet) {
-		this.hero = hero;
 		this.nbStreet = nbStreet;
 		this.streets = new Street[nbStreet];
 		
@@ -23,9 +21,9 @@ public class Map {
 		//FILE temp = File.createTempFile("tmpAdr",".txt");
 		//pour le supprimer a la fin du programme
 		//tempFile.deleteOnExit();
-		//mais apr�s pour copier les adresses dans le temp ca a l'air plutot complexe ...
+		//mais aprï¿½s pour copier les adresses dans le temp ca a l'air plutot complexe ...
 		//et pour supprimer une ligne en gros faut refaire un tmp sans la ligne voulu ...
-		//du coup je cherche une autre m�thode moins gourmande ...
+		//du coup je cherche une autre mï¿½thode moins gourmande ...
 		for (int i=0; i<nbStreet; i++){
 			Random rand = new Random();
 			// Une rue a entre 3 et 8 maisons
@@ -33,7 +31,7 @@ public class Map {
 			
 			// Lire dans les donnees pour donner un nom a la rue
 			String nom = "";
-			int compteur = rand.nextInt(12)+1; // 1 à 12
+			int compteur = rand.nextInt(12)+1; // 1 Ã  12
 			String fichier ="donnees/Lieux.txt";
 			
 			try{
@@ -54,78 +52,9 @@ public class Map {
 			// Instanciation de la rue
 			this.streets[i] = new Street(nom,taille);
 		}
-		
-		// Le hero se trouve sur la premiere rue
-		this.streetHero = 0;
-		
-		this.streets[this.streetHero].setFirstStreet();
-		this.streets[this.streetHero].moveHero();
-		
-		// Fonction qui dit a la street qu'elle contient Hero
 	}
 	
-	// A ameliorer, un peu long
-	public void moveHero(String direction){
-		// Test si hero au bord de la rue
-		if (this.streets[this.streetHero].endStreet()){
-			switch (direction){
-				case "left":
-					if ((this.streetHero == 0 || this.streetHero == 3) && this.nbStreet != 1){
-						this.streets[this.streetHero].moveHero();
-						this.streetHero++;
-						this.streets[this.streetHero].moveHero();
-					}
-					else if (this.streetHero == 1){
-						this.streets[this.streetHero].moveHero();
-						this.streetHero+=2;
-						this.streets[this.streetHero].moveHero();
-					}
-					else if (this.streetHero == 2 || this.streetHero == 5){
-						this.streets[this.streetHero].moveHero();
-						this.streetHero-=2;
-						this.streets[this.streetHero].moveHero();
-					}
-					else{
-						System.out.println("Direction impossible");
-					}
-					break;
-				//TODO Un peu lourd... Faire une fonction ?
-				case "right":
-					if ((this.streetHero == 0 || this.streetHero == 3) && this.nbStreet != 1){
-						this.streets[this.streetHero].moveHero();
-						this.streetHero+=2;
-						this.streets[this.streetHero].moveHero();
-					}
-					else{
-						System.out.println("Direction impossible");
-					}
-					break;
-				case "forward":
-					if (this.streetHero == 0 && this.nbStreet == 6){
-						this.streets[this.streetHero].moveHero();
-						this.streetHero+=3;
-						this.streets[this.streetHero].moveHero();
-					}
-					else{
-						System.out.println("Direction impossible");
-					}
-					break;
-				case "backward":
-					if (this.streetHero == 3){
-						this.streets[this.streetHero].moveHero();
-						this.streetHero-=3;
-						this.streets[this.streetHero].moveHero();
-					}
-					else{
-						System.out.println("Direction impossible");
-					}
-					break;
-			}
-		}
-		// Sinon le hero avance dans la rue
-		else{
-			this.streets[this.streetHero].moveHero(direction);
-		}	
+	public void go(String direction){
+		this.hero.go(direction);
 	}
-	
 }

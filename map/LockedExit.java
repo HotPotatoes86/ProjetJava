@@ -9,7 +9,7 @@ public class LockedExit extends Exit {
 	private boolean status=true; //Locked or Unlocked
 	private static HashMap<Integer, Boolean> keys = new HashMap<>();
 
-	public LockedExit(int type, Street st, StreetPart sp, House h) {
+	public LockedExit(int type, Place p) {
 		while (this.keys.containsKey(type)){
 			Random rand = new Random();
 			// Une chance sur 10 = 10 types de clés
@@ -17,9 +17,11 @@ public class LockedExit extends Exit {
 		}
 		this.keyType = type;
 		this.keys.put(type, true);
-		this.street = st;
-		this.streetPart = sp;
-		this.house = h;
+		this.place = p;
+	}
+	
+	public Place getPlace(){
+		return this.place;
 	}
 	
 	public void unlock(int key){

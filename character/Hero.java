@@ -5,6 +5,7 @@ import java.util.List;
 
 import item.Item;
 import item.Weapon;
+import map.Place;
 
 public class Hero {
 
@@ -13,9 +14,18 @@ public class Hero {
 	private int alcoholLevel = 15; //si on boit, le niveau d'alcool monte, si on atteint 100 = coma
 	private List<Item> inventory;
 	private Weapon weapon = null;
+	private Place actualPlace;
 
-	public Hero() {
+	public Hero(Place p) {
+		this.actualPlace = p;
 		this.inventory = new ArrayList<>();
+	}
+	
+	public void go(String direction){
+		if (actualPlace.testdirection(direction)){
+			this.actualPlace.go(direction);
+			this.actualPlace = this.actualPlace.getNextPlace(direction);
+		}
 	}
 	
 	public void attack(NPC npc){

@@ -8,7 +8,7 @@ import java.util.Random;
 
 import character.NPC;
 
-public class StreetPart {
+public class StreetPart extends Place{
 
 	private House[] houses;
 	private NPC npc=null; // = une personne que l'on croise dans la rue
@@ -54,30 +54,9 @@ public class StreetPart {
 		}
 	}
 	
-	public void moveHero(String direction){
-		switch (direction){
-			case "left": 
-				this.houses[0].moveHero();
-				break;
-			case "right":
-				this.houses[1].moveHero();
-				break;
-		}	
+	public void describe(){
+		this.houses[0].describe();
+		this.houses[1].describe();
 	}
-	
-	public void setFirst(){
-		this.containsHero=true;
-	}
-	
-	public void moveHero(){
-		if (this.containsHero){
-			this.containsHero=false;
-		}
-		else{
-			System.out.println("<- " + this.houses[0].getName());
-			System.out.println("-> " + this.houses[1].getName());
-			this.containsHero=true;
-		}
-	}
-	
+
 }

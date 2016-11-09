@@ -2,23 +2,14 @@ package map;
 
 import java.util.HashMap;
 
-public class Street extends Place{
-
-	private int nbStreetPart;
-	private Place[] parts;
-
-	public Street(String name, int nb) {
-		this.exits = new HashMap<>();
-		this.nbStreetPart = nb;
-		this.name = name;
-		this.parts = new StreetPart[nb];
-		for (int i=0; i<nb; i++){
-			this.parts[i] = new StreetPart(this);
-		}
-	}
+public abstract class Place{
+	protected String name;
+	protected HashMap<String,Exit> exits;
 	
-	public void describe(){
-		System.out.println("Vous arrivez sur la rue " + this.name);
+	public abstract void describe();
+	
+	public String getName(){
+		return this.name;
 	}
 	
 	public boolean testdirection(String direction){

@@ -1,9 +1,9 @@
 package map;
 public abstract class Exit {
 
-	protected Street street;
-	protected StreetPart streetPart;
-	protected House house;
+	protected Place place;
 	
 	public abstract void use();
+	public abstract Place getPlace();
+		
 }
