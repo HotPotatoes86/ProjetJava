@@ -26,6 +26,8 @@ public class Hero {
 		if (actualPlace.testdirection(direction)){
 			this.actualPlace.go(direction);
 			this.actualPlace = this.actualPlace.getNextPlace(direction);
+			this.actualPlace.describe();
+			System.out.println("\nVous pouvez aller ici :");
 			this.actualPlace.displayExit();
 		}else{
 			System.out.println("Direction impossible");

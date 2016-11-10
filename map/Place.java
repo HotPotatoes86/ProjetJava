@@ -8,8 +8,8 @@ public abstract class Place{
 	
 	public abstract void describe();
 	
-	public void addExit(Place p){
-		this.exits.put(p.getName(), new SimpleExit(p));
+	public void addExit(String cmd,Place p){
+		this.exits.put(cmd, new SimpleExit(p));
 	}
 	
 	public String getName(){
@@ -34,7 +34,7 @@ public abstract class Place{
 	
 	public void go(String direction){
 		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
-			if (e.getKey() == direction){
+			if (e.getKey().equals(direction)){
 				e.getValue().use();
 			}
 		}

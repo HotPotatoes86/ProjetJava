@@ -6,7 +6,7 @@ public class SimpleExit extends Exit {
 	}
 
 	public void use() {
-		
+		System.out.println("Vous allez à " + this.place.getName());
 	}
 	
 	public Place getPlace(){
