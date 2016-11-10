@@ -25,21 +25,21 @@ public class Street extends Place{
 				this.parts[j].addExit("forward",this.parts[j+1]);
 			}
 		}
-		System.out.println("Avant : ");
-		this.displayExit();
-		((Place)this).addExit("forward",this.parts[0]);
-		System.out.println("Après : ");
-		this.displayExit();
-		System.out.println("/////////");
-	}
-	
-	public void describe(){
-		System.out.println("Vous arrivez sur la rue " + this.name);
+		this.exits.put("forward", new SimpleExit(this.parts[0]));
 	}
 	
 	@Override
-	public void addExit(String cmd, Place p){
-		this.parts[this.nbStreetPart-1].addExit("forward", p);
+	public String getName(){
+		return "rue " + this.name;
+	}
+	
+	public void describe(){
+		System.out.println("Vous etes sur la rue " + this.name);
+	}
+	
+	//StreetPart -> Street
+	public void addExit1(String cmd, Place p){
+		this.parts[this.nbStreetPart-1].addExit(cmd, p);
 	}
 
 	public Place[] getParts() {

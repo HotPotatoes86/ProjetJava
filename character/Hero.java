@@ -22,15 +22,41 @@ public class Hero {
 		this.inventory = new ArrayList<>();
 	}
 	
+	public Place getPlace(){
+		return this.actualPlace;
+	}
+	
 	public void go(String direction){
 		if (actualPlace.testdirection(direction)){
 			this.actualPlace.go(direction);
 			this.actualPlace = this.actualPlace.getNextPlace(direction);
-			this.actualPlace.describe();
 			System.out.println("\nVous pouvez aller ici :");
 			this.actualPlace.displayExit();
 		}else{
 			System.out.println("Direction impossible");
+		}
+	}
+	
+	public void look(){
+		System.out.println("Vous regardez autour de vous");
+		this.actualPlace.describe();
+	}
+	
+	public void look(String s){
+		//Description Place
+		Place p = null;
+		p = this.actualPlace.getNextPlace(s);
+		if (p != null){
+			switch (s){
+				case "forward": System.out.println("Vous regardez devant vous"); break;
+				case "backward":System.out.println("Vous regardez derriere vous"); break;
+				case "house1":System.out.println("Vous regardez la maison a gauche"); break;
+				case "house2":System.out.println("Vous regardez la maison a droite"); break;
+				default: System.out.println("Vous regardez " + p.getName()); break;
+			}
+			p.describe();
+		}else{
+			System.out.println("Argument incorrect");
 		}
 	}
 	

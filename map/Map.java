@@ -23,17 +23,16 @@ public class Map {
 		//du coup je cherche une autre mï¿½thode moins gourmande ...
 			//Instanciation de la rue (4 maisons dans une rue)
 			this.streets[0] = new Street(n.generateName("donnees/Lieux.txt"),4);
-			this.streets[0].addExit("forward",((Street)this.streets[0]).getParts[0]);
 			if (this.nbStreet==3){
 				this.streets[1] = new Street(n.generateName("donnees/Lieux.txt"),4);
 				this.streets[2] = new Street(n.generateName("donnees/Lieux.txt"),4);
-					
-				((Street)this.streets[0]).addExit("street1", this.streets[1]);
-				((Street)this.streets[0]).addExit("street2", this.streets[2]);
-				((Street)this.streets[1]).addExit("street0", this.streets[0]);
-				((Street)this.streets[1]).addExit("street2", this.streets[2]);
-				((Street)this.streets[2]).addExit("street0", this.streets[0]);
-				((Street)this.streets[2]).addExit("street1", this.streets[1]);
+				
+				((Street)this.streets[0]).addExit1(this.streets[1].getName(), this.streets[1]);
+				((Street)this.streets[0]).addExit1(this.streets[2].getName(), this.streets[2]);
+				this.streets[1].addExit(this.streets[0].getName(), ((Street)this.streets[0]).getParts()[3]);
+				this.streets[1].addExit(this.streets[2].getName(), ((Street)this.streets[2]).getParts()[0]);
+				this.streets[2].addExit(this.streets[0].getName(), ((Street)this.streets[0]).getParts()[3]);
+				this.streets[2].addExit(this.streets[1].getName(), ((Street)this.streets[1]).getParts()[0]);
 			}
 	}
 	

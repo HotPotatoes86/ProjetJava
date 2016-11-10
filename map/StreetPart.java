@@ -1,5 +1,6 @@
 package map;
 
+import java.util.HashMap;
 import java.util.Random;
 
 import character.NPC;
@@ -34,9 +35,9 @@ public class StreetPart extends Place{
 	}
 	
 	public void describe(){
-		System.out.println("House 1 : ");
+		System.out.print("House 1 : ");
 		this.houses[0].describe();
-		System.out.println("House 2 : ");
+		System.out.print("House 2 : ");
 		this.houses[1].describe();
 	}
 

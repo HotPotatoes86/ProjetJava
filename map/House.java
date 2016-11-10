@@ -2,7 +2,6 @@ package map;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import character.NPC;
@@ -39,11 +38,11 @@ public class House extends Place{
 			// De 1 a 3 = type de l'objet
 			int typeItem = rand.nextInt(3)+1;
 			if (typeItem == 1){
-				items.add(new Drink());
+				items.add(Drink.createDrink("vodka"));
 			}else if (typeItem == 2){
-				items.add(new Food());
+				items.add(Food.createFood("chips"));
 			}else if (typeItem == 3){
-				items.add(new Weapon());
+				items.add(Weapon.createWrink("knife"));
 			}
 		}
 		return items;

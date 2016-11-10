@@ -58,16 +58,35 @@ public class Game {
 		
 		do{
 			System.out.println("\nVeuillez saisir une action :");
+			//
+			// IMPOSSIBLE DE METTRE AUTRE CHOSE QU'UNE COMMANDE ! A REGLER
+			//
 			command = Command.valueOf(scanner.next().toUpperCase());
+			System.out.println(""); //Juste esthetique
 			//On effectue l'action lie a la commande
-			switch (command.toString()){
-		    	case "help": 
-		    		System.out.println("Commandes possibles :");
-		    		for (Command c : Command.values()){
-		    			System.out.println(c);
+			switch (command){
+		    	case HELP: //Argument = decrit une commande sinon liste les commandes
+		    		String argument = scanner.nextLine(); 
+		    		if (argument.length()>0){
+		    			//On enleve l'espace devant l'argument
+		    			if (argument.substring(1,argument.length()).equals("go")){
+		    				System.out.println("Utilisation : ");
+		    				System.out.println("commande go suivi de la direction");
+		    				System.out.println("\nExemple : ");
+		    				System.out.println("go forward ou go house1");
+		    				System.out.println("Lieux accessibles : ");
+		    				hero.getPlace().displayExit();
+		    			}else{
+		    				System.out.println("Argument incorrect");
+		    			}
+		    		}else{
+			    		System.out.println("Commandes possibles :");
+			    		for (Command c : Command.values()){
+			    			System.out.println(c);
+			    		}
 		    		}
 		    		break;
-		    	case "go":
+		    	case GO:
 		    		String direction = scanner.nextLine(); 
 		    		if (direction.length()>0){
 		    			//On enleve l'espace devant la direction
@@ -78,11 +97,20 @@ public class Game {
 		    			System.out.println("Direction impossible");
 		    		}
 		    		break;
+		    	case LOOK:
+		    		argument = scanner.nextLine(); 
+		    		if (argument.length()>0){
+		    			//On enleve l'espace devant l'argument
+		    			hero.look(argument.substring(1,argument.length()));
+		    		}else{
+		    			hero.look();
+		    		}
 		    	default: break;
 	    	}
 
 		}while(this.testjeu(command));
 		
+		System.out.println("\nFIN DU JEU !");
 		//Fermeture du scanner
 		scanner.close();
 	}
