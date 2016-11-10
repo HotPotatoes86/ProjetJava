@@ -16,10 +16,16 @@ public abstract class Place{
 		return this.name;
 	}
 	
+	public void displayExit(){
+		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
+			System.out.println(e.getKey());
+		}
+	}
+	
 	public boolean testdirection(String direction){
 		boolean test = false;
 		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
-			if (e.getKey() == direction){
+			if (e.getKey().equals(direction)){
 				test = true;
 			}
 		}
@@ -37,7 +43,7 @@ public abstract class Place{
 	public Place getNextPlace(String direction){
 		Place p = null;
 		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
-			if (e.getKey() == direction){
+			if (e.getKey().equals(direction)){
 				p = e.getValue().getPlace();
 			}
 		}

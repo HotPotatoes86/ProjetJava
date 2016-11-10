@@ -18,18 +18,17 @@ public class Game {
 		
 		// Choix de la taille de la carte
 		System.out.println("\nVeuillez selectionner la taille de la carte :");
-		System.out.println("1- Petite");
-		System.out.println("2- Moyenne");
-		System.out.println("3- Grande\n");
+		System.out.println("1- Petite : 1 rue");
+		System.out.println("2- Moyenne : 3 rues");
 		
 		// Taille de la carte par défaut
 		int taille = 2;
-		String[] choix = {"petite","moyenne","grande"};
+		String[] choix = {"petite","moyenne"};
 		boolean test=false;
 		// Rentrer une valeur valide
 		while (!test){
 			taille = scanner.nextInt();
-			if (taille > 0 && taille <=3){
+			if (taille > 0 && taille <=2){
 				test = true;
 				System.out.println("Vous avez choisi une carte " + choix[taille-1]);
 			}
@@ -43,7 +42,6 @@ public class Game {
 		switch (taille){
 			case 1: map = new Map(1); break;
 			case 2: map = new Map(3); break;
-			case 3: map = new Map(6); break;
 			default: map = new Map(3);break;	
 		}
 		
@@ -53,6 +51,7 @@ public class Game {
 		Place p = map.getStreets()[0];	// = première rue
 		Place p2 = ((Street)p).getParts()[0];	// = première streetpart
 		hero = new Hero(p2);
+		p2.displayExit();
 		/* Le jeu commence !!
 		 * Le joueur effectue une action
 		 */
@@ -71,14 +70,8 @@ public class Game {
 		    		break;
 		    	case "go":
 		    		String direction = scanner.nextLine();
-		    		if (!direction.equalsIgnoreCase(" forward") && !direction.equalsIgnoreCase(" backward") &&
-		    			!direction.equalsIgnoreCase(" left") && !direction.equalsIgnoreCase(" right")){;
-		    			System.out.println("Direction incorrecte");
-		    		}
-		    		else{
-		    			// On enleve l'espace devant la direction
-		    			hero.go(direction.substring(1,direction.length()));
-		    		}
+		    		// On enleve l'espace devant la direction
+		    		hero.go(direction.substring(1,direction.length()));
 		    		break;
 		    	default: break;
 	    	}

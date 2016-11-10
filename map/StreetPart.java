@@ -1,12 +1,9 @@
 package map;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Random;
 
 import character.NPC;
+import util.Name;
 
 public class StreetPart extends Place{
 
@@ -27,29 +24,12 @@ public class StreetPart extends Place{
 			}
 			else{
 				// Lire dans les donnees pour donner un nom a la rue
-				String nom = "";
-				int compteur = rand.nextInt(31)+1; // 1 à 31
-				String fichier ="donnees/Noms.txt";
-							
-				try{
-					InputStream ips=new FileInputStream(fichier); 
-					InputStreamReader ipsr=new InputStreamReader(ips);
-					BufferedReader br=new BufferedReader(ipsr);
-					String ligne;
-					while (compteur!=0 && (ligne=br.readLine())!=null){
-						nom = ligne;
-						compteur--;
-					}
-					br.close(); 
-				}		
-				catch (Exception e){
-					System.out.println(e.toString());
-				}
+				Name n = new Name();
 				
-				this.houses[i] = new House(nom);
-				//Ajout de Exit de StreetPart vers House (en fonction du type Exit aléatoire)
-				((House)this.houses[i]).addExit(this);
+				this.houses[i] = new House(n.generateName("donnees/Noms.txt"));
 			}
+			this.houses[i].addExit(this);
+			((StreetPart)this).addExit(this.houses[i]);
 		}
 	}
 	
@@ -58,8 +38,23 @@ public class StreetPart extends Place{
 		this.houses[1].describe();
 	}
 	
-	public void addLockedExit(int rdm, Place p){
-		this.exits.put(p.getName(), new LockedExit(rdm,p));
+	@Override
+	public void addExit(Place p){
+		Random rand = new Random();
+		// Une chance sur deux que la porte soit verrouillee
+		int rdm = rand.nextInt(2)+1;
+		if (rdm==1){
+			this.exits.put(p.getName(), new SimpleExit(p));
+			p.addExit(this);
+		}
+		else{
+			// Une chance sur 10 = 10 types de clés
+			rdm = rand.nextInt(10)+1;
+			// Cree une cle qui correspond
+			// Pour les portes verrouillees faire hashmap pour le type de cle ?
+			this.exits.put(p.getName(), new LockedExit(rdm,p));
+			//((StreetPart)p).addLockedExit(rdm, this);
+		}
 	}
 
 }
