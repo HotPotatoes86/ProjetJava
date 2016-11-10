@@ -11,5 +11,11 @@ public class Drink implements Item {
 		this.hero.setAlcoholLevel(drink.getAlcoholLevel());
 		this.hero.setAttack(drink.getAttack());
 	}
+
+	@Override
+	public String toString() {
+		return "" +drink;
+	}
+	
 	
 }

@@ -1,6 +1,7 @@
 package character;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import item.Item;
@@ -61,6 +62,15 @@ public class Hero {
 	
 	public void pickUpItem(Item item){ //on ramasse l'objet
 		this.inventory.add(item);
+	}
+	
+	public void printInventory(){
+		Iterator<Item> it = this.inventory.iterator();
+		int i=1;
+		while(it.hasNext()){
+			System.out.println("objet "+i +": " + it.next());
+			i++;
+		}
 	}
 	
 	public void use(Item item){

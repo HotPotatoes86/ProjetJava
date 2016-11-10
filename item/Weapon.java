@@ -17,4 +17,11 @@ public class Weapon implements Item {
 		}
 		this.hero.setWeapon(this.weapon.getAtackWeapon());;
 	}
+
+	@Override
+	public String toString() {
+		return "" + weapon;
+	}
+	
+	
 }
