@@ -20,8 +20,8 @@ public class Street extends Place{
 			if (j>0){
 				this.parts[j].addExit(this.parts[j-1]);
 			}
-			if (j<(this.nbStreetPart+1)){
-				//this.parts[j].addExit(this.parts[j+1]);
+			if (j<(this.nbStreetPart-1)){
+				this.parts[j].addExit(this.parts[j+1]);
 			}
 		}
 	}

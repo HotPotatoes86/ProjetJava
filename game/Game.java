@@ -47,6 +47,8 @@ public class Game {
 			default: map = new Map(3);break;	
 		}
 		
+		System.out.println("Creation Hero");
+		
 		// Instanciation du heros
 		Place p = map.getStreets()[0];	// = première rue
 		Place p2 = ((Street)p).getParts()[0];	// = première streetpart
