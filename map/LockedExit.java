@@ -10,13 +10,13 @@ public class LockedExit extends Exit {
 	private static HashMap<Integer, Boolean> keys = new HashMap<>();
 
 	public LockedExit(int type, Place p) {
-		while (this.keys.containsKey(type)){
+		while (keys.containsKey(type)){
 			Random rand = new Random();
 			// Une chance sur 10 = 10 types de clés
 			type = rand.nextInt(10)+1;
 		}
 		this.keyType = type;
-		this.keys.put(type, true);
+		keys.put(type, true);
 		this.place = p;
 	}
 	

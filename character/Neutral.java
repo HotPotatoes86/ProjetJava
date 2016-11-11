@@ -7,11 +7,11 @@ public class Neutral extends NPC {
 	}
 	
 	public Neutral(String name){
-		this.NPCname = name;
+		this.name = name;
 	}
 	
 	public void talk(){
-		System.out.println(this.NPCname + " : Bonjour je suis un PNJ gentil");
+		System.out.println(this.name + " : Bonjour je suis un PNJ gentil");
 	}
 	
 	public void setHP(int hp){

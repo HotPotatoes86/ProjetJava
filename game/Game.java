@@ -3,15 +3,16 @@ import java.util.Scanner;
 
 import character.Hero;
 import map.*;
+import util.Choice;
 
 public class Game {
 
-	// Nombre de tours
+	//Nombre de tours
 	private static int counter = 20;
 	
 	public void start() {
 			
-		//Scanner
+		//Scanner pour lire les entrees
 		Scanner scanner = new Scanner(System.in);	
 		
 		Hero hero;
@@ -27,13 +28,18 @@ public class Game {
 		boolean test=false;
 		//Rentrer une valeur valide
 		while (!test){
-			taille = scanner.nextInt();
-			if (taille > 0 && taille <=2){
-				test = true;
-				System.out.println("Vous avez choisi une carte " + choix[taille-1]);
+			try{
+				taille = scanner.nextInt();
+				if (taille > 0 && taille <=2){
+					test = true;
+					System.out.println("Vous avez choisi une carte " + choix[taille-1]);
+				}
+				else{
+					System.out.println("Valeur incorrecte, reessayez");
+				}
 			}
-			else{
-				System.out.println("Valeur incorrecte, reessayez");
+			catch(Exception e){
+				System.out.println("Erreur : veuillez saisir une taille correcte");
 			}
 		}
 		
@@ -47,67 +53,91 @@ public class Game {
 		
 		//Instanciation du heros
 		Place p = map.getStreets()[0];	// = première rue
-		//Place p2 = ((Street)p).getParts()[0];	// = première streetpart
 		hero = new Hero(p);
+		//Street du Hero
+		Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, taille)]);
+		//StreetPart du Hero
+		StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, 4)]);
+		//House du Hero
+		House hh = sth.getHouses()[Choice.randomChoice(0, 1)];
+		hero.setHouse(hh);
+		
+		p.describe();
 		System.out.println("Vous pouvez aller ici :");
 		p.displayExit();
+		
 		/* Le jeu commence !!
 		 * Le joueur effectue une action
 		 */
+		
 		Command command;
 		
 		do{
 			System.out.println("\nVeuillez saisir une action :");
 			//
 			// IMPOSSIBLE DE METTRE AUTRE CHOSE QU'UNE COMMANDE ! A REGLER
+			// test commande, si fail -> commande help
 			//
-			command = Command.valueOf(scanner.next().toUpperCase());
-			System.out.println(""); //Juste esthetique
-			//On effectue l'action lie a la commande
-			switch (command){
-		    	case HELP:
-			    	System.out.println("Commandes possibles :");
-			   		for (Command c : Command.values()){
-			   			System.out.println(c + c.getDescription());
-		    		}
-		    		break;
-		    	case GO:
-		    		String direction = scanner.nextLine(); 
-		    		if (direction.length()>0){
-		    			//On enleve l'espace devant la direction
-		    			hero.go(direction.substring(1,direction.length()));
-		    			//Le tour passe
-		    			counter--;
-		    		}else{
-		    			System.out.println("Direction impossible");
-		    		}
-		    		break;
-		    	case LOOK:
-		    		String argument = scanner.nextLine(); 
-		    		if (argument.length()>0){
-		    			//On enleve l'espace devant l'argument
-		    			hero.look(argument.substring(1,argument.length()));
-		    		}else{
-		    			hero.look();
-		    		}
-		    	default: break;
-	    	}
+			try{
+				command = Command.valueOf(scanner.next().toUpperCase());
+				System.out.println(""); //Juste esthetique
+				//On effectue l'action lie a la commande
+				switch (command){
+			    	case HELP:
+				    	System.out.println("Commandes possibles :");
+				   		for (Command c : Command.values()){
+				   			System.out.println(c + c.getDescription());
+			    		}
+				   		break;
+			    	case GO:
+			    		String direction = scanner.nextLine(); 
+			    		if (direction.length()>0){
+			    			//On enleve l'espace devant la direction
+			    			hero.go(direction.substring(1,direction.length()));
+			    			//Le tour passe
+			    			counter--;
+			    		}else{
+			    			System.out.println("Erreur : veuillez saisir une direction");
+			    		}
+			    		break;
+			    	case LOOK:
+			    		String argument = scanner.nextLine(); 
+			    		if (argument.length()>0){
+			    			//On enleve l'espace devant l'argument
+			    			hero.look(argument.substring(1,argument.length()));
+			    		}else{
+			    			hero.look();
+			    		}
+			    		break;
+			    	case STATUS:
+			    		System.out.println("Caracteristiques du Hero : ");
+			    		System.out.println("HP : " + hero.getHp());
+			    		System.out.println("Alcoolemie : " + hero.getAlcoholLevel());
+			    		System.out.println("Arme : " + hero.getWeapon());
+			    		break;
+			    	case INVENTORY:
+			    		hero.printInventory();
+			    		break;
+			    	default: break;
+		    	}
+			}
+			catch(Exception e){
+				System.out.println("\nErreur : Commande invalide");
+				System.out.println("Utilisez la commande help pour afficher les commandes possibles");
+			}
 
-		}while(this.testjeu(command));
+		}while(counter>0 && hero.testHouse());
 		
 		System.out.println("\nFIN DU JEU !");
+		
+		if (hero.testHouse()){
+			System.out.println("VICTOIRE : Vous avez reussi a rentrer a temps");
+		}else{
+			System.out.println("DEFAITE : Vous n'avez pas reussi a rentrer a temps");
+		}
+		
 		//Fermeture du scanner
 		scanner.close();
 	}
-
-	public boolean testjeu(Command command) {
-		if (counter != 0 && command.toString() != "quit"){	
-		//Si le jeu dure moins de 20 tours et que le joueur ne veut pas quitter
-			return true;
-		}
-		else{
-			return false;
-		}
-	}	
 
 }

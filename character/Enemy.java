@@ -1,6 +1,6 @@
 package character;
 
-import java.util.Random;
+import util.Choice;
 
 public class Enemy extends NPC {
 
@@ -8,17 +8,22 @@ public class Enemy extends NPC {
 	
 	// Nom = villageois
 	public Enemy() {
-		
+		// Une attaque entre 10 et 25
+		Choice.randomChoice(10, 25);
 	}
 	
 	public Enemy(String name) {
-		Random rand = new Random();
+		this.name = name;
 		// Une attaque entre 10 et 25
-		this.attack = rand.nextInt(16)+10;
+		Choice.randomChoice(10, 25);
 	}
 	
 	public void talk(){
-		System.out.println(this.NPCname + " : Bonjour je suis un PNJ mechant");
+		System.out.println(this.name + " : Bonjour je suis un PNJ mechant");
+	}
+	
+	public int getAtk(){
+		return this.attack;
 	}
 	
 	public void setHP(int hp){

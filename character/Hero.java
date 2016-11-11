@@ -6,25 +6,67 @@ import java.util.List;
 
 import item.Item;
 import item.Weapon;
+import map.House;
 import map.Place;
 
 public class Hero {
 
+	//----------------------Attributes----------------------//
 	private int hp = 100; //si on mange on regagne des hp
 	private int attack = 10; //si on boit on fait plus de degat
 	private int alcoholLevel = 15; //si on boit, le niveau d'alcool monte, si on atteint 100 = coma
 	private List<Item> inventory;
 	private Weapon weapon = null;
+	private House house = null;
 	private Place actualPlace;
 
+	//----------------------Constructors----------------------//
 	public Hero(Place p) {
 		this.actualPlace = p;
 		this.inventory = new ArrayList<>();
 	}
 	
+	//----------------------Getters----------------------//
+	
+	public int getHp(){
+		return this.hp;
+	}
+	
 	public Place getPlace(){
 		return this.actualPlace;
 	}
+	
+	public int getAlcoholLevel(){
+		return this.alcoholLevel;
+	}
+	
+	public Weapon getWeapon(){
+		return this.weapon;
+	}
+	
+	//----------------------Setters----------------------//
+	
+	public void setHp(int hpSup){
+		this.hp += hpSup;
+	}
+
+	public void setAlcoholLevel(int alcoholSup){
+		this.alcoholLevel += alcoholSup;
+	}
+
+	public void setAttack(int attackSup){
+		this.attack += attackSup;
+	}
+	
+	public void setWeapon(int attackWeapon){
+		this.attack += attackWeapon;
+	}
+	
+	public void setHouse(House h){
+		this.house = h;
+	}
+	
+	//----------------------Functions----------------------//
 	
 	public void go(String direction){
 		//Si on peut se diriger vers direction
@@ -41,6 +83,15 @@ public class Hero {
 			this.actualPlace.displayExit();
 		}else{
 			System.out.println("Direction impossible");
+		}
+	}
+	
+	public boolean testHouse(){
+		//Si le hero est rentre chez lui
+		if (this.actualPlace.equals(this.house)){
+			return true;
+		}else{
+			return false;
 		}
 	}
 	
@@ -76,30 +127,6 @@ public class Hero {
 				this.pickUpItem(i);
 			}
 		}
-	}
-	
-	public int getAlcoholLevel(){
-		return this.alcoholLevel;
-	}
-	
-	public void setAlcoholLevel(int alcoholSup){
-		this.alcoholLevel += alcoholSup;
-	}
-
-	public void setAttack(int attackSup){
-		this.attack += attackSup;
-	}
-	
-	public Weapon getWeapon(){
-		return this.weapon;
-	}
-	
-	public void setWeapon(int attackWeapon){
-		this.attack += attackWeapon;
-	}
-	
-	public void setHp(int hpSup){
-		this.hp += hpSup;
 	}
 	
 	public void pickUpItem(Item item){ //on ramasse l'objet

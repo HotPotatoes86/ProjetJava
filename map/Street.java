@@ -1,7 +1,5 @@
 package map;
 
-import java.util.HashMap;
-
 public class Street extends Place{
 
 	private int nbStreetPart;

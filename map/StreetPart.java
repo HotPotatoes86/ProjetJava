@@ -1,13 +1,10 @@
 package map;
 
-import character.NPC;
-import util.Choice;
-import util.Name;
+import util.*;
 
 public class StreetPart extends Place{
 
 	private House[] houses;
-	private NPC npc=null; // = une personne que l'on croise dans la rue
 
 	public StreetPart(String name) {
 		this.name = name;
@@ -33,6 +30,10 @@ public class StreetPart extends Place{
 		this.houses[0].describe();
 		System.out.print("House 2 : ");
 		this.houses[1].describe();
+	}
+	
+	public House[] getHouses(){
+		return this.houses;
 	}
 
 }

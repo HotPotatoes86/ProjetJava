@@ -8,7 +8,7 @@ public abstract class NPC {
 
 	// Attributs en protected pour y avoir acces dans les classes filles
 	protected int HP = 100;
-	protected String NPCname = "Villageois";
+	protected String name = "Villageois";
 	protected boolean status = true; //V : En vie - F : Mort
 	protected int Attack = 0;
 	protected ArrayList<Item> items; // Les objets sur le pnj

@@ -1,13 +1,15 @@
 package game;
 
 public enum Command {
+	ATTACK(" : attaque le pnj face a vous"),	
 	GO(" : se rend dans une direction"),		
-	USE(" : utilise un objet, permet les fusions"),	
-	ATTACK(" : attaque le pnj face au hero"),	
 	HELP(" : donne la liste des commandes"),	
-	TAKE(" : prend l'objet"),					
-	QUIT(" : quitte le jeu"),					
-	LOOK(" : observe un lieu, un objet");
+	INVENTORY(" : affiche votre inventaire"),
+	LOOK(" : observe un lieu, un objet"),
+	QUIT(" : quitte le jeu"),
+	STATUS(" : affiche vos statistiques actuelles"),
+	TAKE(" : prend l'objet"),	
+	USE(" : utilise un objet, permet les fusions");
 	
 	private final String description; 
 

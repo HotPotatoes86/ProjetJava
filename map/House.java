@@ -2,7 +2,6 @@ package map;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import character.Enemy;
 import character.NPC;
@@ -37,7 +36,7 @@ public class House extends Place{
 	@Override
 	public boolean testdirection(String direction){
 		boolean test = false;
-		if (this.npc == null && this.npc instanceof Enemy){
+		if (this.npc == null || this.npc instanceof Neutral){
 			for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
 				if (e.getKey().equals(direction)){
 					test = true;
@@ -49,14 +48,19 @@ public class House extends Place{
 		return test;
 	}
 	
+	public void displayItems(){
+		for (Item i : this.items){
+			System.out.println(i);
+		}
+	}
+	
 	public List<Item> ItemGenerator(){
 		List<Item> items = new ArrayList<>();
-		Random rand = new Random();
 		// nombre d'items, de 0 a 4
-		int nbItem = rand.nextInt(4);
+		int nbItem = Choice.randomChoice(0, 4);
 		for(int i=0; i<nbItem; i++){
 			// De 1 a 3 = type de l'objet
-			int typeItem = rand.nextInt(3)+1;
+			int typeItem = Choice.randomChoice(1, 3);
 			if (typeItem == 1){
 				items.add(Drink.createDrink("vodka"));
 			}else if (typeItem == 2){

@@ -1,11 +1,9 @@
 package map;
 
-import character.Hero;
 import util.Name;
 
 public class Map {
 
-	private Hero hero;
 	private int nbStreet;
 	private Place[] streets;
 	
@@ -41,9 +39,5 @@ public class Map {
 
 	public void setStreets(Place[] streets) {
 		this.streets = streets;
-	}
-
-	public void go(String direction){
-		this.hero.go(direction);
 	}
 }
