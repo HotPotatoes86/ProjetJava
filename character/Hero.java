@@ -27,9 +27,16 @@ public class Hero {
 	}
 	
 	public void go(String direction){
+		//Si on peut se diriger vers direction
 		if (actualPlace.testdirection(direction)){
+			//On s'y deplace
 			this.actualPlace.go(direction);
 			this.actualPlace = this.actualPlace.getNextPlace(direction);
+			
+			//L'alcoolemie descend a chaque deplacement
+			this.alcoholLevel--;
+			
+			//On affiche les nouvelles issues possibles
 			System.out.println("\nVous pouvez aller ici :");
 			this.actualPlace.displayExit();
 		}else{
@@ -61,7 +68,14 @@ public class Hero {
 	}
 	
 	public void attack(NPC npc){
-		// TODO
+		//On calcule l'attack du hero en fonction de son attack et de son alcoolemie
+		npc.takeDmg(this.attack+this.alcoholLevel);
+		if (!npc.getStatus()){
+			//NPC mort, on ramasse les items
+			for (Item i : npc.getItems()){
+				this.pickUpItem(i);
+			}
+		}
 	}
 	
 	public int getAlcoholLevel(){

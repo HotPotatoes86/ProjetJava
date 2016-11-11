@@ -17,7 +17,7 @@ public class StreetPart extends Place{
 			//Nom = NPC
 			// Une chance sur 2
 			if (Choice.randomChoice()){
-				this.houses[i] = new House();
+				this.houses[i] = new House("Inconnu");
 			}
 			else{
 				// Lire dans les donnees pour donner un nom a la rue		

@@ -1,10 +1,21 @@
 package game;
 
 public enum Command {
-	GO,		// Se rend dans une direction
-	USE,	// Utilise un objet, utilise objet sur objet
-	HELP,	// Donne les commandes
-	TAKE,	// Prend l'objet
-	QUIT,	// Quitte le jeu
-	LOOK	// Donne la position ou les caracteristiques de l'objet
+	GO(" : se rend dans une direction"),		
+	USE(" : utilise un objet, permet les fusions"),	
+	ATTACK(" : attaque le pnj face au hero"),	
+	HELP(" : donne la liste des commandes"),	
+	TAKE(" : prend l'objet"),					
+	QUIT(" : quitte le jeu"),					
+	LOOK(" : observe un lieu, un objet");
+	
+	private final String description; 
+
+	private Command(String value) { 
+		description = value; 
+	} 
+	
+	public String getDescription(){
+		return this.description;
+	}
 }

@@ -65,25 +65,10 @@ public class Game {
 			System.out.println(""); //Juste esthetique
 			//On effectue l'action lie a la commande
 			switch (command){
-		    	case HELP: //Argument = decrit une commande sinon liste les commandes
-		    		String argument = scanner.nextLine(); 
-		    		if (argument.length()>0){
-		    			//On enleve l'espace devant l'argument
-		    			if (argument.substring(1,argument.length()).equals("go")){
-		    				System.out.println("Utilisation : ");
-		    				System.out.println("commande go suivi de la direction");
-		    				System.out.println("\nExemple : ");
-		    				System.out.println("go forward ou go house1");
-		    				System.out.println("Lieux accessibles : ");
-		    				hero.getPlace().displayExit();
-		    			}else{
-		    				System.out.println("Argument incorrect");
-		    			}
-		    		}else{
-			    		System.out.println("Commandes possibles :");
-			    		for (Command c : Command.values()){
-			    			System.out.println(c);
-			    		}
+		    	case HELP:
+			    	System.out.println("Commandes possibles :");
+			   		for (Command c : Command.values()){
+			   			System.out.println(c + c.getDescription());
 		    		}
 		    		break;
 		    	case GO:
@@ -98,7 +83,7 @@ public class Game {
 		    		}
 		    		break;
 		    	case LOOK:
-		    		argument = scanner.nextLine(); 
+		    		String argument = scanner.nextLine(); 
 		    		if (argument.length()>0){
 		    			//On enleve l'espace devant l'argument
 		    			hero.look(argument.substring(1,argument.length()));
