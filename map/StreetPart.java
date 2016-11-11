@@ -1,9 +1,7 @@
 package map;
 
-import java.util.HashMap;
-import java.util.Random;
-
 import character.NPC;
+import util.Choice;
 import util.Name;
 
 public class StreetPart extends Place{
@@ -17,17 +15,13 @@ public class StreetPart extends Place{
 		for (int i=0; i<2; i++){
 			//TODO Facteur random pour maison avec/sans nom
 			//Nom = NPC
-			Random rand = new Random();
-			// Une chance sur 2 (1 ou 2)
-			int rdm = rand.nextInt(2)+1;
-			if (rdm==1){
+			// Une chance sur 2
+			if (Choice.randomChoice()){
 				this.houses[i] = new House();
 			}
 			else{
-				// Lire dans les donnees pour donner un nom a la rue
-				Name n = new Name();
-				
-				this.houses[i] = new House(n.generateName("donnees/Noms.txt"));
+				// Lire dans les donnees pour donner un nom a la rue		
+				this.houses[i] = new House(Name.generateName("donnees/Noms.txt"));
 			}
 			this.houses[i].addExit("street",this);
 			this.addExit("house"+(i+1),this.houses[i]);

@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Name {
 
-	public String generateName(String link){
+	public static String generateName(String link){
 		// Lire dans les donnees pour donner un nom a la rue
 		Random rand = new Random();
 		String name = "";

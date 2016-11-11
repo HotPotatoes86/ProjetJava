@@ -12,7 +12,6 @@ public class Map {
 	public Map(int nbStreet) {
 		this.nbStreet = nbStreet;
 		this.streets = new Street[this.nbStreet];
-		Name n = new Name();
 		//Random rand = new Random();
 		//pour faire un fichier temporaire : 
 		//FILE temp = File.createTempFile("tmpAdr",".txt");
@@ -22,10 +21,10 @@ public class Map {
 		//et pour supprimer une ligne en gros faut refaire un tmp sans la ligne voulu ...
 		//du coup je cherche une autre mï¿½thode moins gourmande ...
 			//Instanciation de la rue (4 maisons dans une rue)
-			this.streets[0] = new Street(n.generateName("donnees/Lieux.txt"),4);
+			this.streets[0] = new Street(Name.generateName("donnees/Lieux.txt"),4);
 			if (this.nbStreet==3){
-				this.streets[1] = new Street(n.generateName("donnees/Lieux.txt"),4);
-				this.streets[2] = new Street(n.generateName("donnees/Lieux.txt"),4);
+				this.streets[1] = new Street(Name.generateName("donnees/Lieux.txt"),4);
+				this.streets[2] = new Street(Name.generateName("donnees/Lieux.txt"),4);
 				
 				((Street)this.streets[0]).addExit1(this.streets[1].getName(), this.streets[1]);
 				((Street)this.streets[0]).addExit1(this.streets[2].getName(), this.streets[2]);
