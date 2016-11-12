@@ -83,6 +83,8 @@ public class Hero {
 			this.actualPlace.displayExit();
 		}else{
 			System.out.println("Direction impossible");
+			System.out.println("\nDirections possibles : ");
+			this.actualPlace.displayExit();
 		}
 	}
 	

@@ -42,7 +42,6 @@ public class Game {
 				System.out.println("Erreur : veuillez saisir une taille correcte");
 			}
 		}
-		
 		//On initialise la map en fonction de sa taille
 		Map map;
 		switch (taille){
@@ -55,14 +54,17 @@ public class Game {
 		Place p = map.getStreets()[0];	// = première rue
 		hero = new Hero(p);
 		//Street du Hero
-		Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, taille)]);
+		Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, taille-1)]);
 		//StreetPart du Hero
-		StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, 4)]);
+		StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, 3)]);
 		//House du Hero
 		House hh = sth.getHouses()[Choice.randomChoice(0, 1)];
 		hero.setHouse(hh);
 		
+		System.out.println("");
 		p.describe();
+		System.out.println("");
+		
 		System.out.println("Vous pouvez aller ici :");
 		p.displayExit();
 		
@@ -80,16 +82,14 @@ public class Game {
 			//
 			try{
 				command = Command.valueOf(scanner.next().toUpperCase());
-				System.out.println(""); //Juste esthetique
+				//Nettoie la console
+				System.out.print("\033[H\033[2J");  
+			    System.out.flush(); 
 				//On effectue l'action lie a la commande
 				switch (command){
-			    	case HELP:
-				    	System.out.println("Commandes possibles :");
-				   		for (Command c : Command.values()){
-				   			System.out.println(c + c.getDescription());
-			    		}
-				   		break;
-			    	case GO:
+					case ATTACK:
+						break;
+					case GO:
 			    		String direction = scanner.nextLine(); 
 			    		if (direction.length()>0){
 			    			//On enleve l'espace devant la direction
@@ -98,7 +98,18 @@ public class Game {
 			    			counter--;
 			    		}else{
 			    			System.out.println("Erreur : veuillez saisir une direction");
+			    			System.out.println("\nDirections possibles : ");
+			    			hero.getPlace().displayExit();
 			    		}
+			    		break;
+			    	case HELP:
+				    	System.out.println("Commandes possibles :");
+				   		for (Command c : Command.values()){
+				   			System.out.println(c + c.getDescription());
+			    		}
+				   		break;
+			    	case INVENTORY:
+			    		hero.printInventory();
 			    		break;
 			    	case LOOK:
 			    		String argument = scanner.nextLine(); 
@@ -109,14 +120,20 @@ public class Game {
 			    			hero.look();
 			    		}
 			    		break;
+			    	case QUIT:
+			    		System.out.println("Vous quittez la partie...");
+			    		Thread.sleep(2000);
+			    		System.exit(0);
+			    		break;
 			    	case STATUS:
 			    		System.out.println("Caracteristiques du Hero : ");
 			    		System.out.println("HP : " + hero.getHp());
 			    		System.out.println("Alcoolemie : " + hero.getAlcoholLevel());
 			    		System.out.println("Arme : " + hero.getWeapon());
 			    		break;
-			    	case INVENTORY:
-			    		hero.printInventory();
+			    	case TAKE:
+			    		break;
+			    	case USE:
 			    		break;
 			    	default: break;
 		    	}
@@ -124,9 +141,8 @@ public class Game {
 			catch(Exception e){
 				System.out.println("\nErreur : Commande invalide");
 				System.out.println("Utilisez la commande help pour afficher les commandes possibles");
-			}
-
-		}while(counter>0 && hero.testHouse());
+			} 
+		}while(counter>0 && !hero.testHouse());
 		
 		System.out.println("\nFIN DU JEU !");
 		
