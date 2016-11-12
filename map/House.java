@@ -48,6 +48,10 @@ public class House extends Place{
 		return test;
 	}
 	
+	public NPC getNPC(){
+		return this.npc;
+	}
+	
 	public void displayItems(){
 		for (Item i : this.items){
 			System.out.println(i);

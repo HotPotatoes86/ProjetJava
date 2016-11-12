@@ -88,6 +88,11 @@ public class Game {
 				//On effectue l'action lie a la commande
 				switch (command){
 					case ATTACK:
+						if (hero.getPlace() instanceof House){
+							hero.attack(((House)hero.getPlace()).getNPC());
+						}else{
+							System.out.println("Vous tentez d'attaquer un ennemi invisible");
+						}
 						break;
 					case GO:
 			    		String direction = scanner.nextLine(); 
@@ -132,6 +137,9 @@ public class Game {
 			    		System.out.println("Arme : " + hero.getWeapon());
 			    		break;
 			    	case TAKE:
+			    		break;
+			    	case TALK:
+			    		hero.talk();
 			    		break;
 			    	case USE:
 			    		break;

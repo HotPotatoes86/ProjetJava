@@ -9,6 +9,7 @@ public enum Command {
 	QUIT(" : quitte le jeu"),
 	STATUS(" : affiche vos statistiques actuelles"),
 	TAKE(" : prend l'objet"),	
+	TALK(" : parle au pnj"),
 	USE(" : utilise un objet, permet les fusions");
 	
 	private final String description; 

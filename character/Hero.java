@@ -71,6 +71,9 @@ public class Hero {
 	public void go(String direction){
 		//Si on peut se diriger vers direction
 		if (actualPlace.testdirection(direction)){
+			if (this.actualPlace instanceof House){
+				if (!((House)this.actualPlace).testdirection(direction)) return ;
+			}
 			//On s'y deplace
 			this.actualPlace.go(direction);
 			this.actualPlace = this.actualPlace.getNextPlace(direction);
@@ -121,13 +124,29 @@ public class Hero {
 	}
 	
 	public void attack(NPC npc){
-		//On calcule l'attack du hero en fonction de son attack et de son alcoolemie
-		npc.takeDmg(this.attack+this.alcoholLevel);
-		if (!npc.getStatus()){
-			//NPC mort, on ramasse les items
-			for (Item i : npc.getItems()){
-				this.pickUpItem(i);
+		if (npc != null){
+			//On calcule l'attack du hero en fonction de son attack et de son alcoolemie
+			npc.takeDmg(this.attack+this.alcoholLevel);
+			if (!npc.getStatus()){
+				//NPC mort, on ramasse les items
+				for (Item i : npc.getItems()){
+					this.pickUpItem(i);
+				}
 			}
+		}else{
+			System.out.println("Vous tentez d'attaquer un ennemi invisible");
+		}
+	}
+	
+	public void talk(){
+		if (this.actualPlace instanceof House){
+			if (((House)this.actualPlace).getNPC() != null){
+				((House)this.actualPlace).getNPC().talk();
+			}else{
+				System.out.println("Vous parlez tout seul");
+			}
+		}else{
+			System.out.println("Vous parlez a un poteau");
 		}
 	}
 	

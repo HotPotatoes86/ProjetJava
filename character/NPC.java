@@ -15,10 +15,15 @@ public abstract class NPC {
 
 	public abstract void talk();
 	
+	public String getName(){
+		return this.name;
+	}
+	
 	public void takeDmg(int dmg){
 		this.HP = this.HP - dmg;
 		if (this.HP<0){
 			this.status = false;
+			System.out.println(this.name + " : AAAAHHH je meurs !");
 		}
 	}
 	

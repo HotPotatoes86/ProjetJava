@@ -18,11 +18,7 @@ public abstract class Place{
 	
 	public void displayExit(){
 		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
-			if (e.getValue().getPlace() instanceof House){
-				System.out.println(e.getKey() + " -> " + e.getValue().getPlace().getName());
-			}else{
-				System.out.println(e.getKey());
-			}
+			System.out.println(e.getKey());
 		}
 	}
 	
