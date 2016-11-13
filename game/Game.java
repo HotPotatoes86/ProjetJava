@@ -76,10 +76,6 @@ public class Game {
 		
 		do{
 			System.out.println("\nVeuillez saisir une action :");
-			//
-			// IMPOSSIBLE DE METTRE AUTRE CHOSE QU'UNE COMMANDE ! A REGLER
-			// test commande, si fail -> commande help
-			//
 			try{
 				command = Command.valueOf(scanner.next().toUpperCase());
 				//Nettoie la console

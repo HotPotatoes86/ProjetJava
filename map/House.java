@@ -28,6 +28,24 @@ public class House extends Place{
 			}
 		}
 	}
+	
+	public Item getItem(Item i){
+		Item res = null;
+		if (this.items.contains(i)){
+			for (Item it : this.items){
+				if (it == i){
+					res = i;
+				}
+			}
+		}
+		return res;
+	}
+	
+	public void deleteItem(Item i){
+		if (this.items.contains(i)){
+				this.items.remove(i);
+		}
+	}
 
 	public void describe(){
 		System.out.println("Maison de " + this.name);
@@ -36,14 +54,14 @@ public class House extends Place{
 	@Override
 	public boolean testdirection(String direction){
 		boolean test = false;
-		if (this.npc == null || this.npc instanceof Neutral){
+		if (this.npc == null || this.npc instanceof Neutral || !this.npc.getStatus()){
 			for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
 				if (e.getKey().equals(direction)){
 					test = true;
 				}
 			}
 		}else{
-			System.out.println("Un PNJ vous bloque le passage");
+			System.out.println("Un PNJ vous bloque le passage, vous devez le vaincre !");
 		}
 		return test;
 	}

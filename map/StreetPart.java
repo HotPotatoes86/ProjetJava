@@ -21,7 +21,11 @@ public class StreetPart extends Place{
 				this.houses[i] = new House(Name.generateName("donnees/Noms.txt"));
 			}
 			this.houses[i].addExit("street",this);
-			this.addExit("house"+(i+1),this.houses[i]);
+			//if (Choice.randomChoice()){
+				this.addExit("house"+(i+1),this.houses[i]);
+			/*}else{
+				this.exits.put("house"+(i+1), new EnigmaExit(this.houses[i]));
+			}*/
 		}
 	}
 	

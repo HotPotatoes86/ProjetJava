@@ -1,7 +1,8 @@
 package map;
 
 import java.util.HashMap;
-import java.util.Random;
+
+import util.Choice;
 
 public class LockedExit extends Exit {
 
@@ -11,9 +12,8 @@ public class LockedExit extends Exit {
 
 	public LockedExit(int type, Place p) {
 		while (keys.containsKey(type)){
-			Random rand = new Random();
 			// Une chance sur 10 = 10 types de clés
-			type = rand.nextInt(10)+1;
+			type = Choice.randomChoice(1, 10);
 		}
 		this.keyType = type;
 		keys.put(type, true);
@@ -30,9 +30,10 @@ public class LockedExit extends Exit {
 		}
 	}
 	
+	@Override
 	public void use() {
 		if (!status){
-			//move
+			super.use();
 		}
 		else{
 			//unlock?
