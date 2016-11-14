@@ -79,8 +79,9 @@ public class Game {
 			try{
 				command = Command.valueOf(scanner.next().toUpperCase());
 				//Nettoie la console
-				System.out.print("\033[H\033[2J");  
-			    System.out.flush(); 
+				/*System.out.print("\033[H\033[2J");  
+			    System.out.flush(); */
+				System.out.println("\n\n\n\n\n");
 				//On effectue l'action lie a la commande
 				switch (command){
 					case ATTACK:

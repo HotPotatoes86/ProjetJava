@@ -18,7 +18,7 @@ public class StreetPart extends Place{
 			}
 			else{
 				// Lire dans les donnees pour donner un nom a la rue		
-				this.houses[i] = new House(Name.generateName("donnees/Noms.txt"));
+				this.houses[i] = new House(Name.generateName("donnees/Noms.txt",31));
 			}
 			this.houses[i].addExit("street",this);
 			//if (Choice.randomChoice()){

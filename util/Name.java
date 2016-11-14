@@ -4,15 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Random;
 
 public class Name {
 
-	public static String generateName(String link){
+	public static String generateName(String link, int nbLines){
 		// Lire dans les donnees pour donner un nom a la rue
-		Random rand = new Random();
 		String name = "";
-		int cpt = rand.nextInt(12)+1; // 1 Ã  12
+		int cpt = Choice.randomChoice(1, nbLines-1);
 		String fichier =link;
 					
 		try{

@@ -22,7 +22,7 @@ public abstract class NPC {
 	public void takeDmg(int dmg){
 		this.HP = this.HP - dmg;
 		System.out.println(this.name + " perd " + dmg + "HP");
-		if (this.HP<0){
+		if (this.HP<=0){
 			this.status = false;
 			System.out.println(this.name + " : AAAAHHH je meurs !");
 		}else{

@@ -21,6 +21,10 @@ public class Hero {
 	private Place actualPlace;
 
 	//----------------------Constructors----------------------//
+	/**
+	 * Constructor of Class Hero
+	 * @param p = initial place of the hero
+	 */
 	public Hero(Place p) {
 		this.actualPlace = p;
 		this.inventory = new ArrayList<>();
@@ -67,7 +71,10 @@ public class Hero {
 	}
 	
 	//----------------------Functions----------------------//
-	
+	/**
+	 * Move the Hero to the direction if it's possible
+	 * @param direction = direction you want to go to
+	 */
 	public void go(String direction){
 		//Si on peut se diriger vers direction
 		if (actualPlace.testdirection(direction)){
@@ -91,6 +98,10 @@ public class Hero {
 		}
 	}
 	
+	/**
+	 * Function for the winning condition
+	 * @return true if the Hero is in his house
+	 */
 	public boolean testHouse(){
 		//Si le hero est rentre chez lui
 		if (this.actualPlace.equals(this.house)){
@@ -100,6 +111,9 @@ public class Hero {
 		}
 	}
 	
+	/**
+	 * Describe the actual place of the Hero
+	 */
 	public void look(){
 		System.out.println("Vous regardez autour de vous");
 		this.actualPlace.describe();
@@ -123,6 +137,10 @@ public class Hero {
 		}
 	}
 	
+	/**
+	 * attack the npc and if he's dead, he picks up his items
+	 * @param npc = npc you want attack
+	 */
 	public void attack(NPC npc){
 		if (npc != null){
 			//On calcule l'attack du hero en fonction de son attack et de son alcoolemie
@@ -138,6 +156,9 @@ public class Hero {
 		}
 	}
 	
+	/**
+	 * talk to the NPC if Hero is in a house
+	 */
 	public void talk(){
 		if (this.actualPlace instanceof House){
 			if (((House)this.actualPlace).getNPC() != null){
