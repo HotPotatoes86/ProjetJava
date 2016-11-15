@@ -6,7 +6,10 @@ import util.Choice;
 
 public class EnigmaExit extends Exit{
 
-	private boolean status=true; //Locked or Unlocked
+	/**
+	 * if the exit is locked (true) or not (false)
+	 */
+	private boolean status=true;
 
 	public EnigmaExit(Place p) {
 		this.place = p;
@@ -16,6 +19,9 @@ public class EnigmaExit extends Exit{
 		return this.place;
 	}
 	
+	/*
+	 * unlock the exit if the user find the correct answer
+	 */
 	public void unlock(int val){
 		Scanner sc = new Scanner(System.in);
 		int res = sc.nextInt();
@@ -29,6 +35,10 @@ public class EnigmaExit extends Exit{
 		sc.close();
 	}
 	
+	/**
+	 * if the status is true, the user need to answer to an enigma
+	 * else the exit is like a simple exit
+	 */
 	public void use() {
 		if (!status){
 			super.use();

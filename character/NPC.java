@@ -19,6 +19,10 @@ public abstract class NPC {
 		return this.name;
 	}
 	
+	/**
+	 * npc take damage when hero attacks him
+	 * @param dmg the life he looses
+	 */
 	public void takeDmg(int dmg){
 		this.HP = this.HP - dmg;
 		System.out.println(this.name + " perd " + dmg + "HP");
@@ -30,6 +34,10 @@ public abstract class NPC {
 		}
 	}
 	
+	/**
+	 * if the npc is still alive
+	 * @return the current status of the npc
+	 */
 	public boolean getStatus(){
 		return this.status;
 	}

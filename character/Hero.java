@@ -23,7 +23,7 @@ public class Hero {
 	//----------------------Constructors----------------------//
 	/**
 	 * Constructor of Class Hero
-	 * @param p = initial place of the hero
+	 * @param p initial place of the hero
 	 */
 	public Hero(Place p) {
 		this.actualPlace = p;
@@ -73,7 +73,7 @@ public class Hero {
 	//----------------------Functions----------------------//
 	/**
 	 * Move the Hero to the direction if it's possible
-	 * @param direction = direction you want to go to
+	 * @param direction direction you want to go to
 	 */
 	public void go(String direction){
 		//Si on peut se diriger vers direction
@@ -119,6 +119,10 @@ public class Hero {
 		this.actualPlace.describe();
 	}
 	
+	/**
+	 * describe the position s
+	 * @param s direction the hero looks
+	 */
 	public void look(String s){
 		//Description Place
 		Place p = null;
@@ -139,7 +143,7 @@ public class Hero {
 	
 	/**
 	 * attack the npc and if he's dead, he picks up his items
-	 * @param npc = npc you want attack
+	 * @param npc npc you want attack
 	 */
 	public void attack(NPC npc){
 		if (npc != null){
@@ -171,10 +175,17 @@ public class Hero {
 		}
 	}
 	
+	/**
+	 * add item to the hero's inventory
+	 * @param item item which add to the inventory
+	 */
 	public void pickUpItem(Item item){ //on ramasse l'objet
 		this.inventory.add(item);
 	}
 	
+	/**
+	 * display the inventory of the hero
+	 */
 	public void printInventory(){
 		Iterator<Item> it = this.inventory.iterator();
 		int i=1;
@@ -184,6 +195,10 @@ public class Hero {
 		}
 	}
 	
+	/**
+	 * use an item (drink, food, weapon)
+	 * @param item item you want to use
+	 */
 	public void use(Item item){
 		// Si le hero possede l'objet
 		if (this.inventory.contains(item)){

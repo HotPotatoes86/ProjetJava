@@ -7,6 +7,12 @@ import java.io.InputStreamReader;
 
 public class Name {
 
+	/**
+	 * generate randomly a name from a file of data
+	 * @param link the path to the file
+	 * @param nbLines the number of lines of the file
+	 * @return a randomly name of the file
+	 */
 	public static String generateName(String link, int nbLines){
 		// Lire dans les donnees pour donner un nom a la rue
 		String name = "";

@@ -3,6 +3,9 @@ public abstract class Exit {
 
 	protected Place place;
 	
+	/**
+	 * use the exit, display a simple string for the user
+	 */
 	public void use() {
 		if (this.place instanceof StreetPart){
 			System.out.println("Vous avancez dans la rue...");

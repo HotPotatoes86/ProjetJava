@@ -4,8 +4,15 @@ import util.*;
 
 public class StreetPart extends Place{
 
+	/**
+	 * the houses in the StreetPart
+	 */
 	private House[] houses;
 
+	/**
+	 * initialize the houses of the StreetPart and the exits between them
+	 * @param name number of the StreetPart
+	 */
 	public StreetPart(String name) {
 		this.name = name;
 		this.houses = new House[2];
@@ -29,6 +36,9 @@ public class StreetPart extends Place{
 		}
 	}
 	
+	/**
+	 * describe the 2 houses of the StreetPart
+	 */
 	public void describe(){
 		System.out.print("House 1 : ");
 		this.houses[0].describe();
