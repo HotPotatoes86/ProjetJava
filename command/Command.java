@@ -1,4 +1,4 @@
-package game;
+package command;
 
 public enum Command {
 	ATTACK(" : attaque le pnj face a vous"),	

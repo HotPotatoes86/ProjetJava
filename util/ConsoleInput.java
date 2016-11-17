@@ -2,7 +2,7 @@ package util;
 
 import java.util.Scanner;
 
-import game.Command;
+import command.Command;
 
 public class ConsoleInput implements UserInput{
 	
