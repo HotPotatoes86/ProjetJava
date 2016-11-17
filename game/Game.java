@@ -1,35 +1,38 @@
 package game;
-import java.util.Scanner;
-
 import character.Hero;
-import map.*;
+import map.House;
+import map.Map;
+import map.Place;
+import map.Street;
+import map.StreetPart;
 import util.Choice;
+import util.ConsoleInput;
 
 public class Game {
 
-	//Nombre de tours
+	//Number of turns
 	private static int counter = 20;
 	
 	public void start() {
 			
-		//Scanner pour lire les entrees
-		Scanner scanner = new Scanner(System.in);	
+		//Scanner to read the entries
+		ConsoleInput scanner = new ConsoleInput();
 		
 		Hero hero;
 		
-		//Choix de la taille de la carte
+		//Choice of the map's size
 		System.out.println("\nVeuillez selectionner la taille de la carte :");
 		System.out.println("1- Petite : 1 rue");
 		System.out.println("2- Moyenne : 3 rues");
 		
-		//Taille de la carte par défaut
+		//Size of the map by default
 		int taille = 2;
 		String[] choix = {"petite","moyenne"};
 		boolean test=false;
-		//Rentrer une valeur valide
+		//Enter a valid value
 		while (!test){
 			try{
-				taille = scanner.nextInt();
+				taille = scanner.intScan();
 				if (taille > 0 && taille <=2){
 					test = true;
 					System.out.println("Vous avez choisi une carte " + choix[taille-1]);
@@ -42,7 +45,7 @@ public class Game {
 				System.out.println("Erreur : veuillez saisir une taille correcte");
 			}
 		}
-		//On initialise la map en fonction de sa taille
+		//The map is initialized depending on the size
 		Map map;
 		switch (taille){
 			case 1: map = new Map(1); break;
@@ -50,14 +53,14 @@ public class Game {
 			default: map = new Map(3);break;	
 		}
 		
-		//Instanciation du heros
+		//Instantiation of Hero
 		Place p = map.getStreets()[0];	// = première rue
 		hero = new Hero(p);
-		//Street du Hero
+		//Street of Hero
 		Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, taille-1)]);
-		//StreetPart du Hero
+		//StreetPart of Hero
 		StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, 3)]);
-		//House du Hero
+		//House of Hero
 		House hh = sth.getHouses()[Choice.randomChoice(0, 1)];
 		hero.setHouse(hh);
 		
@@ -68,16 +71,19 @@ public class Game {
 		System.out.println("Vous pouvez aller ici :");
 		p.displayExit();
 		
-		/* Le jeu commence !!
-		 * Le joueur effectue une action
+		/* The game is started
+		 * The player does an action
 		 */
-		
 		Command command;
-		
+
 		do{
 			System.out.println("\nVeuillez saisir une action :");
 			try{
-				command = Command.valueOf(scanner.next().toUpperCase());
+				String cmd = scanner.stringScan();
+				String[] parts = cmd.split(" ");
+				System.out.println(parts[0]);
+				command = Command.valueOf(parts[0].toUpperCase());
+				System.out.println(command);
 				//Nettoie la console
 				/*System.out.print("\033[H\033[2J");  
 			    System.out.flush(); */
@@ -92,10 +98,12 @@ public class Game {
 						}
 						break;
 					case GO:
-			    		String direction = scanner.nextLine(); 
+			    		String direction = parts[1];
+			    		System.out.println(direction);
+			    		System.out.println(direction.substring(1,direction.length()));
 			    		if (direction.length()>0){
 			    			//On enleve l'espace devant la direction
-			    			hero.go(direction.substring(1,direction.length()));
+			    			hero.go(direction);
 			    			//Le tour passe
 			    			counter--;
 			    		}else{
@@ -114,10 +122,10 @@ public class Game {
 			    		hero.printInventory();
 			    		break;
 			    	case LOOK:
-			    		String argument = scanner.nextLine(); 
+			    		String argument = parts[1];
 			    		if (argument.length()>0){
 			    			//On enleve l'espace devant l'argument
-			    			hero.look(argument.substring(1,argument.length()));
+			    			hero.look(argument);
 			    		}else{
 			    			hero.look();
 			    		}
@@ -157,8 +165,6 @@ public class Game {
 			System.out.println("DEFAITE : Vous n'avez pas reussi a rentrer a temps");
 		}
 		
-		//Fermeture du scanner
-		scanner.close();
 	}
 
 }

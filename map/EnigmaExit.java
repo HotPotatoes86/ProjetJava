@@ -1,8 +1,7 @@
 package map;
 
-import java.util.Scanner;
-
 import util.Choice;
+import util.ConsoleInput;
 
 public class EnigmaExit extends Exit{
 
@@ -19,20 +18,20 @@ public class EnigmaExit extends Exit{
 		return this.place;
 	}
 	
-	/*
+	/**
 	 * unlock the exit if the user find the correct answer
+	 * @param val answer of the enigma
 	 */
 	public void unlock(int val){
-		Scanner sc = new Scanner(System.in);
-		int res = sc.nextInt();
+		ConsoleInput scanner = new ConsoleInput();
+		int res = scanner.intScan();
 		while(res != val){
 			System.out.println("Incorrect");
 			System.out.println("Veuillez saisir une autre réponse");
-			res = sc.nextInt();
+			res = scanner.intScan();
 		}
 		System.out.println("TADAAAM réponse correcte !");
 		this.status = false;
-		sc.close();
 	}
 	
 	/**
