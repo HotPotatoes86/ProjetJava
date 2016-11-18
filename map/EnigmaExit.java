@@ -55,7 +55,7 @@ public class EnigmaExit extends Exit{
 			return super.use();
 		}
 		else{
-			System.out.println("Vous devez résoudre une enigme (00 pour abandonner)");
+			System.out.println("Vous devez résoudre une enigme (0 pour abandonner)");
 			int x = Choice.randomChoice(0, 10);
 			int y = Choice.randomChoice(0, 15);
 			System.out.println(x + "*" + y + " = ?");

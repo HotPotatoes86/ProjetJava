@@ -12,7 +12,7 @@ public class Enemy extends NPC {
 	 */
 	public Enemy() {
 		// Une attaque entre 10 et 25
-		Choice.randomChoice(10, 25);
+		this.attack = Choice.randomChoice(10, 25);
 	}
 	
 	/**
@@ -22,7 +22,7 @@ public class Enemy extends NPC {
 	public Enemy(String name) {
 		this.name = name;
 		// Une attaque entre 10 et 25
-		Choice.randomChoice(10, 25);
+		this.attack = Choice.randomChoice(10, 25);
 	}
 	
 	/**

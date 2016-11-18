@@ -29,8 +29,5 @@ public class ConsoleInput implements UserInput{
 		res = this.scanner.nextInt();
 		return res;
 	}
-	
-	public void finishScan(){
-		this.scanner.close();
-	}
+
 }
