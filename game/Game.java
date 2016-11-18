@@ -76,12 +76,18 @@ public class Game {
 		 * The player does an action
 		 */
 		Command command;
-
 		do{
 			System.out.println("\nVeuillez saisir une action :");
 			try{
 				String cmd = scanner.stringScan();
 				String[] parts = cmd.split(" ");
+				//argument for the command
+				String arg;
+				if (parts.length>1){
+					arg=parts[1];
+				}else{
+					arg=null;
+				}
 				command = Command.valueOf(parts[0].toUpperCase());
 				
 				//cleans the console
@@ -94,27 +100,16 @@ public class Game {
 						CommandAttack.use(hero);
 						break;
 					case GO:
-						if (parts.length>1){
-							CommandGo.use(hero, parts[1]);
-						}else{
-							CommandGo.use(hero, null);
-						}
+						CommandGo.use(hero, arg);
 			    		break;
 			    	case HELP:
-				    	System.out.println("Commandes possibles :");
-				   		for (Command c : Command.values()){
-				   			System.out.println(c + c.getDescription());
-			    		}
+				    	CommandHelp.use();
 				   		break;
 			    	case INVENTORY:
-			    		hero.printInventory();
+			    		CommandInventory.use(hero);
 			    		break;
 			    	case LOOK:
-			    		if (parts.length>1){
-							CommandLook.use(hero, parts[1]);
-						}else{
-							CommandLook.use(hero, null);
-						}
+						CommandLook.use(hero, arg);
 			    		break;
 			    	case QUIT:
 			    		CommandQuit.use();
@@ -125,7 +120,7 @@ public class Game {
 			    	case TAKE:
 			    		break;
 			    	case TALK:
-			    		hero.talk();
+			    		CommandTalk.use(hero);
 			    		break;
 			    	case USE:
 			    		break;

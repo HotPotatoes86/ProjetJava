@@ -5,3 +5,7 @@
 /CommandAttack.class
 /CommandStatus.class
 /CommandQuit.class
+/CommandTalk.class
+/CommandInventory.class
+/CommandUse.class
+/CommandTake.class

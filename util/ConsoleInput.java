@@ -30,13 +30,6 @@ public class ConsoleInput implements UserInput{
 		return res;
 	}
 	
-	public Command commandScan(){
-		Command res;
-		res = Command.valueOf(this.scanner.next().toUpperCase());
-		System.out.println(res);
-		return res;
-	}
-	
 	public void finishScan(){
 		this.scanner.close();
 	}
