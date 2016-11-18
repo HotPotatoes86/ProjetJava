@@ -86,11 +86,28 @@ public class Game {
 		}
 		
 		System.out.println("");
+		try{
+			Thread.sleep(1000);
+		}catch(Exception e){
+			System.out.println(e);
+		}
 		p.describe();
 		System.out.println("");
 		
+		try{
+			Thread.sleep(1000);
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		
 		System.out.println("Vous pouvez aller ici :");
 		p.displayExit();
+		
+		try{
+			Thread.sleep(1000);
+		}catch(Exception e){
+			System.out.println(e);
+		}
 		
 		/* The game is started
 		 * The player does an action
