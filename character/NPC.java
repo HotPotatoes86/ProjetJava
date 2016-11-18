@@ -20,6 +20,22 @@ public abstract class NPC {
 	}
 	
 	/**
+	 * if the npc is still alive
+	 * @return the current status of the npc
+	 */
+	public boolean getStatus(){
+		return this.status;
+	}
+
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+	
+	public int getAttack(){
+		return this.Attack;
+	}
+	
+	/**
 	 * npc take damage when hero attacks him
 	 * @param dmg the life he looses
 	 */
@@ -32,17 +48,5 @@ public abstract class NPC {
 		}else{
 			System.out.println("Il lui reste " + this.HP + "HP");
 		}
-	}
-	
-	/**
-	 * if the npc is still alive
-	 * @return the current status of the npc
-	 */
-	public boolean getStatus(){
-		return this.status;
-	}
-
-	public ArrayList<Item> getItems() {
-		return items;
 	}
 }

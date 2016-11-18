@@ -3,9 +3,12 @@ package map;
 import java.util.HashMap;
 
 public abstract class Place{
+	
+	//----------------------Attributes----------------------//
 	protected String name;
 	protected HashMap<String,Exit> exits = new HashMap<>();
 	
+	//----------------------Methods----------------------//
 	public abstract void describe();
 	
 	/**
@@ -15,6 +18,21 @@ public abstract class Place{
 	 */
 	public void addExit(String cmd,Place p){
 		this.exits.put(cmd, new SimpleExit(p));
+	}
+	
+	/**
+	 * getter of exit
+	 * @param s key of the exit we want
+	 * @return the exit which have the key "s"
+	 */
+	public Exit getExit(String s){
+		Exit exit = null;
+		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
+			if (e.getKey().equalsIgnoreCase(s)){
+				exit = e.getValue();
+			}
+		}
+		return exit;
 	}
 	
 	public String getName(){
@@ -48,13 +66,16 @@ public abstract class Place{
 	/**
 	 * use the exit which have the same key
 	 * @param direction direction you want to go (example : forward)
+	 * @return true if the hero can go to the direction
 	 */
-	public void go(String direction){
+	public boolean go(String direction){
+		boolean test = false;
 		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
 			if (e.getKey().equals(direction)){
-				e.getValue().use();
+				test = e.getValue().use();
 			}
 		}
+		return test;
 	}
 	
 	/**

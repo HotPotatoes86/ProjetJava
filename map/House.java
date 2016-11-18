@@ -14,9 +14,17 @@ import util.Choice;
 
 public class House extends Place{
 
+	//----------------------Attributes----------------------//
 	private NPC npc=null; // = la personne qui est dans la maison
 	private List<Item> items;
 	
+	//----------------------Constructors----------------------//
+	/**
+	 * constructor of the class house
+	 * add randomly a npc (enemy or neutral)
+	 * add randomly items in the house
+	 * @param name name of the inhabitant of the house
+	 */
 	public House(String name) {
 		this.name = name;
 		this.items = this.ItemGenerator();
@@ -29,6 +37,7 @@ public class House extends Place{
 		}
 	}
 	
+	//----------------------Getters----------------------//
 	public Item getItem(Item i){
 		Item res = null;
 		if (this.items.contains(i)){
@@ -41,9 +50,26 @@ public class House extends Place{
 		return res;
 	}
 	
+	public NPC getNPC(){
+		return this.npc;
+	}
+	
+	//----------------------Methods----------------------//
+	/**
+	 * add an item in the list of items
+	 * @param i item which will add to the list
+	 */
+	public void addItem(Item i){
+		this.items.add(i);
+	}
+	
+	/**
+	 * delete an item of the list if the list contains its item
+	 * @param i the item we want to delete
+	 */
 	public void deleteItem(Item i){
 		if (this.items.contains(i)){
-				this.items.remove(i);
+			this.items.remove(i);
 		}
 	}
 
@@ -51,6 +77,7 @@ public class House extends Place{
 		System.out.println("Maison de " + this.name);
 	}
 	
+
 	@Override
 	public boolean testdirection(String direction){
 		boolean test = false;
@@ -66,16 +93,20 @@ public class House extends Place{
 		return test;
 	}
 	
-	public NPC getNPC(){
-		return this.npc;
-	}
-	
+	/**
+	 * display the elements (items) of the house's list
+	 */
 	public void displayItems(){
 		for (Item i : this.items){
 			System.out.println(i);
 		}
 	}
 	
+	/**
+	 * generate items in the house
+	 * choose randomly the number and the type of items in the house
+	 * @return the list of items in the house
+	 */
 	public List<Item> ItemGenerator(){
 		List<Item> items = new ArrayList<>();
 		// nombre d'items, de 0 a 4

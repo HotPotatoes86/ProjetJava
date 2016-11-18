@@ -70,25 +70,26 @@ public class Hero {
 		this.house = h;
 	}
 	
-	//----------------------Functions----------------------//
+	//----------------------Methods----------------------//
 	/**
 	 * Move the Hero to the direction if it's possible
 	 * @param direction direction you want to go to
 	 */
 	public void go(String direction){
-		//Si on peut se diriger vers direction
+		//if hero can go to the direction
 		if (actualPlace.testdirection(direction)){
 			if (this.actualPlace instanceof House){
 				if (!((House)this.actualPlace).testdirection(direction)) return ;
 			}
-			//On s'y deplace
-			this.actualPlace.go(direction);
-			this.actualPlace = this.actualPlace.getNextPlace(direction);
+			//hero moves to the direction
+			if (this.actualPlace.go(direction)){
+				this.actualPlace = this.actualPlace.getNextPlace(direction);
+			}
 			
-			//L'alcoolemie descend a chaque deplacement
+			//alcohol level goes down
 			this.alcoholLevel--;
 			
-			//On affiche les nouvelles issues possibles
+			//we display the new possible exits
 			System.out.println("\nVous pouvez aller ici :");
 			this.actualPlace.displayExit();
 		}else{
@@ -103,7 +104,7 @@ public class Hero {
 	 * @return true if the Hero is in his house
 	 */
 	public boolean testHouse(){
-		//Si le hero est rentre chez lui
+		//if the hero is in his home
 		if (this.actualPlace.equals(this.house)){
 			return true;
 		}else{
@@ -151,8 +152,26 @@ public class Hero {
 			npc.takeDmg(this.attack+this.alcoholLevel);
 			if (!npc.getStatus()){
 				//NPC mort, on ramasse les items
-				for (Item i : npc.getItems()){
-					this.pickUpItem(i);
+				try{
+					for (Item i : npc.getItems()){
+						//choose items to pick up
+						this.pickUpItem(i);
+					}
+				}
+				catch (Exception e){
+					System.out.println("Pas d'objets :(");
+				}
+			}
+			System.out.println(npc.getName() + " riposte, vous perdez " + npc.getAttack() + "HP");
+			this.hp -= npc.getAttack();
+			if (this.hp<=0){
+				try{
+					System.out.println("DEFAITE : Vous etes mort !");
+					Thread.sleep(1000);
+					System.exit(0);
+				}
+				catch (Exception e){
+					System.out.println(e);
 				}
 			}
 		}else{
@@ -200,10 +219,10 @@ public class Hero {
 	 * @param item item you want to use
 	 */
 	public void use(Item item){
-		// Si le hero possede l'objet
+		//if the hero have the item
 		if (this.inventory.contains(item)){
-			item.use();	// A tester
-			inventory.remove(item); //apres avoir utiliser l'objet on le retire de notre inventaire
+			item.use();	
+			inventory.remove(item); //after use the item, it's removed from the inventory
 		}
 		else{
 			System.out.println("Vous ne possedez pas cet objet");

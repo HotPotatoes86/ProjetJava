@@ -2,41 +2,44 @@ package map;
 
 import java.util.HashMap;
 
+import item.Key;
 import util.Choice;
 
 public class LockedExit extends Exit {
 
-	private int keyType;
+	//----------------------Attributes----------------------//
+	private Key key;
 	private boolean status=true; //Locked or Unlocked
-	private static HashMap<Integer, Boolean> keys = new HashMap<>();
 
-	public LockedExit(int type, Place p) {
-		while (keys.containsKey(type)){
-			// Une chance sur 10 = 10 types de clés
-			type = Choice.randomChoice(1, 10);
-		}
-		this.keyType = type;
-		keys.put(type, true);
+	//----------------------Constructors----------------------//
+	public LockedExit(Key k, Place p) {
+		this.key = k;
 		this.place = p;
 	}
 	
+	//----------------------Getters----------------------//
 	public Place getPlace(){
 		return this.place;
 	}
 	
-	public void unlock(int key){
-		if (key==this.keyType){
-			this.status = false;
-		}
+	public Key getKey(){
+		return this.key;
+	}
+	
+	//----------------------Methods----------------------//
+	public void unlock(){
+		this.status = false;
+		System.out.println("La porte est dévérouillée !");
 	}
 	
 	@Override
-	public void use() {
+	public boolean use() {
 		if (!status){
-			super.use();
+			return super.use();
 		}
 		else{
-			//unlock?
+			System.out.println("La porte est vérouillée, il faut trouver la clé");
+			return false;
 		}
 	}
 

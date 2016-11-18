@@ -1,7 +1,16 @@
 package game;
 import character.Hero;
-import command.*;
+import command.Command;
+import command.CommandAttack;
+import command.CommandGo;
+import command.CommandHelp;
+import command.CommandInventory;
+import command.CommandLook;
+import command.CommandQuit;
+import command.CommandStatus;
+import command.CommandTalk;
 import map.House;
+import map.LockedExit;
 import map.Map;
 import map.Place;
 import map.Street;
@@ -55,15 +64,26 @@ public class Game {
 		}
 		
 		//Instantiation of Hero
-		Place p = map.getStreets()[0];	// = première rue
+		Place p = map.getStreets()[0];	// = first street
 		hero = new Hero(p);
-		//Street of Hero
-		Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, taille-1)]);
-		//StreetPart of Hero
-		StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, 3)]);
-		//House of Hero
-		House hh = sth.getHouses()[Choice.randomChoice(0, 1)];
-		hero.setHouse(hh);
+		boolean testexit = false; //we search a house with a locked exit
+		while (!testexit){
+			//Street of Hero
+			Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, taille-1)]);
+			//StreetPart of Hero
+			StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, 3)]);
+			//House of Hero
+			House hh;
+			if (sth.getExit("house1") instanceof LockedExit){
+				hh = sth.getHouses()[0];
+				hero.setHouse(hh);
+				testexit = true;
+			}else if (sth.getExit("house2") instanceof LockedExit){
+				hh = sth.getHouses()[1];
+				hero.setHouse(hh);
+				testexit = true;
+			}
+		}
 		
 		System.out.println("");
 		p.describe();
@@ -84,15 +104,17 @@ public class Game {
 				//argument for the command
 				String arg;
 				if (parts.length>1){
-					arg=parts[1];
+					arg = parts[1];
+					for (int i=2; i<parts.length; i++){
+						arg+=" " + parts[i];
+					}
 				}else{
 					arg=null;
 				}
 				command = Command.valueOf(parts[0].toUpperCase());
 				
 				//cleans the console
-				System.out.print("\033[H\033[2J");  
-			    System.out.flush(); 
+				System.out.print("\n.\n\n.\n\n.\n\n");
 			    
 				//does the action related to the command
 				switch (command){

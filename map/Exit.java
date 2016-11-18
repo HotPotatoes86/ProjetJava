@@ -6,7 +6,7 @@ public abstract class Exit {
 	/**
 	 * use the exit, display a simple string for the user
 	 */
-	public void use() {
+	public boolean use() {
 		if (this.place instanceof StreetPart){
 			System.out.println("Vous avancez dans la rue...");
 		}else if(this.place instanceof House){
@@ -17,6 +17,7 @@ public abstract class Exit {
 		}else{
 			System.out.println("Vous avancez sur la  " + this.place.getName());
 		}
+		return true;
 	}
 	
 	public abstract Place getPlace();

@@ -1,14 +1,19 @@
 package map;
 
-import util.*;
+import item.Key;
+import util.Choice;
+import util.Name;
 
 public class StreetPart extends Place{
 
+	//----------------------Attributes----------------------//
 	/**
 	 * the houses in the StreetPart
 	 */
 	private House[] houses;
 
+	
+	//----------------------Constructors----------------------//
 	/**
 	 * initialize the houses of the StreetPart and the exits between them
 	 * @param name number of the StreetPart
@@ -28,14 +33,20 @@ public class StreetPart extends Place{
 				this.houses[i] = new House(Name.generateName("donnees/Noms.txt",31));
 			}
 			this.houses[i].addExit("street",this);
-			if (Choice.randomChoice()){
+			int alea = Choice.randomChoice(0, 2);
+			if (alea==0){
 				this.addExit("house"+(i+1),this.houses[i]);
-			}else{
+			}else if (alea==1){
 				this.exits.put("house"+(i+1), new EnigmaExit(this.houses[i]));
+			}else{
+				this.exits.put("house"+(i+1), 
+						new LockedExit(new Key((LockedExit)this.exits.get("house"+(i+1)),
+								this.houses[i].getName()),this.houses[i]));
 			}
 		}
 	}
 	
+	//----------------------Methods----------------------//
 	/**
 	 * describe the 2 houses of the StreetPart
 	 */
