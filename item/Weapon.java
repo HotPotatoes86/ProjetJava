@@ -25,14 +25,14 @@ public class Weapon implements Item {
 	}
 	
 	public void unequip(){
-		this.hero.setWeapon(-this.weapon.getAtackWeapon()); //on retire les degat de l'arme d�s�quip�
+		this.hero.setWeapon(-this.weapon.getAttackWeapon()); //on retire les degat de l'arme d�s�quip�
 	}
 	
 	public void use(){ //equiper arme
 		if (this.hero.getWeapon() != null){ //on desequipe
 			this.unequip();
 		}
-		this.hero.setWeapon(this.weapon.getAtackWeapon());;
+		this.hero.setWeapon(this.weapon.getAttackWeapon());;
 	}
 
 	@Override

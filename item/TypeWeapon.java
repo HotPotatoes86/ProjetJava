@@ -9,7 +9,7 @@ public enum TypeWeapon {
 		this.attack = dmg;
 	}
 	
-	public int getAtackWeapon(){
+	public int getAttackWeapon(){
 		return this.attack;
 	}
 	
