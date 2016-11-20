@@ -284,6 +284,8 @@ public class Hero {
 			}else{
 				System.out.println("Veuillez combiner 2 objets de même type");
 			}
+		}else{
+			System.out.println("Vous ne possedez pas ces 2 objets");
 		}
 	}
 

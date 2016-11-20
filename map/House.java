@@ -2,7 +2,6 @@ package map;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import character.Enemy;
 import character.NPC;
@@ -114,12 +113,11 @@ public class House extends Place{
 	 */
 	public List<Item> ItemGenerator(){
 		List<Item> items = new ArrayList<>();
-		Random rand = new Random();
 		// nombre d'items, de 0 a 4
-		int nbItem = rand.nextInt(4);
+		int nbItem = Choice.randomChoice(0,4);
 		for(int i=0; i<nbItem; i++){
 			//De 1 a 3 = type de l'objet
-			int typeItem = rand.nextInt(3)+1;
+			int typeItem = Choice.randomChoice(1,3);
 			if (typeItem == 1){
 				items.add(Food.createFood());
 			}else if(typeItem == 2){

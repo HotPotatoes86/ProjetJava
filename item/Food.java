@@ -1,8 +1,7 @@
 package item;
 
-import java.util.Random;
-
 import character.Hero;
+import util.Choice;
 
 public class Food implements Item {
 	
@@ -31,8 +30,7 @@ public class Food implements Item {
 	
 	public static Food createFood(){
 		TypeFood[] tabFood = TypeFood.values();
-		Random rand = new Random();
-		TypeFood randomFood = tabFood[rand.nextInt(tabFood.length)];
+		TypeFood randomFood = tabFood[Choice.randomChoice(0, tabFood.length-1)];
 		Food res = new Food(randomFood);		
 		return res;		
 	}

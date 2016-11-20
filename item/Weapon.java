@@ -3,6 +3,7 @@ package item;
 import java.util.Random;
 
 import character.Hero;
+import util.Choice;
 
 public class Weapon implements Item {
 	private TypeWeapon tWeapon;
@@ -30,8 +31,7 @@ public class Weapon implements Item {
 	
 	public static Weapon createWeapon(){
 		TypeWeapon[] tabWeapon = TypeWeapon.values();
-		Random rand = new Random();
-		TypeWeapon randomWeapon = tabWeapon[rand.nextInt(tabWeapon.length)];
+		TypeWeapon randomWeapon = tabWeapon[Choice.randomChoice(0, tabWeapon.length-1)];
 		Weapon res = new Weapon(randomWeapon);		
 		return res;		
 	}

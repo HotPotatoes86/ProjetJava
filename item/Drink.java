@@ -1,8 +1,7 @@
 package item;
 
-import java.util.Random;
-
 import character.Hero;
+import util.Choice;
 
 public class Drink implements Item {
 	
@@ -31,9 +30,8 @@ public class Drink implements Item {
 	
 	public static Drink createDrink(){
 		TypeDrink[] tabDrink = TypeDrink.values();
-		Random rand = new Random();
-		TypeDrink randomDrink = tabDrink[rand.nextInt(tabDrink.length)];
-		Drink res = new Drink(randomDrink);		
+		TypeDrink randomDrink = tabDrink[Choice.randomChoice(0, tabDrink.length-1)];
+		Drink res = new Drink(randomDrink);
 		return res;		
 	}
 	
@@ -61,7 +59,6 @@ public class Drink implements Item {
 	
 	public void use(Hero hero){
 		if(this.testItem()==2){			
-			hero.setAttack(hero.getAttack() + convertToDrink(this).tDrink.getAttack());
 			hero.setAlcoholLevel(hero.getAlcoholLevel() + convertToDrink(this).tDrink.getAlcoholLevel());
 			hero.getInventory().remove(this);
 		}
