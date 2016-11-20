@@ -104,7 +104,7 @@ public class Hero {
 			}
 			
 			//alcohol level goes down
-			this.alcoholLevel--;
+			if (this.alcoholLevel>0) this.alcoholLevel--;
 			
 			//we display the new possible exits
 			System.out.println("\nVous pouvez aller ici :");
@@ -282,7 +282,7 @@ public class Hero {
 			if(item1.testItem() == item2.testItem()){
 				item1.use(item2,this);
 			}else{
-				System.out.println("Veuillez combiner 2 objets de même type");
+				System.out.println("Veuillez combiner 2 objets de mï¿½me type");
 			}
 		}else{
 			System.out.println("Vous ne possedez pas ces 2 objets");

@@ -3,15 +3,13 @@ package character;
 import util.Choice;
 
 public class Enemy extends NPC {
-
-	private int attack;
 	
 	/**
 	 * the name of the Enemy is "Villageois"
 	 * he has an attack from 10 to 25
 	 */
 	public Enemy() {
-		// Une attaque entre 10 et 25
+		//attack between 10 and 25
 		this.attack = Choice.randomChoice(10, 25);
 	}
 	
@@ -21,7 +19,7 @@ public class Enemy extends NPC {
 	 */
 	public Enemy(String name) {
 		this.name = name;
-		// Une attaque entre 10 et 25
+		//attack between 10 and 25
 		this.attack = Choice.randomChoice(10, 25);
 	}
 	
@@ -32,20 +30,12 @@ public class Enemy extends NPC {
 		System.out.println(this.name + " : Bonjour je suis un PNJ mechant");
 	}
 	
-	public int getAtk(){
-		return this.attack;
-	}
-	
-	public void setHP(int hp){
-		this.HP+=hp;
-	}
-	
 	/**
 	 * hero loses hp (-attack of the enemy)
 	 * @param hero your hero
 	 */
 	public void attack(Hero hero){
-		hero.setHp(-this.Attack);
+		hero.setHp(-this.attack);
 	}
 
 }

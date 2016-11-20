@@ -10,7 +10,7 @@ public abstract class NPC {
 	protected int HP = 100;
 	protected String name = "Villageois";
 	protected boolean status = true; //V : En vie - F : Mort
-	protected int Attack = 0;
+	protected int attack;
 	protected ArrayList<Item> items; // Les objets sur le pnj
 
 	public abstract void talk();
@@ -32,7 +32,11 @@ public abstract class NPC {
 	}
 	
 	public int getAttack(){
-		return this.Attack;
+		return this.attack;
+	}
+	
+	public void setHP(int hp){
+		this.HP+=hp;
 	}
 	
 	/**

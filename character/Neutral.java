@@ -3,7 +3,7 @@ public class Neutral extends NPC {
 
 	// Nom = Villageois
 	public Neutral() {
-		
+		this.attack =0;
 	}
 	
 	public Neutral(String name){
