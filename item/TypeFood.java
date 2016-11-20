@@ -1,15 +1,29 @@
 package item;
 
 public enum TypeFood {
-	CHIPS(2);
+	SPICE(-1),
+	CHIPS(2),
+	CHOCOLATE(3),
+	APPLE(3),
+	BANANA(3),
+	SPICYCHIPS(5),
+	CHICKEN(6),
+	APPLEPIE(7),
+	CHOCOLATEBANANA(8),
+	SPICYCHIKEN(10);
 	
-	private final int hp;
+	private int hp;
 	
 	private TypeFood(int hp){
 		this.hp = hp;
 	}
-	
-	public int getHp(){
-		return this.hp;
+
+	public int getHp() {
+		return hp;
 	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+	
 }

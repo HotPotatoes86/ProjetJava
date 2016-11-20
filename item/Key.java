@@ -12,12 +12,14 @@ public class Key implements Item{
 		this.name = n;
 	}
 	
+	
 	public void use(LockedExit e){
 		if (this.exit == e){
 			//remove key
 			this.exit.unlock();
 		}
 	}
+	
 	
 	public void use(){
 		System.out.println("Vous devez utiliser la clé sur une porte");

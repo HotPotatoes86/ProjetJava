@@ -1,7 +1,12 @@
 package item;
 
+import character.Hero;
+
 public interface Item {
 	
-	public void use();
+	public int testItem();
+	
+	public void use(Hero hero);
+	public void use(Item item, Hero hero);
 	
 }

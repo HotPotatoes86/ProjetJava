@@ -2,6 +2,7 @@ package map;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import character.Enemy;
 import character.NPC;
@@ -16,7 +17,7 @@ public class House extends Place{
 
 	//----------------------Attributes----------------------//
 	private NPC npc=null; // = la personne qui est dans la maison
-	private List<Item> items;
+	private List<Item> inventoryHouse;
 	
 	//----------------------Constructors----------------------//
 	/**
@@ -27,7 +28,7 @@ public class House extends Place{
 	 */
 	public House(String name) {
 		this.name = name;
-		this.items = this.ItemGenerator();
+		this.inventoryHouse = this.ItemGenerator();
 		if (Choice.randomChoice()){
 			if (Choice.randomChoice()){
 				this.npc = new Enemy();
@@ -40,8 +41,8 @@ public class House extends Place{
 	//----------------------Getters----------------------//
 	public Item getItem(Item i){
 		Item res = null;
-		if (this.items.contains(i)){
-			for (Item it : this.items){
+		if (this.inventoryHouse.contains(i)){
+			for (Item it : this.inventoryHouse){
 				if (it == i){
 					res = i;
 				}
@@ -60,7 +61,7 @@ public class House extends Place{
 	 * @param i item which will add to the list
 	 */
 	public void addItem(Item i){
-		this.items.add(i);
+		this.inventoryHouse.add(i);
 	}
 	
 	/**
@@ -68,8 +69,8 @@ public class House extends Place{
 	 * @param i the item we want to delete
 	 */
 	public void deleteItem(Item i){
-		if (this.items.contains(i)){
-			this.items.remove(i);
+		if (this.inventoryHouse.contains(i)){
+			this.inventoryHouse.remove(i);
 		}
 	}
 
@@ -97,8 +98,12 @@ public class House extends Place{
 	 * display the elements (items) of the house's list
 	 */
 	public void displayItems(){
-		for (Item i : this.items){
-			System.out.println(i);
+		if (this.inventoryHouse.size() >0){
+			for(Item i : this.inventoryHouse){
+				System.out.println(i);
+			}
+		}else{
+			System.out.println("La maison ne contient pas d'objet");
 		}
 	}
 	
@@ -109,20 +114,20 @@ public class House extends Place{
 	 */
 	public List<Item> ItemGenerator(){
 		List<Item> items = new ArrayList<>();
+		Random rand = new Random();
 		// nombre d'items, de 0 a 4
-		int nbItem = Choice.randomChoice(0, 4);
+		int nbItem = rand.nextInt(4);
 		for(int i=0; i<nbItem; i++){
-			// De 1 a 3 = type de l'objet
-			int typeItem = Choice.randomChoice(1, 3);
+			//De 1 a 3 = type de l'objet
+			int typeItem = rand.nextInt(3)+1;
 			if (typeItem == 1){
-				items.add(Drink.createDrink("vodka"));
-			}else if (typeItem == 2){
-				items.add(Food.createFood("chips"));
-			}else if (typeItem == 3){
-				items.add(Weapon.createWrink("knife"));
+				items.add(Food.createFood());
+			}else if(typeItem == 2){
+				items.add(Drink.createDrink());
+			}else if(typeItem == 3){
+				items.add(Weapon.createWeapon());
 			}
 		}
 		return items;
 	}
-
 }

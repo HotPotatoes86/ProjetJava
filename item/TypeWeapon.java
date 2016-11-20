@@ -1,16 +1,27 @@
 package item;
 
 public enum TypeWeapon {
-	Baton(2);
+	STICK(1),
+	ROPE(2),
+	STONE(2),
+	WHIP(4),
+	SLINGSHOT(5),
+	SPEARS(5),
+	KNIFE(6),
+	BATTLESPEARS(10);
 	
-	private final int attack;
-	
-	private TypeWeapon(int dmg){
-		this.attack = dmg;
+	private int attack;
+
+	private TypeWeapon(int attack){
+		this.attack = attack;
 	}
-	
-	public int getAttackWeapon(){
-		return this.attack;
+
+	public int getAttack() {
+		return attack;
+	}
+
+	public void setAttack(int attack) {
+		this.attack = attack;
 	}
 	
 }

@@ -19,6 +19,7 @@ public class Hero {
 	private Weapon weapon = null;
 	private House house = null;
 	private Place actualPlace;
+	private static final int INVENTORYSIZE = 10;
 
 	//----------------------Constructors----------------------//
 	/**
@@ -27,9 +28,9 @@ public class Hero {
 	 */
 	public Hero(Place p) {
 		this.actualPlace = p;
-		this.inventory = new ArrayList<>();
+		this.inventory = new ArrayList<>(INVENTORYSIZE);
 	}
-	
+		
 	//----------------------Getters----------------------//
 	
 	public int getHp(){
@@ -48,8 +49,24 @@ public class Hero {
 		return this.weapon;
 	}
 	
+	public List<Item> getInventory() {
+		return inventory;
+	}
+	
+	public int getAttack() {
+		return attack;
+	}
+	
 	//----------------------Setters----------------------//
 	
+	public void setInventory(List<Item> inventory) {
+		this.inventory = inventory;
+	}	
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+
 	public void setHp(int hpSup){
 		this.hp += hpSup;
 	}
@@ -155,7 +172,7 @@ public class Hero {
 				try{
 					for (Item i : npc.getItems()){
 						//choose items to pick up
-						this.pickUpItem(i);
+						this.pickUpItem(i, npc.getItems());
 					}
 				}
 				catch (Exception e){
@@ -198,20 +215,51 @@ public class Hero {
 	 * add item to the hero's inventory
 	 * @param item item which add to the inventory
 	 */
-	public void pickUpItem(Item item){ //on ramasse l'objet
-		this.inventory.add(item);
+	public void pickUpItem(Item item, List<Item> chest){ //on ramasse l'objet
+		if(chest.contains(item)){
+			this.inventory.add(item);
+			chest.remove(item);
+		}
+	}
+	
+	public void deleteItem(Item item){
+		if(this.inventory.size() > 0){
+			this.inventory.remove(item);
+		}
 	}
 	
 	/**
 	 * display the inventory of the hero
 	 */
 	public void printInventory(){
-		Iterator<Item> it = this.inventory.iterator();
-		int i=1;
-		while(it.hasNext()){
-			System.out.println("objet "+i +": " + it.next());
-			i++;
+		if(this.inventory.isEmpty()){
+			System.out.println("inventaire vide");
+		}else{
+			Iterator<Item> it = this.inventory.iterator();
+			int i=1;
+			while(it.hasNext()){
+				System.out.println("objet "+i +": " + it.next());
+				i++;
+			}
 		}
+	}
+	
+	public boolean isFull(){
+		boolean full = false;
+		if(this.inventory.size() == INVENTORYSIZE){
+			full = true;
+		}
+		return full;
+	}
+	
+	public void unequip(){
+		this.attack -= this.weapon.addAttack();
+		if(this.isFull()){
+			deleteItem(this.weapon);
+		}else{
+			this.inventory.add(this.weapon);
+		}
+		this.weapon = null;
 	}
 	
 	/**
@@ -221,11 +269,21 @@ public class Hero {
 	public void use(Item item){
 		//if the hero have the item
 		if (this.inventory.contains(item)){
-			item.use();	
+			item.use(this);	
 			inventory.remove(item); //after use the item, it's removed from the inventory
 		}
 		else{
 			System.out.println("Vous ne possedez pas cet objet");
+		}
+	}
+	
+	public void use(Item item1, Item item2){
+		if(this.inventory.contains(item1)&&this.inventory.contains(item2)){
+			if(item1.testItem() == item2.testItem()){
+				item1.use(item2,this);
+			}else{
+				System.out.println("Veuillez combiner 2 objets de même type");
+			}
 		}
 	}
 
