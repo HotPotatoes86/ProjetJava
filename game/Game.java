@@ -9,6 +9,7 @@ import command.CommandLook;
 import command.CommandQuit;
 import command.CommandStatus;
 import command.CommandTalk;
+import command.CommandUse;
 import map.House;
 import map.LockedExit;
 import map.Map;
@@ -162,6 +163,11 @@ public class Game {
 			    		CommandTalk.use(hero);
 			    		break;
 			    	case USE:
+			    		if(parts.length == 2){
+			    			CommandUse.useItem(hero, parts[1]);
+			    		}else if(parts.length == 3){
+			    			CommandUse.combineItem(hero, parts[1], parts[2]);
+			    		}
 			    		break;
 			    	default: break;
 		    	}
@@ -170,14 +176,16 @@ public class Game {
 				System.out.println("\nErreur : Commande invalide");
 				System.out.println("Utilisez la commande help pour afficher les commandes possibles");
 			} 
-		}while(counter>0 && !hero.testHouse());
+		}while(counter>0 && !hero.testHouse() && hero.getAlcoholLevel() < 100);
 		
 		System.out.println("\nFIN DU JEU !");
 		
 		if (hero.testHouse()){
 			System.out.println("VICTOIRE : Vous avez reussi a rentrer a temps");
-		}else{
+		}else if(counter == 0){
 			System.out.println("DEFAITE : Vous n'avez pas reussi a rentrer a temps");
+		}else{
+			System.out.println("DEFAITE : Vous faites un coma ethylique");
 		}
 		
 	}

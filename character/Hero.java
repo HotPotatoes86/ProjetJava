@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import item.Food;
 import item.Item;
 import item.Weapon;
 import map.House;
@@ -29,8 +30,10 @@ public class Hero {
 	public Hero(Place p) {
 		this.actualPlace = p;
 		this.inventory = new ArrayList<>(INVENTORYSIZE);
+		this.inventory.add(new Weapon("knife"));
+		this.inventory.add(new Food("apple"));
 	}
-		
+	
 	//----------------------Getters----------------------//
 	
 	public int getHp(){
@@ -101,6 +104,9 @@ public class Hero {
 			//hero moves to the direction
 			if (this.actualPlace.go(direction)){
 				this.actualPlace = this.actualPlace.getNextPlace(direction);
+				/*if (this.actualPlace instanceof House){
+					
+				}*/
 			}
 			
 			//alcohol level goes down
@@ -216,9 +222,11 @@ public class Hero {
 	 * @param item item which add to the inventory
 	 */
 	public void pickUpItem(Item item, List<Item> chest){ //on ramasse l'objet
-		if(chest.contains(item)){
+		if(chest.contains(item) && this.inventory.size()<INVENTORYSIZE){
 			this.inventory.add(item);
 			chest.remove(item);
+		}else if(this.isFull()){
+			System.out.println("Votre inventaire est plein, veuillez jeter un objet avant dans ramasser un nouveau");
 		}
 	}
 	
@@ -268,21 +276,38 @@ public class Hero {
 	 */
 	public void use(Item item){
 		//if the hero have the item
-		if (this.inventory.contains(item)){
-			item.use(this);	
-			inventory.remove(item); //after use the item, it's removed from the inventory
+		boolean test = false;
+		for(int i=0; i<this.inventory.size() && !test; i++){
+			if(this.inventory.get(i).toString().equals(item.getName())){
+				this.inventory.get(i).use(this);
+				test = true;
+			}
 		}
-		else{
+		if(!test){
 			System.out.println("Vous ne possedez pas cet objet");
 		}
 	}
 	
 	public void use(Item item1, Item item2){
-		if(this.inventory.contains(item1)&&this.inventory.contains(item2)){
+		boolean test1 = false;
+		boolean test2 = false;
+		for(int i=0;i<this.inventory.size() && !test1; i++){
+			if(this.inventory.get(i).toString().equals(item1.getName())){
+				item1 = this.inventory.get(i);
+				test1 = true;
+			}
+		}
+		for(int i=0;i<this.inventory.size() && !test2; i++){
+			if(this.inventory.get(i).toString().equals(item2.getName())){
+				item2 = this.inventory.get(i);
+				test2 = true;
+			}
+		}		
+		if(test1 && test2){
 			if(item1.testItem() == item2.testItem()){
 				item1.use(item2,this);
 			}else{
-				System.out.println("Veuillez combiner 2 objets de m�me type");
+				System.out.println("Veuillez combiner 2 objets de meme type");
 			}
 		}else{
 			System.out.println("Vous ne possedez pas ces 2 objets");

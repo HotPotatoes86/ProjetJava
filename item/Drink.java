@@ -46,6 +46,18 @@ public class Drink implements Item {
 		return res;
 	}	
 	
+	public static boolean testItem(String item){
+		boolean test = false;
+		TypeDrink[] tabDrink = TypeDrink.values();
+		for(int i=0; i<tabDrink.length;i++){
+			if(item.toString().equals(tabDrink[i].toString().toLowerCase())){
+				test = true;
+			}
+		}
+		return test;
+	}
+	
+	
 	public Drink convertToDrink(Item item){
 		Drink d = null;
 		TypeDrink[] tabDrink = TypeDrink.values();
@@ -59,7 +71,7 @@ public class Drink implements Item {
 	
 	public void use(Hero hero){
 		if(this.testItem()==2){			
-			hero.setAlcoholLevel(hero.getAlcoholLevel() + convertToDrink(this).tDrink.getAlcoholLevel());
+			hero.setAlcoholLevel(convertToDrink(this).tDrink.getAlcoholLevel());
 			hero.getInventory().remove(this);
 		}
 	}
@@ -89,6 +101,10 @@ public class Drink implements Item {
 		}
 	}
 
+	public String getName(){
+		return this.name;
+	}
+	
 	@Override
 	public String toString() {
 		return "" +name;

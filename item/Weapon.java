@@ -1,7 +1,5 @@
 package item;
 
-import java.util.Random;
-
 import character.Hero;
 import util.Choice;
 
@@ -47,6 +45,17 @@ public class Weapon implements Item {
 		return res;
 	}
 	
+	public static boolean testItem(String item){
+		boolean test = false;
+		TypeWeapon[] tabWeapon = TypeWeapon.values();
+		for(int i=0; i<tabWeapon.length;i++){
+			if(item.toString().equals(tabWeapon[i].toString().toLowerCase())){
+				test = true;
+			}
+		}
+		return test;
+	}
+	
 	public Weapon convertToWeapon(Item item){
 		Weapon w = null;
 		TypeWeapon[] tabWeapon = TypeWeapon.values();
@@ -63,7 +72,7 @@ public class Weapon implements Item {
 			if(hero.getWeapon() != null){
 				hero.unequip();
 			}
-			hero.setAttack(hero.getAttack() + convertToWeapon(this).tWeapon.getAttack());
+			hero.setAttack(convertToWeapon(this).tWeapon.getAttack());
 			hero.setWeapon(convertToWeapon(this));
 			hero.getInventory().remove(this);
 		}
@@ -103,9 +112,14 @@ public class Weapon implements Item {
 		return this.tWeapon.getAttack();
 	}
 
+	public String getName() {
+		return name;
+	}	
+	
 	@Override
 	public String toString() {
 		return "" + name;
-	}	
+	}
+
 	
 }

@@ -46,6 +46,17 @@ public class Food implements Item {
 		return res;
 	}
 	
+	public static boolean testItem(String item){
+		boolean test = false;
+		TypeFood[] tabFood = TypeFood.values();
+		for(int i=0; i<tabFood.length;i++){
+			if(item.toString().equals(tabFood[i].toString().toLowerCase())){
+				test = true;
+			}
+		}
+		return test;
+	}
+	
 	public Food convertToFood(Item item){
 		Food f = null;
 		TypeFood[] tabFood = TypeFood.values();
@@ -58,9 +69,17 @@ public class Food implements Item {
 	}
 	
 	public void use(Hero hero){
-		if(this.testItem()==1){			
-			hero.setHp(hero.getHp() + convertToFood(this).tFood.getHp());
-			hero.getInventory().remove(this);
+		if(this.testItem()==1){	
+			if(hero.getHp()==100){
+				System.out.println("Vous n'avez pas besoin de manger, votre vie est au maximum");
+			}else if (hero.getHp()<100){
+				if(hero.getHp() + convertToFood(this).tFood.getHp() > 100){
+					hero.setHp(100);
+				}else{
+					hero.setHp(convertToFood(this).tFood.getHp());					
+				}
+				hero.getInventory().remove(this);
+			}
 		}
 	}
 	
@@ -92,6 +111,10 @@ public class Food implements Item {
 				System.out.println("Vous ne pouvez pas combiner ces 2 aliments");
 			}
 		}			
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	@Override
