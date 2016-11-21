@@ -3,6 +3,8 @@ package character;
 import java.util.ArrayList;
 
 import item.Item;
+import util.Choice;
+import util.Name;
 
 public abstract class NPC {
 
@@ -14,6 +16,19 @@ public abstract class NPC {
 	protected ArrayList<Item> items; // Les objets sur le pnj
 
 	public abstract void talk();
+	
+	/**
+	 * generate the name randomly the name of the NPC
+	 * @param houseName the name of the House
+	 * @return the name of the NPC
+	 */
+	public void chooseName(String houseName){
+		if (Choice.randomChoice()){
+			this.name = houseName;
+		}else if (Choice.randomChoice()){
+			this.name = Name.generateName("donnees/Noms.txt",31);
+		}
+	}
 	
 	public String getName(){
 		return this.name;

@@ -17,14 +17,13 @@ public class StreetPart extends Place{
 	/**
 	 * initialize the houses of the StreetPart and the exits between them
 	 * @param name number of the StreetPart
+	 * @param test = 0 if no restriction, 1 need a simple exit, 2 need a locked exit
 	 */
-	public StreetPart(String name) {
+	public StreetPart(String name, int test) {
 		this.name = name;
 		this.houses = new House[2];
 		for (int i=0; i<2; i++){
-			//TODO Facteur random pour maison avec/sans nom
-			//Nom = NPC
-			// Une chance sur 2
+			//1/2 chance
 			if (Choice.randomChoice()){
 				this.houses[i] = new House("Inconnu");
 			}
@@ -32,17 +31,27 @@ public class StreetPart extends Place{
 				// Lire dans les donnees pour donner un nom a la rue		
 				this.houses[i] = new House(Name.generateName("donnees/Noms.txt",31));
 			}
-			this.houses[i].addExit("street",this);
-			int alea = Choice.randomChoice(0, 2);
-			if (alea==0){
+			//We need this to avoid a map with doors all blocked
+			if (test==1 && i==0){
 				this.addExit("house"+(i+1),this.houses[i]);
-			}else if (alea==1){
-				this.exits.put("house"+(i+1), new EnigmaExit(this.houses[i]));
-			}else{
+			}else if (test==2 && i==0){
 				this.exits.put("house"+(i+1), 
 						new LockedExit(new Key((LockedExit)this.exits.get("house"+(i+1)),
 								this.houses[i].getName()),this.houses[i]));
+			}else{
+				//here the type of exit is choosed randomly
+				int alea = Choice.randomChoice(0, 2);
+				if (alea==0){
+					this.addExit("house"+(i+1),this.houses[i]);
+				}else if (alea==1){
+					this.exits.put("house"+(i+1), new EnigmaExit(this.houses[i]));
+				}else{
+					this.exits.put("house"+(i+1), 
+							new LockedExit(new Key((LockedExit)this.exits.get("house"+(i+1)),
+									this.houses[i].getName()),this.houses[i]));
+				}
 			}
+			this.houses[i].addExit("street",this);
 		}
 	}
 	

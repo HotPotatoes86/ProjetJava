@@ -13,10 +13,10 @@ public class Name {
 	 * @param nbLines the number of lines of the file
 	 * @return a randomly name of the file
 	 */
-	public static String generateName(String link, int nbLines){
+	public static String generateName(String link, int line){
 		// Lire dans les donnees pour donner un nom a la rue
 		String name = "";
-		int cpt = Choice.randomChoice(1, nbLines-1);
+		int cpt = line;
 		String fichier =link;
 					
 		try{

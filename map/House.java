@@ -30,9 +30,9 @@ public class House extends Place{
 		this.inventoryHouse = this.ItemGenerator();
 		if (Choice.randomChoice()){
 			if (Choice.randomChoice()){
-				this.npc = new Enemy();
+				this.npc = new Enemy(this.name);
 			}else{
-				this.npc = new Neutral();
+				this.npc = new Neutral(this.name);
 			}
 		}
 	}

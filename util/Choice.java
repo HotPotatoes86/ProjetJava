@@ -25,13 +25,7 @@ public class Choice {
 	 */
 	public static int randomChoice(int min, int max){
 		Random rand = new Random();
-		int rdm = 0;
-		try{
-			rdm = rand.nextInt(max-min+1);
-		}
-		catch (Exception e){
-			System.out.println("Erreur : min>max");
-		}
+		int rdm = rand.nextInt(max - min + 1) + min;
 		return rdm;
 	}
 }

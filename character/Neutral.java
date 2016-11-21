@@ -1,13 +1,8 @@
 package character;
 public class Neutral extends NPC {
-
-	// Nom = Villageois
-	public Neutral() {
-		this.attack =0;
-	}
 	
 	public Neutral(String name){
-		this.name = name;
+		this.chooseName(name);
 	}
 	
 	public void talk(){
