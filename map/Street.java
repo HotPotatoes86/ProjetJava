@@ -14,7 +14,7 @@ public class Street extends Place{
 		this.name = name;
 		this.parts = new StreetPart[this.nbStreetPart];
 		//We need this to avoid a map with doors all blocked
-		int partLockedExit = Choice.randomChoice(1, this.nbStreetPart);
+		int partLockedExit = Choice.randomChoice(1, this.nbStreetPart-1);
 		int partSimpleExit = Choice.randomChoice(0, partLockedExit-1);
 		for (int i=0; i<this.nbStreetPart; i++){
 			if (i == partLockedExit){
