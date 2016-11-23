@@ -1,42 +1,46 @@
 package command;
 
 import character.Hero;
-import item.Drink;
-import item.Food;
-import item.Item;
-import item.Weapon;
 
 public final class CommandUse {
 
 	public static void useItem(Hero hero, String item){
-		Item it = null;
-		if(Drink.testItem(item)){
-			it = new Drink(item);
-		}else if (Food.testItem(item)){
-			it = new Food(item);
-		}else if (Weapon.testItem(item)){
-			it = new Weapon(item);
-		}		
-		hero.use(it);
+		boolean test = false;
+		for(int i=0; i<hero.getInventory().size() && !test; i++){
+			if(hero.getInventory().get(i).toString().equals(item)){
+				hero.use(hero.getInventory().get(i));
+				test = true;
+			}
+		}
+		if(!test){
+			System.out.println("Vous ne possedez pas cet objet");
+		}
 	}
 	
 	public static void combineItem(Hero hero, String item1, String item2){
-		Item it1 = null;
-		Item it2 = null;
-		if(Drink.testItem(item1)){
-			it1 = new Drink(item1);
-		}else if (Food.testItem(item1)){
-			it1 = new Food(item1);
-		}else if (Weapon.testItem(item1)){
-			it1 = new Weapon(item1);
+		boolean test1 = false;
+		boolean test2 = false;
+		int i = 0;
+		int j = 0;
+
+		for(i=0; i<hero.getInventory().size() && !test1; i++){
+			if(hero.getInventory().get(i).toString().equals(item1)){
+				test1 = true;
+			}
 		}
-		if(Drink.testItem(item2)){
-			it2 = new Drink(item2);
-		}else if (Food.testItem(item2)){
-			it2 = new Food(item2);
-		}else if (Weapon.testItem(item2)){
-			it2 = new Weapon(item2);
-		}		
-		hero.use(it1,it2);
+		for(j=0; j<hero.getInventory().size() && !test2; j++){
+			if(hero.getInventory().get(j).toString().equals(item2) && j!=i-1){
+				test2 = true;
+			}
+		}
+		if(test1 && test2){
+			if(i-1 != j-1){
+				hero.use(hero.getInventory().get(i-1), hero.getInventory().get(j-1));
+			}else{
+				System.out.println("Vous ne pouvez pas combiner l'objet avec lui même");
+			}
+		}else{
+			System.out.println("Vous ne possedez pas ces 2 objets");
+		}
 	}
 }

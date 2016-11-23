@@ -58,7 +58,7 @@ public class Drink implements Item {
 	}
 	
 	
-	public Drink convertToDrink(Item item){
+	/*public Drink convertToDrink(Item item){
 		Drink d = null;
 		TypeDrink[] tabDrink = TypeDrink.values();
 		for(int i=0; i<tabDrink.length; i++){
@@ -67,34 +67,29 @@ public class Drink implements Item {
 			}
 		}
 		return d;
-	}
+	}*/
 	
 	public void use(Hero hero){
 		if(this.testItem()==2){			
-			hero.setAlcoholLevel(convertToDrink(this).tDrink.getAlcoholLevel());
+			hero.setAlcoholLevel(this.tDrink.getAlcoholLevel());
 			hero.getInventory().remove(this);
 		}
 	}
 	
 	public void use(Item item, Hero hero){
 		if(this.testItem()==2 && item.testItem()==2){
-			Drink drink1 = convertToDrink(this);
-			Drink drink2 = convertToDrink(item);
-			if(drink1.toString().equals("energydrink") && drink2.toString().equals("jagermeister")  || drink1.toString().equals("jagermeister") && drink2.toString().equals("energydrink")){
-				Drink drink3 = new Drink("jagerbomb");
+			if(this.toString().equals("energydrink") && item.toString().equals("jagermeister")  || this.toString().equals("jagermeister") && item.toString().equals("energydrink")){
 				hero.getInventory().remove(this);
 				hero.getInventory().remove(item);
-				hero.getInventory().add(drink3);
-			}else if(drink1.toString().equals("energydrink") && drink2.toString().equals("vodka")  || drink1.toString().equals("vodka") && drink2.toString().equals("energydrink")){
-				Drink drink3 = new Drink("vodkaenergy");
+				hero.getInventory().add(new Drink("jagerbomb"));
+			}else if(this.toString().equals("energydrink") && item.toString().equals("vodka")  || this.toString().equals("vodka") && item.toString().equals("energydrink")){
 				hero.getInventory().remove(this);
 				hero.getInventory().remove(item);
-				hero.getInventory().add(drink3);
-			}else if(!drink1.toString().equals("energydrink") && !drink2.toString().equals("energydrink")){
-				Drink drink3 = new Drink("gnole");
+				hero.getInventory().add(new Drink("vodkaenergy"));
+			}else if(!this.toString().equals("energydrink") && !item.toString().equals("energydrink")){
 				hero.getInventory().remove(this);
 				hero.getInventory().remove(item);
-				hero.getInventory().add(drink3);
+				hero.getInventory().add(new Drink("gnole"));
 			}else{
 				System.out.println("energydrink ne peut etre combiner uniquement avec vodka et jagermeister");
 			}					

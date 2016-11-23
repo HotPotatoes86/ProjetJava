@@ -169,11 +169,14 @@ public class Game {
 			    			CommandUse.combineItem(hero, parts[1], parts[2]);
 			    		}
 			    		break;
+			    	case UNEQUIP:
+			    		break;
 			    	default: break;
 		    	}
 			}
 			catch(Exception e){
 				System.out.println("\nErreur : Commande invalide");
+				//e.printStackTrace();
 				System.out.println("Utilisez la commande help pour afficher les commandes possibles");
 			} 
 		}while(counter>0 && !hero.testHouse() && hero.getAlcoholLevel() < 100);

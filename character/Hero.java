@@ -30,7 +30,7 @@ public class Hero {
 	public Hero(Place p) {
 		this.actualPlace = p;
 		this.inventory = new ArrayList<>(INVENTORYSIZE);
-		this.inventory.add(new Weapon("knife"));
+		this.inventory.add(new Food("apple"));
 		this.inventory.add(new Food("apple"));
 	}
 	
@@ -276,42 +276,11 @@ public class Hero {
 	 */
 	public void use(Item item){
 		//if the hero have the item
-		boolean test = false;
-		for(int i=0; i<this.inventory.size() && !test; i++){
-			if(this.inventory.get(i).toString().equals(item.getName())){
-				this.inventory.get(i).use(this);
-				test = true;
-			}
-		}
-		if(!test){
-			System.out.println("Vous ne possedez pas cet objet");
-		}
+		item.use(this);
 	}
 	
 	public void use(Item item1, Item item2){
-		boolean test1 = false;
-		boolean test2 = false;
-		for(int i=0;i<this.inventory.size() && !test1; i++){
-			if(this.inventory.get(i).toString().equals(item1.getName())){
-				item1 = this.inventory.get(i);
-				test1 = true;
-			}
-		}
-		for(int i=0;i<this.inventory.size() && !test2; i++){
-			if(this.inventory.get(i).toString().equals(item2.getName())){
-				item2 = this.inventory.get(i);
-				test2 = true;
-			}
-		}		
-		if(test1 && test2){
-			if(item1.testItem() == item2.testItem()){
-				item1.use(item2,this);
-			}else{
-				System.out.println("Veuillez combiner 2 objets de meme type");
-			}
-		}else{
-			System.out.println("Vous ne possedez pas ces 2 objets");
-		}
+		item1.use(item2, this);
 	}
 
 }

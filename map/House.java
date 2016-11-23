@@ -49,7 +49,11 @@ public class House extends Place{
 		}
 		return res;
 	}
-	
+		
+	public List<Item> getInventoryHouse() {
+		return inventoryHouse;
+	}
+
 	public NPC getNPC(){
 		return this.npc;
 	}

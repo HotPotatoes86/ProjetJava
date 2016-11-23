@@ -45,7 +45,7 @@ public class Weapon implements Item {
 		return res;
 	}
 	
-	public static boolean testItem(String item){
+	/*public static boolean testItem(String item){
 		boolean test = false;
 		TypeWeapon[] tabWeapon = TypeWeapon.values();
 		for(int i=0; i<tabWeapon.length;i++){
@@ -54,9 +54,9 @@ public class Weapon implements Item {
 			}
 		}
 		return test;
-	}
+	}*/
 	
-	public Weapon convertToWeapon(Item item){
+	/*public Weapon convertToWeapon(Item item){
 		Weapon w = null;
 		TypeWeapon[] tabWeapon = TypeWeapon.values();
 		for(int i=0; i<tabWeapon.length; i++){
@@ -65,43 +65,37 @@ public class Weapon implements Item {
 			}
 		}
 		return w;
-	}	
+	}	*/
 		
 	public void use(Hero hero){
 		if(this.testItem()==3){			
 			if(hero.getWeapon() != null){
 				hero.unequip();
 			}
-			hero.setAttack(convertToWeapon(this).tWeapon.getAttack());
-			hero.setWeapon(convertToWeapon(this));
+			hero.setAttack(this.tWeapon.getAttack());
+			hero.setWeapon(this);
 			hero.getInventory().remove(this);
 		}
 	}
 	
 	public void use(Item item, Hero hero){
 		if(this.testItem()==3 && item.testItem()==3){
-			Weapon weapon1 = convertToWeapon(this);
-			Weapon weapon2 = convertToWeapon(item);
-			if(weapon1.toString().equals("stick") && weapon2.toString().equals("rope")  || weapon1.toString().equals("rope") && weapon2.toString().equals("stick")){
-				Weapon weapon3 = new Weapon("whip");
+			if(this.toString().equals("stick") && item.toString().equals("rope")  || this.toString().equals("rope") && item.toString().equals("stick")){
 				hero.getInventory().remove(this);
 				hero.getInventory().remove(item);
-				hero.getInventory().add(weapon3);
-			}else if(weapon1.toString().equals("stick") && weapon2.toString().equals("stone")  || weapon1.toString().equals("stone") && weapon2.toString().equals("stick")){
-				Weapon weapon3 = new Weapon("spears");
+				hero.getInventory().add(new Weapon("whip"));
+			}else if(this.toString().equals("stick") && item.toString().equals("stone")  || this.toString().equals("stone") && item.toString().equals("stick")){
 				hero.getInventory().remove(this);
 				hero.getInventory().remove(item);
-				hero.getInventory().add(weapon3);
-			}else if(weapon1.toString().equals("rope") && weapon2.toString().equals("stone")  || weapon1.toString().equals("stone") && weapon2.toString().equals("rope")){
-				Weapon weapon3 = new Weapon("slingshot");
+				hero.getInventory().add(new Weapon("spears"));
+			}else if(this.toString().equals("rope") && item.toString().equals("stone")  || this.toString().equals("stone") && item.toString().equals("rope")){
 				hero.getInventory().remove(this);
 				hero.getInventory().remove(item);
-				hero.getInventory().add(weapon3);
-			}else if(weapon1.toString().equals("stick") && weapon2.toString().equals("knife")  || weapon1.toString().equals("knife") && weapon2.toString().equals("stick")){
-				Weapon weapon3 = new Weapon("battlespears");
+				hero.getInventory().add(new Weapon("slingshot"));
+			}else if(this.toString().equals("stick") && item.toString().equals("knife")  || this.toString().equals("knife") && item.toString().equals("stick")){
 				hero.getInventory().remove(this);
 				hero.getInventory().remove(item);
-				hero.getInventory().add(weapon3);
+				hero.getInventory().add(new Weapon("battlespears"));
 			}else{
 				System.out.println("Vous ne pouvez pas combiner ces 2 armes");
 			}

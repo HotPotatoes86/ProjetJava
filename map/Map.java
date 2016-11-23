@@ -27,9 +27,9 @@ public class Map {
 			//add exits
 			((Street)this.streets[0]).addExit1(this.streets[1].getName(), this.streets[1]);
 			((Street)this.streets[0]).addExit1(this.streets[2].getName(), this.streets[2]);
-			this.streets[1].addExit(this.streets[0].getName(), ((Street)this.streets[0]).getParts()[3]);
+			this.streets[1].addExit(this.streets[0].getName(), ((Street)this.streets[0]).getParts()[2]);
 			this.streets[1].addExit(this.streets[2].getName(), ((Street)this.streets[2]).getParts()[0]);
-			this.streets[2].addExit(this.streets[0].getName(), ((Street)this.streets[0]).getParts()[3]);
+			this.streets[2].addExit(this.streets[0].getName(), ((Street)this.streets[0]).getParts()[2]);
 			this.streets[2].addExit(this.streets[1].getName(), ((Street)this.streets[1]).getParts()[0]);
 		}
 	}
