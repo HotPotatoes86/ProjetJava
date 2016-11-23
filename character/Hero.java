@@ -222,10 +222,10 @@ public class Hero {
 	 * @param item item which add to the inventory
 	 */
 	public void pickUpItem(Item item, List<Item> chest){ //on ramasse l'objet
-		if(chest.contains(item) && this.inventory.size()<INVENTORYSIZE){
+		if(this.inventory.size()<INVENTORYSIZE){
 			this.inventory.add(item);
 			chest.remove(item);
-		}else if(this.isFull()){
+		}else{
 			System.out.println("Votre inventaire est plein, veuillez jeter un objet avant dans ramasser un nouveau");
 		}
 	}
