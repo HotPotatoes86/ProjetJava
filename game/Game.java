@@ -1,15 +1,6 @@
 package game;
 import character.Hero;
-import command.Command;
-import command.CommandAttack;
-import command.CommandGo;
-import command.CommandHelp;
-import command.CommandInventory;
-import command.CommandLook;
-import command.CommandQuit;
-import command.CommandStatus;
-import command.CommandTalk;
-import command.CommandUse;
+import command.*;
 import map.House;
 import map.LockedExit;
 import map.Map;
@@ -24,18 +15,19 @@ public class Game {
 	//Number of turns
 	private static int counter = 20;
 	
-	public void start() {
-			
+	/**
+	 * initialize the map of the game
+	 * @return the map of the game
+	 */
+	public Map initMap(){
 		//Scanner to read the entries
 		ConsoleInput scanner = new ConsoleInput();
-		
-		Hero hero;
-		
+				
 		//Choice of the map's size
 		System.out.println("\nVeuillez selectionner la taille de la carte :");
-		System.out.println("1- Petite : 1 rue");
-		System.out.println("2- Moyenne : 3 rues");
-		
+		System.out.println("1- Petite (1 rue)");
+		System.out.println("2- Moyenne : (3 rues)");
+				
 		//Size of the map by default
 		int taille = 2;
 		String[] choix = {"petite","moyenne"};
@@ -47,7 +39,7 @@ public class Game {
 				if (taille > 0 && taille <=2){
 					test = true;
 					System.out.println("Vous avez choisi une carte " + choix[taille-1]);
-				}
+				}	
 				else{
 					System.out.println("Valeur incorrecte, reessayez");
 				}
@@ -56,21 +48,29 @@ public class Game {
 				System.out.println("Erreur : veuillez saisir une taille correcte");
 			}
 		}
-		//The map is initialized depending on the size
 		Map map;
+		//The map is initialized depending on the size
 		switch (taille){
 			case 1: map = new Map(1); break;
 			case 2: map = new Map(3); break;
 			default: map = new Map(3);break;	
 		}
-		
+		return map;
+	}
+	
+	/**
+	 * initialize the hero of the game
+	 * @param map map of the game (where the hero is)
+	 * @return the hero of the game
+	 */
+	public Hero initHero(Map map){
 		//Instantiation of Hero
 		Place p = map.getStreets()[0];	// = first street
-		hero = new Hero(p);
+		Hero hero = new Hero(p);
 		boolean testexit = false; //we search a house with a locked exit
 		while (!testexit){
 			//Street of Hero
-			Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, taille-1)]);
+			Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, map.getNbStreet()-1)]);
 			//StreetPart of Hero
 			StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, 3)]);
 			//House of Hero
@@ -85,14 +85,28 @@ public class Game {
 				testexit = true;
 			}
 		}
+		return hero;
+	}
+	
+	/**
+	 * launch the game
+	 * @param map map of the game
+	 * @param hero hero of the game
+	 */ 
+	public void start(Map map, Hero hero){
 		
+		//Scanner to read the entries
+		ConsoleInput scanner = new ConsoleInput();
+		
+		//describe the actual condition of the player
 		System.out.println("");
 		try{
 			Thread.sleep(1000);
 		}catch(Exception e){
 			System.out.println(e);
 		}
-		p.describe();
+		
+		hero.getPlace().describe();
 		System.out.println("");
 		
 		try{
@@ -102,7 +116,7 @@ public class Game {
 		}
 		
 		System.out.println("Vous pouvez aller ici :");
-		p.displayExit();
+		hero.getPlace().displayExit();
 		
 		try{
 			Thread.sleep(1000);
@@ -176,7 +190,6 @@ public class Game {
 			}
 			catch(Exception e){
 				System.out.println("\nErreur : Commande invalide");
-				//e.printStackTrace();
 				System.out.println("Utilisez la commande help pour afficher les commandes possibles");
 			} 
 		}while(counter>0 && !hero.testHouse() && hero.getAlcoholLevel() < 100);

@@ -51,6 +51,10 @@ public class Street extends Place{
 		return parts;
 	}
 	
+	public int getNbStreetPart(){
+		return this.nbStreetPart;
+	}
+	
 	//----------------------Methods----------------------//
 	public void describe(){
 		System.out.println("Vous etes sur la rue " + this.name);

@@ -4,10 +4,14 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import character.Hero;
+import map.Map;
+
 public class Main {
 
 	public static void main(String[] args) {
 		Game game = new Game();
+		
 		String fichier ="donnees/Histoire.txt";
 		
 		/* Affichage de l'histoire (dans fichier txt)
@@ -28,7 +32,8 @@ public class Main {
 			System.out.println(e.toString());
 		}
 		
-		game.start();
+		Map map = game.initMap();
+		Hero hero = game.initHero(map);
+		game.start(map, hero);
 	}
-
 }
