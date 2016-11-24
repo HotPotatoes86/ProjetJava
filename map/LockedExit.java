@@ -29,7 +29,7 @@ public class LockedExit extends Exit {
 	//----------------------Methods----------------------//
 	public void unlock(){
 		this.status = false;
-		System.out.println("La porte est déverrouillée !");
+		System.out.println("La porte est deverrouillee !");
 	}
 	
 	@Override
@@ -38,7 +38,7 @@ public class LockedExit extends Exit {
 			return super.use();
 		}
 		else{
-			System.out.println("La porte est verrouillée, il faut trouver la clé");
+			System.out.println("La porte est verrouillee, il faut trouver la cle");
 			return false;
 		}
 	}
