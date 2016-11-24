@@ -46,7 +46,7 @@ public class Drink implements Item {
 		return res;
 	}	
 	
-	public static boolean testItem(String item){
+	/*public static boolean testItem(String item){
 		boolean test = false;
 		TypeDrink[] tabDrink = TypeDrink.values();
 		for(int i=0; i<tabDrink.length;i++){
@@ -55,7 +55,7 @@ public class Drink implements Item {
 			}
 		}
 		return test;
-	}
+	}*/
 	
 	
 	/*public Drink convertToDrink(Item item){
