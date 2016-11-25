@@ -97,16 +97,13 @@ public class Hero {
 	 */
 	public void go(String direction){
 		//if hero can go to the direction
-		if (actualPlace.testdirection(direction)){
+		if (this.actualPlace.testdirection(direction)){
 			if (this.actualPlace instanceof House){
 				if (!((House)this.actualPlace).testdirection(direction)) return ;
 			}
 			//hero moves to the direction
 			if (this.actualPlace.go(direction)){
 				this.actualPlace = this.actualPlace.getNextPlace(direction);
-				/*if (this.actualPlace instanceof House){
-					
-				}*/
 			}
 			
 			//alcohol level goes down
@@ -136,6 +133,23 @@ public class Hero {
 	}
 	
 	/**
+	 * method used to display items if the hero is in a house with no npc
+	 * call the method displayItems from the class house
+	 */
+	public void displayHouseItems(){
+		//display items in the house if there're no npc
+		if (this.actualPlace instanceof House){
+			if (((House)this.actualPlace).getNPC() != null){
+				if (!((House)this.actualPlace).getNPC().getStatus()){
+					((House)this.actualPlace).displayItems();
+				}
+			}else{
+				((House)this.actualPlace).displayItems();
+			}
+		}
+	}
+	
+	/**
 	 * Describe the actual place of the Hero
 	 */
 	public void look(){
@@ -150,6 +164,7 @@ public class Hero {
 	public void look(String s){
 		//Description Place
 		Place p = null;
+		System.out.println(s);
 		p = this.actualPlace.getNextPlace(s);
 		if (p != null){
 			switch (s){
@@ -171,10 +186,10 @@ public class Hero {
 	 */
 	public void attack(NPC npc){
 		if (npc != null){
-			//On calcule l'attack du hero en fonction de son attack et de son alcoolemie
+			//attack is calculated with attack AND alcohol level of the hero
 			npc.takeDmg(this.attack+this.alcoholLevel);
 			if (!npc.getStatus()){
-				//NPC mort, on ramasse les items
+				//npc is dead, hero pick up his items
 				try{
 					for (Item i : npc.getItems()){
 						//choose items to pick up
@@ -185,8 +200,11 @@ public class Hero {
 					System.out.println("Pas d'objets :(");
 				}
 			}
-			System.out.println(npc.getName() + " riposte, vous perdez " + npc.getAttack() + "HP");
-			this.hp -= npc.getAttack();
+			//if npc is still alive, he attacks
+			if (npc instanceof Enemy && npc.getStatus()){
+				System.out.println(npc.getName() + " riposte, vous perdez " + npc.getAttack() + "HP");
+				this.hp -= npc.getAttack();
+			}
 			if (this.hp<=0){
 				try{
 					System.out.println("DEFAITE : Vous etes mort !");

@@ -1,9 +1,6 @@
 package map;
 
-import java.util.HashMap;
-
 import item.Key;
-import util.Choice;
 
 public class LockedExit extends Exit {
 

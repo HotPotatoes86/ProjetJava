@@ -8,7 +8,7 @@ public final class CommandLook {
 		if (direction != null && direction.length()>0){
 			hero.look(direction);
     	}else{
-    			hero.look();
+    		hero.look();
     	}
 	}
 }

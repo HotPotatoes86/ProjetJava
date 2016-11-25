@@ -38,7 +38,7 @@ public class Game {
 				taille = scanner.intScan();
 				if (taille > 0 && taille <=2){
 					test = true;
-					System.out.println("Vous avez choisi une carte " + choix[taille-1]);
+					System.out.println("Vous avez choisi une carte " + choix[taille-1] + "\n");
 				}	
 				else{
 					System.out.println("Valeur incorrecte, reessayez");
@@ -64,6 +64,7 @@ public class Game {
 	 * @return the hero of the game
 	 */
 	public Hero initHero(Map map){
+
 		//Instantiation of Hero
 		Place p = map.getStreets()[0];	// = first street
 		Hero hero = new Hero(p);
@@ -72,7 +73,7 @@ public class Game {
 			//Street of Hero
 			Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, map.getNbStreet()-1)]);
 			//StreetPart of Hero
-			StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, 3)]);
+			StreetPart sth = ((StreetPart)sh.getParts()[Choice.randomChoice(0, sh.getNbStreetPart()-1)]);
 			//House of Hero
 			House hh;
 			if (sth.getExit("house1") instanceof LockedExit){
@@ -98,16 +99,15 @@ public class Game {
 		//Scanner to read the entries
 		ConsoleInput scanner = new ConsoleInput();
 		
+		//thread.sleep is used to have a better rendering on the console
+		try{
+			Thread.sleep(500);
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		
 		//describe the actual condition of the player
-		System.out.println("");
-		try{
-			Thread.sleep(1000);
-		}catch(Exception e){
-			System.out.println(e);
-		}
-		
 		hero.getPlace().describe();
-		System.out.println("");
 		
 		try{
 			Thread.sleep(1000);
@@ -115,20 +115,18 @@ public class Game {
 			System.out.println(e);
 		}
 		
-		System.out.println("Vous pouvez aller ici :");
+		//display all possible exit (only forward for the beginning) to help the player
+		System.out.println("\nVous pouvez aller ici :");
 		hero.getPlace().displayExit();
-		
-		try{
-			Thread.sleep(1000);
-		}catch(Exception e){
-			System.out.println(e);
-		}
 		
 		/* The game is started
 		 * The player does an action
 		 */
 		Command command;
 		do{
+			//display items if the hero is in a house with no npc
+			hero.displayHouseItems();
+			
 			System.out.println("\nVeuillez saisir une action :");
 			try{
 				String cmd = scanner.stringScan();

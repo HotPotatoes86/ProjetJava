@@ -57,7 +57,7 @@ public class Street extends Place{
 	
 	//----------------------Methods----------------------//
 	public void describe(){
-		System.out.println("Vous etes sur la rue " + this.name);
+		System.out.println("Vous etes au bout de la rue " + this.name);
 	}
 	
 	/**

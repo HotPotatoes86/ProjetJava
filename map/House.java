@@ -16,7 +16,7 @@ public class House extends Place{
 
 	//----------------------Attributes----------------------//
 	private NPC npc=null; // = la personne qui est dans la maison
-	private List<Item> inventoryHouse;
+	private List<Item> inventory;
 	
 	//----------------------Constructors----------------------//
 	/**
@@ -27,7 +27,8 @@ public class House extends Place{
 	 */
 	public House(String name) {
 		this.name = name;
-		this.inventoryHouse = this.ItemGenerator();
+		//this.inventory = this.ItemGenerator();
+		this.inventory = new ArrayList<Item>(this.itemGenerator());
 		if (Choice.randomChoice()){
 			if (Choice.randomChoice()){
 				this.npc = new Enemy(this.name);
@@ -40,8 +41,8 @@ public class House extends Place{
 	//----------------------Getters----------------------//
 	public Item getItem(Item i){
 		Item res = null;
-		if (this.inventoryHouse.contains(i)){
-			for (Item it : this.inventoryHouse){
+		if (this.inventory.contains(i)){
+			for (Item it : this.inventory){
 				if (it == i){
 					res = i;
 				}
@@ -51,7 +52,7 @@ public class House extends Place{
 	}
 		
 	public List<Item> getInventoryHouse() {
-		return inventoryHouse;
+		return inventory;
 	}
 
 	public NPC getNPC(){
@@ -64,7 +65,7 @@ public class House extends Place{
 	 * @param i item which will add to the list
 	 */
 	public void addItem(Item i){
-		this.inventoryHouse.add(i);
+		this.inventory.add(i);
 	}
 	
 	/**
@@ -72,15 +73,14 @@ public class House extends Place{
 	 * @param i the item we want to delete
 	 */
 	public void deleteItem(Item i){
-		if (this.inventoryHouse.contains(i)){
-			this.inventoryHouse.remove(i);
+		if (this.inventory.contains(i)){
+			this.inventory.remove(i);
 		}
 	}
 
 	public void describe(){
 		System.out.println("Maison de " + this.name);
 	}
-	
 
 	@Override
 	public boolean testdirection(String direction){
@@ -101,12 +101,13 @@ public class House extends Place{
 	 * display the elements (items) of the house's list
 	 */
 	public void displayItems(){
-		if (this.inventoryHouse.size() >0){
-			for(Item i : this.inventoryHouse){
+		if (!this.inventory.isEmpty()){
+			System.out.println("\nObjets dans la maison : ");
+			for(Item i : this.inventory){
 				System.out.println(i);
 			}
 		}else{
-			System.out.println("La maison ne contient pas d'objet");
+			System.out.println("\nLa maison ne contient pas d'objet");
 		}
 	}
 	
@@ -115,12 +116,12 @@ public class House extends Place{
 	 * choose randomly the number and the type of items in the house
 	 * @return the list of items in the house
 	 */
-	public List<Item> ItemGenerator(){
+	public List<Item> itemGenerator(){
 		List<Item> items = new ArrayList<>();
-		// nombre d'items, de 0 a 4
+		//number of items, 0 to 4
 		int nbItem = Choice.randomChoice(0,4);
 		for(int i=0; i<nbItem; i++){
-			//De 1 a 3 = type de l'objet
+			//1 to 3 = item's type
 			int typeItem = Choice.randomChoice(1,3);
 			if (typeItem == 1){
 				items.add(Food.createFood());

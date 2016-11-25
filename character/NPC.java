@@ -8,6 +8,7 @@ import util.Name;
 
 public abstract class NPC {
 
+	//----------------------Attributes----------------------//
 	// Attributs en protected pour y avoir acces dans les classes filles
 	protected int HP = 100;
 	protected String name = "Villageois";
@@ -15,6 +16,33 @@ public abstract class NPC {
 	protected int attack;
 	protected ArrayList<Item> items; // Les objets sur le pnj
 
+	//----------------------Getters----------------------//
+	public String getName(){
+		return this.name;
+	}
+	
+	/**
+	 * if the npc is still alive
+	 * @return the current status of the npc
+	 */
+	public boolean getStatus(){
+		return this.status;
+	}
+	
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+	
+	public int getAttack(){
+		return this.attack;
+	}
+	
+	//----------------------Setters----------------------//
+	public void setHP(int hp){
+		this.HP+=hp;
+	}
+	
+	//----------------------Methods----------------------//
 	public abstract void talk();
 	
 	/**
@@ -28,30 +56,6 @@ public abstract class NPC {
 		}else if (Choice.randomChoice()){
 			this.name = Name.generateName("donnees/Noms.txt",31);
 		}
-	}
-	
-	public String getName(){
-		return this.name;
-	}
-	
-	/**
-	 * if the npc is still alive
-	 * @return the current status of the npc
-	 */
-	public boolean getStatus(){
-		return this.status;
-	}
-
-	public ArrayList<Item> getItems() {
-		return items;
-	}
-	
-	public int getAttack(){
-		return this.attack;
-	}
-	
-	public void setHP(int hp){
-		this.HP+=hp;
 	}
 	
 	/**

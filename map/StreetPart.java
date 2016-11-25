@@ -38,9 +38,9 @@ public class StreetPart extends Place{
 				this.exits.put("house"+(i+1), 
 						new LockedExit(new Key((LockedExit)this.exits.get("house"+(i+1)),
 								this.houses[i].getName()),this.houses[i]));
-				//parcourir la liste des maisons exepté la maison dont on vien de créer la clé, et générer 
-				//la clé de cette maison dans la liste précédente. il faut s'assurer que le jeu n'est pas 
-				//bloqué en mettant au moins une clé dans une maison a simple porte ou a enigme
+				//parcourir la liste des maisons exeptï¿½ la maison dont on vien de crï¿½er la clï¿½, et gï¿½nï¿½rer 
+				//la clï¿½ de cette maison dans la liste prï¿½cï¿½dente. il faut s'assurer que le jeu n'est pas 
+				//bloquï¿½ en mettant au moins une clï¿½ dans une maison a simple porte ou a enigme
 			}else{
 				//here the type of exit is choosed randomly
 				int alea = Choice.randomChoice(0, 2);
@@ -63,10 +63,8 @@ public class StreetPart extends Place{
 	 * describe the 2 houses of the StreetPart
 	 */
 	public void describe(){
-		System.out.print("House 1 : ");
-		this.houses[0].describe();
-		System.out.print("House 2 : ");
-		this.houses[1].describe();
+		System.out.print("House 1 : Maison de " + this.houses[0].getName());
+		System.out.print("House 2 : Maison de " + this.houses[1].getName());
 	}
 	
 	public House[] getHouses(){
