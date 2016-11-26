@@ -87,7 +87,7 @@ public class Street extends Place{
 		List<Exit> l = new ArrayList<>();
 		for (int i=0; i<this.nbStreetPart; i++){
 			// if list is not empty
-			if (!this.testSimpleExit){
+			if (!testSimpleExit){
 				if (!((StreetPart)this.parts[i]).getSimpleExit().isEmpty()){
 					// we add all simple exit of the streetpart
 					for (Exit e : ((StreetPart)this.parts[i]).getSimpleExit()){
@@ -106,7 +106,7 @@ public class Street extends Place{
 			}
 		}
 		// it's okay, a key is in a simple exit
-		if (!this.testSimpleExit) this.testSimpleExit = true;
+		if (!testSimpleExit) testSimpleExit = true;
 		// we choose a random exit in the list with a counter
 		int cpt = Choice.randomChoice(0, l.size()-1);
 		for (Exit e : l){
