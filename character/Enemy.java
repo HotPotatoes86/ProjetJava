@@ -11,14 +11,19 @@ public class Enemy extends NPC {
 	public Enemy(String name) {
 		this.chooseName(name);
 		//attack between 10 and 25
-		this.attack = Choice.randomChoice(10, 25);
+		this.attack = Choice.randomChoice(3, 10);
+		//this.item = randomitem;
 	}
 	
 	/**
 	 * display a simple string
 	 */
-	public void talk(){
+	public void describe(){
 		System.out.println(this.name + " : Bonjour je suis un PNJ mechant");
+	}
+	
+	public void talk(Hero hero){
+		System.out.println("Le pnj refuse de vous parler.");
 	}
 	
 	/**

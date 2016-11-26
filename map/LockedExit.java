@@ -15,10 +15,6 @@ public class LockedExit extends Exit {
 	}
 	
 	//----------------------Getters----------------------//
-	public Place getPlace(){
-		return this.place;
-	}
-	
 	public Key getKey(){
 		return this.key;
 	}

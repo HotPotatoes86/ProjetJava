@@ -1,5 +1,9 @@
 package map;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import item.Key;
 import util.Choice;
 
 public class Street extends Place{
@@ -18,11 +22,11 @@ public class Street extends Place{
 		int partSimpleExit = Choice.randomChoice(0, partLockedExit-1);
 		for (int i=0; i<this.nbStreetPart; i++){
 			if (i == partLockedExit){
-				this.parts[i] = new StreetPart(("s"+i),2);	// need a locked exit
+				this.parts[i] = new StreetPart(this,("s"+i),2);	// need a locked exit
 			}else if (i == partSimpleExit){
-				this.parts[i] = new StreetPart(("s"+i),1);	// need a simple exit
+				this.parts[i] = new StreetPart(this,("s"+i),1);	// need a simple exit
 			}else{
-				this.parts[i] = new StreetPart(("s"+i),0);
+				this.parts[i] = new StreetPart(this,("s"+i),0);	// need nothing
 			}
 		}
 		this.parts[0].addExit("backward", this);
@@ -69,5 +73,34 @@ public class Street extends Place{
 	public void addExit1(String cmd, Place p){
 		this.parts[this.nbStreetPart-1].addExit(cmd, p);
 	}
+	
+	/**
+	 * generate the key in a random house with no locked exit
+	 * @param k the key we want put in a random house
+	 */
+	public void generatePlaceKey(Key k){
+		Exit res = null;
+		List<Exit> l = new ArrayList<>();
+		for (int i=0; i<this.nbStreetPart; i++){
+			// if list is not empty
+			if (!((StreetPart)this.parts[i]).getSimpleExit().isEmpty()){
+				for (Exit e : ((StreetPart)this.parts[i]).getSimpleExit()){
+					l.add(e);
+				}
+			}
+		}
+		int cpt = Choice.randomChoice(0, l.size()-1);
+		for (Exit e : l){
+			if (cpt==0){
+				res = e;
+				break;
+			}else{
+				cpt--;
+			}
+		}
+		((House)res.getPlace()).addItem(k);
+	}
 
+	
+	
 }

@@ -12,8 +12,8 @@ public abstract class Exit {
 		}else if(this.place instanceof House){
 			System.out.println("Vous rentrez dans la maison de " + this.place.getName());
 			if (((House)this.place).getNPC() != null){
-				System.out.println("\nVous rencontrez " + ((House)this.place).getNPC().getName());
-				((House)this.place).getNPC().talk();
+				System.out.println("\nVous rencontrez " + ((House)this.place).getNPC().getName() + "\n");
+				((House)this.place).getNPC().describe();
 			}else{
 				System.out.println("Il n'y a personne...");
 			}
@@ -23,6 +23,8 @@ public abstract class Exit {
 		return true;
 	}
 	
-	public abstract Place getPlace();
+	public Place getPlace(){
+		return this.place;
+	}
 		
 }
