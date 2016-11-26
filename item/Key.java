@@ -17,6 +17,9 @@ public class Key{
 		return i;
 	}
 
+	public LockedExit getLockedExit(){
+		return this.exit;
+	}
 		
 	public void setLockedExit(LockedExit e){
 		this.exit = e;

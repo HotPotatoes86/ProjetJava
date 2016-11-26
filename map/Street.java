@@ -95,10 +95,14 @@ public class Street extends Place{
 					}
 				}
 			}else{
-				for (int j=0; j<2; j++){
+				// test if the key is the key of the exit 
+				// we don't put the key in the house that is locked with this key
+				if (!((LockedExit)((StreetPart)this.parts[i]).getExit("house1")).equals(k.getLockedExit())){
 					l.add(((StreetPart)this.parts[i]).getExit("house1"));
-					l.add(((StreetPart)this.parts[i]).getExit("house2"));
 				}
+				if (!((LockedExit)((StreetPart)this.parts[i]).getExit("house2")).equals(k.getLockedExit())){
+					l.add(((StreetPart)this.parts[i]).getExit("house2"));
+				}			
 			}
 		}
 		// it's okay, a key is in a simple exit
