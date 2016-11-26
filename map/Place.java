@@ -8,18 +8,7 @@ public abstract class Place{
 	protected String name;
 	protected HashMap<String,Exit> exits = new HashMap<>();
 	
-	//----------------------Methods----------------------//
-	public abstract void describe();
-	
-	/**
-	 * create an exit from the place to another place
-	 * @param cmd direction given by the user
-	 * @param p direction of the exit
-	 */
-	public void addExit(String cmd,Place p){
-		this.exits.put(cmd, new SimpleExit(p));
-	}
-	
+	//----------------------Getters----------------------//
 	/**
 	 * getter of exit
 	 * @param s key of the exit we want
@@ -37,6 +26,33 @@ public abstract class Place{
 	
 	public String getName(){
 		return this.name;
+	}
+	
+	/**
+	 * return the place in the direction by searching in the list of exit of the place
+	 * @param direction direction of the place
+	 * @return the place in the direction
+	 */
+	public Place getNextPlace(String direction){
+		Place p = null;
+		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
+			if (e.getKey().equals(direction)){
+				p = e.getValue().getPlace();
+			}
+		}
+		return p;
+	}
+	
+	//----------------------Methods----------------------//
+	public abstract void describe();
+	
+	/**
+	 * create an exit from the place to another place
+	 * @param cmd direction given by the user
+	 * @param p direction of the exit
+	 */
+	public void addExit(String cmd,Place p){
+		this.exits.put(cmd, new SimpleExit(p));
 	}
 	
 	/**
@@ -64,7 +80,7 @@ public abstract class Place{
 	}
 	
 	/**
-	 * use the exit which have the same key
+	 * use the exit which have the same key (difference with testdirection : we test if we can use the exit)
 	 * @param direction direction you want to go (example : forward)
 	 * @return true if the hero can go to the direction
 	 */
@@ -76,20 +92,5 @@ public abstract class Place{
 			}
 		}
 		return test;
-	}
-	
-	/**
-	 * return the place in the direction by searching in the list of exit of the place
-	 * @param direction direction of the place
-	 * @return the place in the direction
-	 */
-	public Place getNextPlace(String direction){
-		Place p = null;
-		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
-			if (e.getKey().equals(direction)){
-				p = e.getValue().getPlace();
-			}
-		}
-		return p;
 	}
 }

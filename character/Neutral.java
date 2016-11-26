@@ -17,7 +17,7 @@ public class Neutral extends NPC {
 	public void talk(Hero hero){
 		if (this.item != null){
 			ConsoleInput scanner = new ConsoleInput();
-			System.out.println("Voulez-vous " + this.item.toString());
+			System.out.println("Voulez-vous " + this.item.toString() + " ?");
 			String choice = scanner.stringScan();
 			if (choice.equals("yes") || choice.equals("oui")){
 				System.out.println("Tres bien ! Le voici !");

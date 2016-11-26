@@ -11,6 +11,8 @@ public class Street extends Place{
 	//----------------------Attributes----------------------//
 	private int nbStreetPart;
 	private Place[] parts;
+	// test if there're a key in a simple exit (to don't block the player)
+	private static boolean testSimpleExit = false;
 
 	//----------------------Constructors----------------------//
 	public Street(String name, int nb) {
@@ -80,15 +82,28 @@ public class Street extends Place{
 	 */
 	public void generatePlaceKey(Key k){
 		Exit res = null;
+		// we add all exit in the street in a list and we choice a random exit in this list
+		// next we add the key in the house linked with the exit
 		List<Exit> l = new ArrayList<>();
 		for (int i=0; i<this.nbStreetPart; i++){
 			// if list is not empty
-			if (!((StreetPart)this.parts[i]).getSimpleExit().isEmpty()){
-				for (Exit e : ((StreetPart)this.parts[i]).getSimpleExit()){
-					l.add(e);
+			if (!this.testSimpleExit){
+				if (!((StreetPart)this.parts[i]).getSimpleExit().isEmpty()){
+					// we add all simple exit of the streetpart
+					for (Exit e : ((StreetPart)this.parts[i]).getSimpleExit()){
+						l.add(e);
+					}
+				}
+			}else{
+				for (int j=0; j<2; j++){
+					l.add(((StreetPart)this.parts[i]).getExit("house1"));
+					l.add(((StreetPart)this.parts[i]).getExit("house2"));
 				}
 			}
 		}
+		// it's okay, a key is in a simple exit
+		if (!this.testSimpleExit) this.testSimpleExit = true;
+		// we choose a random exit in the list with a counter
 		int cpt = Choice.randomChoice(0, l.size()-1);
 		for (Exit e : l){
 			if (cpt==0){
