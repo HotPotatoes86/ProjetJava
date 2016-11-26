@@ -28,11 +28,11 @@ public class EnigmaExit extends Exit{
 			res = scanner.intScan();
 			while(res != 00 && res != val){
 				System.out.println("Incorrect");
-				System.out.println("Veuillez saisir une autre réponse");
+				System.out.println("Veuillez saisir une autre reponse");
 				res = scanner.intScan();
 			}
 			if (res==val){
-				System.out.println("TADAAAM réponse correcte !");
+				System.out.println("TADAAAM reponse correcte !");
 				this.status = false;
 			}
 		}
@@ -50,7 +50,7 @@ public class EnigmaExit extends Exit{
 			return super.use();
 		}
 		else{
-			System.out.println("Vous devez résoudre une enigme (0 pour abandonner)");
+			System.out.println("Vous devez resoudre une enigme (0 pour abandonner)");
 			int x = Choice.randomChoice(0, 10);
 			int y = Choice.randomChoice(0, 15);
 			System.out.println(x + "*" + y + " = ?");

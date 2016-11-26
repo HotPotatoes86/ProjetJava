@@ -39,21 +39,13 @@ public class StreetPart extends Place{
 			if (test==1 && i==0){
 				this.addExit("house"+(i+1),this.houses[i]);
 			}else if (test==2 && i==0){
-<<<<<<< HEAD
-				this.exits.put("house"+(i+1), 
-						new LockedExit(new Key((LockedExit)this.exits.get("house"+(i+1)),
-								this.houses[i].getName()),this.houses[i]));
-				//parcourir la liste des maisons exeptees la maison dont on vient de creer la cle, et generer 
-				//la cle de cette maison dans la liste precedente. il faut s'assurer que le jeu n'est pas 
-				//bloque en mettant au moins une cle dans une maison a simple porte ou a enigme
-=======
 				//Locked Exit (with a key)
 				Key k = new Key(Map.nbKeys);
 				Map.nbKeys++;
 				Exit e = new LockedExit(k,this.houses[i]);
 				k.setLockedExit((LockedExit)e);
 				this.exits.put("house"+(i+1), e);
->>>>>>> origin/master
+				s.generatePlaceKey(k);
 			}else{
 				//here the type of exit is choosed randomly
 				int alea = Choice.randomChoice(0, 2);

@@ -3,7 +3,7 @@ package item;
 import character.Hero;
 import map.LockedExit;
 
-public class Key implements Item{
+public class Key{
 
 	private LockedExit exit;
 	private int id;
@@ -12,15 +12,14 @@ public class Key implements Item{
 		this.id = id;
 	}
 	
-<<<<<<< HEAD
 	public int testItem(){
 		int i = 0;
-	
 		return i;
-=======
+	}
+
+		
 	public void setLockedExit(LockedExit e){
 		this.exit = e;
->>>>>>> origin/master
 	}
 	
 	public void use(LockedExit e){
@@ -33,18 +32,16 @@ public class Key implements Item{
 		}
 	}
 	
-	
-<<<<<<< HEAD
-	public String getName() {
-		return name;
+	public int getId() {
+		return id;
 	}
 
 	public void use(Hero hero){
-		System.out.println("Vous devez utiliser la clé sur une porte");
-=======
+		System.out.println("Vous devez utiliser la clï¿½ sur une porte");
+	}
+	
 	public void use(){
 		System.out.println("Vous devez utiliser la cle sur une porte");
->>>>>>> origin/master
 	}
 	
 	public void use(Item item, Hero hero){
