@@ -9,6 +9,8 @@ public class Map {
 	private int nbStreet;
 	private Place[] streets;
 	
+	public static int nbKeys=0;
+	
 	//----------------------Constructors----------------------//
 	public Map(int nbStreet) {
 		this.nbStreet = nbStreet;

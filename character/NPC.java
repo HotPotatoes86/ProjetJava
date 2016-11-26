@@ -1,7 +1,5 @@
 package character;
 
-import java.util.ArrayList;
-
 import item.Item;
 import util.Choice;
 import util.Name;
@@ -9,12 +7,12 @@ import util.Name;
 public abstract class NPC {
 
 	//----------------------Attributes----------------------//
-	// Attributs en protected pour y avoir acces dans les classes filles
+	// protected attributes to have access in the class enemy and neutral
 	protected int HP = 100;
 	protected String name = "Villageois";
-	protected boolean status = true; //V : En vie - F : Mort
+	protected boolean status = true; //true = alive / false = dead (or absent)
 	protected int attack;
-	protected ArrayList<Item> items; // Les objets sur le pnj
+	protected Item item;	// NPC can only have 0 or 1 item
 
 	//----------------------Getters----------------------//
 	public String getName(){
@@ -29,8 +27,8 @@ public abstract class NPC {
 		return this.status;
 	}
 	
-	public ArrayList<Item> getItems() {
-		return items;
+	public Item getItem() {
+		return item;
 	}
 	
 	public int getAttack(){
@@ -43,7 +41,9 @@ public abstract class NPC {
 	}
 	
 	//----------------------Methods----------------------//
-	public abstract void talk();
+	public abstract void talk(Hero hero);
+	
+	public abstract void describe();
 	
 	/**
 	 * generate the name randomly the name of the NPC

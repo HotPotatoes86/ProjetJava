@@ -6,17 +6,21 @@ import map.LockedExit;
 public class Key implements Item{
 
 	private LockedExit exit;
-	private String name;
+	private int id;
 	
-	public Key(LockedExit e, String n){
-		this.exit = e;
-		this.name = n;
+	public Key(int id){
+		this.id = id;
 	}
 	
+<<<<<<< HEAD
 	public int testItem(){
 		int i = 0;
 	
 		return i;
+=======
+	public void setLockedExit(LockedExit e){
+		this.exit = e;
+>>>>>>> origin/master
 	}
 	
 	public void use(LockedExit e){
@@ -25,17 +29,22 @@ public class Key implements Item{
 			this.exit.unlock();
 			System.out.println("Vous ouvrez la porte");
 		}else{
-			System.out.println("Cette clé ne fonctionne pas sur cette porte");
+			System.out.println("Cette cle ne fonctionne pas sur cette porte");
 		}
 	}
 	
 	
+<<<<<<< HEAD
 	public String getName() {
 		return name;
 	}
 
 	public void use(Hero hero){
 		System.out.println("Vous devez utiliser la clé sur une porte");
+=======
+	public void use(){
+		System.out.println("Vous devez utiliser la cle sur une porte");
+>>>>>>> origin/master
 	}
 	
 	public void use(Item item, Hero hero){

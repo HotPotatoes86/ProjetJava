@@ -16,11 +16,6 @@ public class EnigmaExit extends Exit{
 		this.place = p;
 	}
 	
-	//----------------------Getters----------------------//
-	public Place getPlace(){
-		return this.place;
-	}
-	
 	//----------------------Methods----------------------//
 	/**
 	 * unlock the exit if the user find the correct answer

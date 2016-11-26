@@ -2,8 +2,6 @@ package util;
 
 import java.util.Scanner;
 
-import command.Command;
-
 public class ConsoleInput implements UserInput{
 	
 	Scanner scanner;

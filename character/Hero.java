@@ -10,6 +10,7 @@ import item.Item;
 import item.Weapon;
 import map.House;
 import map.Place;
+import util.ConsoleInput;
 
 public class Hero {
 
@@ -194,13 +195,17 @@ public class Hero {
 			if (!npc.getStatus()){
 				//npc is dead, hero pick up his items
 				try{
-					for (Item i : npc.getItems()){
-						//choose items to pick up
-						this.pickUpItem(i, npc.getItems());
+					if (npc.item != null){
+						ConsoleInput scanner = new ConsoleInput();
+						System.out.println("Voulez-vous " + npc.item.toString());
+						String choice = scanner.stringScan();
+						if (choice.equals("yes") || choice.equals("oui")){
+							this.pickUpItem(npc.item);
+						}
 					}
 				}
 				catch (Exception e){
-					System.out.println("Pas d'objets :(");
+					System.out.println("Le PNJ ne possedait pas d'objets :(");
 				}
 			}
 			//if npc is still alive, he attacks
