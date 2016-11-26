@@ -58,7 +58,7 @@ public class Drink implements Item {
 	}*/
 	
 	
-	/*public Drink convertToDrink(Item item){
+	public Drink convertToDrink(Item item){
 		Drink d = null;
 		TypeDrink[] tabDrink = TypeDrink.values();
 		for(int i=0; i<tabDrink.length; i++){
@@ -67,11 +67,11 @@ public class Drink implements Item {
 			}
 		}
 		return d;
-	}*/
+	}
 	
 	public void use(Hero hero){
 		if(this.testItem()==2){			
-			hero.setAlcoholLevel(this.tDrink.getAlcoholLevel());
+			hero.setAlcoholLevel(convertToDrink(this).tDrink.getAlcoholLevel());
 			hero.getInventory().remove(this);
 		}
 	}

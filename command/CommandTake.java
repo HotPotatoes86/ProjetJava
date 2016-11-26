@@ -1,18 +1,19 @@
 package command;
 
-import java.util.List;
-
 import character.Hero;
-import item.Item;
+import map.House;
 
 public class CommandTake {
-	//a tester ... il faut peut etre mettre l'inventaire d'une maison a la place de chest ...
-	public static void use(Hero hero, List<Item> chest, String item){
-		for(int i=0; i<chest.size(); i++){
-			if(chest.get(i).toString().equals(item)){
-				hero.pickUpItem(chest.get(i), chest);
+	
+	public static void use(Hero hero, String item){
+		if(hero.getPlace() instanceof House){
+			House h = ((House)hero.getPlace());
+			for(int i=0; i<h.getInventory().size();i++){
+				if(h.getInventory().get(i).toString().equals(item)){
+					hero.pickUpItem(h.getInventory().get(i), h.getInventory());
+				}
 			}
-		}		
+		}
 	}
 	
 	

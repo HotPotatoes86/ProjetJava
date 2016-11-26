@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import item.Drink;
 import item.Food;
 import item.Item;
 import item.Weapon;
@@ -13,7 +14,7 @@ import map.Place;
 public class Hero {
 
 	//----------------------Attributes----------------------//
-	private int hp = 100; //si on mange on regagne des hp
+	private int hp = 95; //si on mange on regagne des hp
 	private int attack = 10; //si on boit on fait plus de degat
 	private int alcoholLevel = 15; //si on boit, le niveau d'alcool monte, si on atteint 100 = coma
 	private List<Item> inventory;
@@ -30,8 +31,10 @@ public class Hero {
 	public Hero(Place p) {
 		this.actualPlace = p;
 		this.inventory = new ArrayList<>(INVENTORYSIZE);
+		this.inventory.add(new Food("apple"));
 		this.inventory.add(new Weapon("knife"));
 		this.inventory.add(new Food("apple"));
+		this.inventory.add(new Drink("beer"));
 	}
 	
 	//----------------------Getters----------------------//
@@ -71,7 +74,7 @@ public class Hero {
 	}
 
 	public void setHp(int hpSup){
-		this.hp += hpSup;
+		this.hp = hpSup;
 	}
 
 	public void setAlcoholLevel(int alcoholSup){
@@ -279,6 +282,7 @@ public class Hero {
 	}
 	
 	public void unequip(){
+		System.out.println("blblb");
 		this.attack -= this.weapon.addAttack();
 		if(this.isFull()){
 			deleteItem(this.weapon);

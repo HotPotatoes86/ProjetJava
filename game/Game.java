@@ -170,6 +170,7 @@ public class Game {
 			    		CommandStatus.use(hero);
 			    		break;
 			    	case TAKE:
+			    		CommandTake.use(hero, parts[1]);
 			    		break;
 			    	case TALK:
 			    		CommandTalk.use(hero);
@@ -182,6 +183,7 @@ public class Game {
 			    		}
 			    		break;
 			    	case UNEQUIP:
+			    		CommandUnequip.use(hero);
 			    		break;
 			    	default: break;
 		    	}

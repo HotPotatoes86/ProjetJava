@@ -57,7 +57,7 @@ public class Food implements Item {
 		return test;
 	}*/
 	
-	/*public Food convertToFood(Item item){
+	public Food convertToFood(Item item){
 		Food f = null;
 		TypeFood[] tabFood = TypeFood.values();
 		for(int i=0; i<tabFood.length; i++){
@@ -66,17 +66,17 @@ public class Food implements Item {
 			}
 		}
 		return f;
-	}*/
+	}
 	
 	public void use(Hero hero){
 		if(this.testItem()==1){	
 			if(hero.getHp()==100){
 				System.out.println("Vous n'avez pas besoin de manger, votre vie est au maximum");
 			}else if (hero.getHp()<100){
-				if(hero.getHp() + this.tFood.getHp() > 100){
+				if(hero.getHp() + convertToFood(this).tFood.getHp() > 100){
 					hero.setHp(100);
 				}else{
-					hero.setHp(this.tFood.getHp());					
+					hero.setHp(hero.getHp() + convertToFood(this).tFood.getHp());					
 				}
 				hero.getInventory().remove(this);
 			}

@@ -20,8 +20,8 @@ public enum TypeWeapon {
 		return attack;
 	}
 
-	public void setAttack(int attack) {
+	/*public void setAttack(int attack) {
 		this.attack = attack;
-	}
+	}*/
 	
 }

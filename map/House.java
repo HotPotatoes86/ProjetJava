@@ -51,7 +51,7 @@ public class House extends Place{
 		return res;
 	}
 		
-	public List<Item> getInventoryHouse() {
+	public List<Item> getInventory() {
 		return inventory;
 	}
 

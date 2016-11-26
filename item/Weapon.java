@@ -56,7 +56,7 @@ public class Weapon implements Item {
 		return test;
 	}*/
 	
-	/*public Weapon convertToWeapon(Item item){
+	public Weapon convertToWeapon(Item item){
 		Weapon w = null;
 		TypeWeapon[] tabWeapon = TypeWeapon.values();
 		for(int i=0; i<tabWeapon.length; i++){
@@ -65,14 +65,14 @@ public class Weapon implements Item {
 			}
 		}
 		return w;
-	}	*/
+	}	
 		
 	public void use(Hero hero){
 		if(this.testItem()==3){			
 			if(hero.getWeapon() != null){
 				hero.unequip();
 			}
-			hero.setAttack(this.tWeapon.getAttack());
+			hero.setAttack(convertToWeapon(this).tWeapon.getAttack());
 			hero.setWeapon(this);
 			hero.getInventory().remove(this);
 		}
@@ -103,7 +103,15 @@ public class Weapon implements Item {
 	}
 	
 	public int addAttack(){	//pour utiliser objet
-		return this.tWeapon.getAttack();
+		int att = 0;
+		TypeWeapon[] tabWeapon = TypeWeapon.values();
+		for(int i=0; i<tabWeapon.length; i++){
+			if(this.toString().equals(tabWeapon[i].toString().toLowerCase())){
+				att = tabWeapon[i].getAttack();
+			}
+		}
+		
+		return att;
 	}
 
 	public String getName() {
