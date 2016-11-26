@@ -31,6 +31,12 @@ public class Street extends Place{
 				this.parts[i] = new StreetPart(this,("s"+i),0);	// need nothing
 			}
 		}
+		// add keys in random houses
+		for (int i=0; i<this.nbStreetPart; i++){
+			for (Key k : ((StreetPart)this.parts[i]).getKeys()){
+				this.generatePlaceKey(k);
+			}
+		}
 		this.parts[0].addExit("backward", this);
 		for (int j=0; j<this.nbStreetPart; j++){
 			// add exit to the near streetparts
@@ -97,18 +103,27 @@ public class Street extends Place{
 			}else{
 				// test if the key is the key of the exit 
 				// we don't put the key in the house that is locked with this key
-				if (!((LockedExit)((StreetPart)this.parts[i]).getExit("house1")).equals(k.getLockedExit())){
+				if (((StreetPart)this.parts[i]).getExit("house1") instanceof LockedExit){
+					if (!((LockedExit)((StreetPart)this.parts[i]).getExit("house1")).equals(k.getLockedExit())){
+						l.add(((StreetPart)this.parts[i]).getExit("house1"));
+					}
+				}else{
 					l.add(((StreetPart)this.parts[i]).getExit("house1"));
 				}
-				if (!((LockedExit)((StreetPart)this.parts[i]).getExit("house2")).equals(k.getLockedExit())){
+				if (((StreetPart)this.parts[i]).getExit("house2") instanceof LockedExit){
+					if (!((LockedExit)((StreetPart)this.parts[i]).getExit("house2")).equals(k.getLockedExit())){
+						l.add(((StreetPart)this.parts[i]).getExit("house2"));
+					}
+				}else{
 					l.add(((StreetPart)this.parts[i]).getExit("house2"));
-				}			
+				}
 			}
 		}
 		// it's okay, a key is in a simple exit
 		if (!testSimpleExit) testSimpleExit = true;
 		// we choose a random exit in the list with a counter
-		int cpt = Choice.randomChoice(0, l.size()-1);
+		int cpt = 0;
+		if (l.size() > 0) cpt = Choice.randomChoice(0, l.size()-1);
 		for (Exit e : l){
 			if (cpt==0){
 				res = e;

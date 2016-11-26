@@ -127,7 +127,7 @@ public class House extends Place{
 				items.add(Food.createFood());
 			}else if(typeItem == 2){
 				items.add(Drink.createDrink());
-			}else if(typeItem == 3){
+			}else{
 				items.add(Weapon.createWeapon());
 			}
 		}

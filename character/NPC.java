@@ -1,6 +1,9 @@
 package character;
 
+import item.Drink;
+import item.Food;
 import item.Item;
+import item.Weapon;
 import util.Choice;
 import util.Name;
 
@@ -12,7 +15,7 @@ public abstract class NPC {
 	protected String name = "Villageois";
 	protected boolean status = true; //true = alive / false = dead (or absent)
 	protected int attack;
-	protected Item item;	// NPC can only have 0 or 1 item
+	protected Item item = itemGenerator();	// NPC can only have 0 or 1 item
 
 	//----------------------Getters----------------------//
 	public String getName(){
@@ -71,5 +74,20 @@ public abstract class NPC {
 		}else{
 			System.out.println("Il lui reste " + this.HP + "HP");
 		}
+	}
+	
+	public Item itemGenerator(){
+		Item item = null;
+		if(Choice.randomChoice()){
+			int typeItem = Choice.randomChoice(1, 3);
+			if(typeItem == 1){
+				item = Food.createFood();
+			}else if(typeItem == 2){
+				item = Drink.createDrink();
+			}else{
+				item = Weapon.createWeapon();
+			}
+		}
+		return item;
 	}
 }

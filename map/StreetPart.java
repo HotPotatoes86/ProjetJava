@@ -1,6 +1,7 @@
 package map;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import item.Key;
 import util.Choice;
@@ -14,7 +15,9 @@ public class StreetPart extends Place{
 	 */
 	private House[] houses;
 	
-	private ArrayList<Exit> simpleExits;
+	private ArrayList<Exit> simpleExits = new ArrayList<>();
+	
+	private ArrayList<Key> keys = new ArrayList<>();
 
 	
 	//----------------------Constructors----------------------//
@@ -26,7 +29,6 @@ public class StreetPart extends Place{
 	public StreetPart(Street s, String name, int test) {
 		this.name = name;
 		this.houses = new House[2];
-		this.simpleExits = new ArrayList<>();
 		for (int i=0; i<2; i++){
 			//1/2 chance
 			if (Choice.randomChoice()){
@@ -45,7 +47,7 @@ public class StreetPart extends Place{
 				Exit e = new LockedExit(k,this.houses[i]);
 				k.setLockedExit((LockedExit)e);
 				this.exits.put("house"+(i+1), e);
-				s.generatePlaceKey(k);
+				keys.add(k);
 			}else{
 				//here the type of exit is choosed randomly
 				int alea = Choice.randomChoice(0, 2);
@@ -60,11 +62,12 @@ public class StreetPart extends Place{
 					Exit e = new LockedExit(k,this.houses[i]);
 					k.setLockedExit((LockedExit)e);
 					this.exits.put("house"+(i+1), e);
-					s.generatePlaceKey(k);
+					keys.add(k);
 				}
 			}
 			this.houses[i].addExit("street",this);
 		}
+		this.generateListSimpleExit();
 	}
 	
 	//----------------------Methods----------------------//
@@ -76,12 +79,24 @@ public class StreetPart extends Place{
 		System.out.print("House 2 : Maison de " + this.houses[1].getName());
 	}
 	
+	public void generateListSimpleExit(){
+		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
+			if (!(e.getValue() instanceof LockedExit)){
+				this.simpleExits.add(e.getValue());
+			}
+		}
+	}
+	
 	public House[] getHouses(){
 		return this.houses;
 	}
 	
 	public ArrayList<Exit> getSimpleExit(){
 		return this.simpleExits;
+	}
+	
+	public ArrayList<Key> getKeys(){
+		return this.keys;
 	}
 
 }

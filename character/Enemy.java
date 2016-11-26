@@ -12,7 +12,6 @@ public class Enemy extends NPC {
 		this.chooseName(name);
 		//attack between 10 and 25
 		this.attack = Choice.randomChoice(3, 10);
-		//this.item = randomitem;
 	}
 	
 	/**

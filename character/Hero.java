@@ -200,7 +200,7 @@ public class Hero {
 						System.out.println("Voulez-vous " + npc.item.toString());
 						String choice = scanner.stringScan();
 						if (choice.equals("yes") || choice.equals("oui")){
-							this.pickUpItem(npc.item);
+							this.pickUpItem(npc.getItem());
 						}
 					}
 				}
@@ -234,7 +234,7 @@ public class Hero {
 	public void talk(){
 		if (this.actualPlace instanceof House){
 			if (((House)this.actualPlace).getNPC() != null){
-				((House)this.actualPlace).getNPC().talk();
+				((House)this.actualPlace).getNPC().talk(this);
 			}else{
 				System.out.println("Vous parlez tout seul");
 			}
@@ -253,6 +253,14 @@ public class Hero {
 			chest.remove(item);
 		}else{
 			System.out.println("Votre inventaire est plein, veuillez jeter un objet avant dans ramasser un nouveau");
+		}
+	}
+	
+	public void pickUpItem(Item item){
+		if(this.inventory.size()<INVENTORYSIZE){
+			this.inventory.add(item);
+		}else{
+			System.out.println("Votre inventaire est plein, l'object est detruit");
 		}
 	}
 	

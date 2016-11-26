@@ -3,13 +3,15 @@ package item;
 import character.Hero;
 import map.LockedExit;
 
-public class Key{
+public class Key implements Item{
 
 	private LockedExit exit;
 	private int id;
+	private String name;
 	
 	public Key(int id){
 		this.id = id;
+		this.name = "key" + id;
 	}
 	
 	public int testItem(){
@@ -38,6 +40,10 @@ public class Key{
 	public int getId() {
 		return id;
 	}
+	
+	public String getName() {
+		return name;
+	}
 
 	public void use(Hero hero){
 		System.out.println("Vous devez utiliser la cl� sur une porte");
@@ -50,4 +56,10 @@ public class Key{
 	public void use(Item item, Hero hero){
 		
 	}
+	
+	@Override
+	public String toString() {
+		return name ;
+	}	
+	
 }
