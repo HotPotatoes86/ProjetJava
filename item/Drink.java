@@ -69,30 +69,32 @@ public class Drink implements Item {
 		return d;
 	}
 	
-	public void use(Hero hero){
-		if(this.testItem()==2){			
-			hero.setAlcoholLevel(convertToDrink(this).tDrink.getAlcoholLevel());
-			hero.getInventory().remove(this);
+	public void use(Object obj){
+		if(this.testItem()==2 && obj instanceof Hero){	
+			((Hero)obj).setAlcoholLevel(convertToDrink(this).tDrink.getAlcoholLevel());
+			((Hero)obj).getInventory().remove(this);
 		}
 	}
 	
-	public void use(Item item, Hero hero){
-		if(this.testItem()==2 && item.testItem()==2){
-			if(this.toString().equals("energydrink") && item.toString().equals("jagermeister")  || this.toString().equals("jagermeister") && item.toString().equals("energydrink")){
-				hero.getInventory().remove(this);
-				hero.getInventory().remove(item);
-				hero.getInventory().add(new Drink("jagerbomb"));
-			}else if(this.toString().equals("energydrink") && item.toString().equals("vodka")  || this.toString().equals("vodka") && item.toString().equals("energydrink")){
-				hero.getInventory().remove(this);
-				hero.getInventory().remove(item);
-				hero.getInventory().add(new Drink("vodkaenergy"));
-			}else if(!this.toString().equals("energydrink") && !item.toString().equals("energydrink")){
-				hero.getInventory().remove(this);
-				hero.getInventory().remove(item);
-				hero.getInventory().add(new Drink("gnole"));
-			}else{
-				System.out.println("energydrink ne peut etre combiner uniquement avec vodka et jagermeister");
-			}					
+	public void use(Object obj1, Object obj2){ //obj1 = item & obj2 = hero
+		if(obj1 instanceof Item && obj2 instanceof Hero){
+			if(this.testItem()==2 && ((Item)obj1).testItem()==2){
+				if(this.toString().equals("energydrink") && ((Item)obj1).toString().equals("jagermeister")  || this.toString().equals("jagermeister") && ((Item)obj1).toString().equals("energydrink")){
+					((Hero)obj2).getInventory().remove(this);
+					((Hero)obj2).getInventory().remove((Item)obj1);
+					((Hero)obj2).getInventory().add(new Drink("jagerbomb"));
+				}else if(this.toString().equals("energydrink") && ((Item)obj1).toString().equals("vodka")  || this.toString().equals("vodka") && ((Item)obj1).toString().equals("energydrink")){
+					((Hero)obj2).getInventory().remove(this);
+					((Hero)obj2).getInventory().remove(((Item)obj1));
+					((Hero)obj2).getInventory().add(new Drink("vodkaenergy"));
+				}else if(!this.toString().equals("energydrink") && !((Item)obj1).toString().equals("energydrink")){
+					((Hero)obj2).getInventory().remove(this);
+					((Hero)obj2).getInventory().remove(((Item)obj1));
+					((Hero)obj2).getInventory().add(new Drink("gnole"));
+				}else{
+					System.out.println("energydrink ne peut etre combiner uniquement avec vodka et jagermeister");
+				}					
+			}
 		}
 	}
 

@@ -16,7 +16,7 @@ public class Name {
 	public static String generateName(String link, int line){
 		// Lire dans les donnees pour donner un nom a la rue
 		String name = "";
-		int cpt = line;
+		int cpt = Choice.randomChoice(1, line);
 		String fichier =link;
 					
 		try{

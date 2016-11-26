@@ -30,8 +30,8 @@ public class StreetPart extends Place{
 		this.name = name;
 		this.houses = new House[2];
 		for (int i=0; i<2; i++){
-			//1/2 chance
-			if (Choice.randomChoice()){
+			//1/4 chance
+			if (Choice.randomChoice() && Choice.randomChoice()){
 				this.houses[i] = new House("Inconnu");
 			}
 			else{		

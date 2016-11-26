@@ -36,6 +36,8 @@ public class Hero {
 		this.inventory.add(new Weapon("knife"));
 		this.inventory.add(new Food("apple"));
 		this.inventory.add(new Drink("beer"));
+		this.inventory.add(new Drink("vodka"));
+		this.inventory.add(new Weapon("stick"));
 	}
 	
 	//----------------------Getters----------------------//
@@ -295,7 +297,7 @@ public class Hero {
 	}
 	
 	public void unequip(){
-		System.out.println("blblb");
+		//System.out.println("blblb");
 		this.attack -= this.weapon.addAttack();
 		if(this.isFull()){
 			deleteItem(this.weapon);

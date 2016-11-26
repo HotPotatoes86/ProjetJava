@@ -27,16 +27,6 @@ public class Key implements Item{
 		this.exit = e;
 	}
 	
-	public void use(LockedExit e){
-		if (this.exit == e){
-			//remove key
-			this.exit.unlock();
-			System.out.println("Vous ouvrez la porte");
-		}else{
-			System.out.println("Cette cle ne fonctionne pas sur cette porte");
-		}
-	}
-	
 	public int getId() {
 		return id;
 	}
@@ -45,16 +35,22 @@ public class Key implements Item{
 		return name;
 	}
 
-	public void use(Hero hero){
-		System.out.println("Vous devez utiliser la cl� sur une porte");
-	}
-	
-	public void use(){
+	@Override
+	public void use(Object obj){
 		System.out.println("Vous devez utiliser la cle sur une porte");
 	}
 	
-	public void use(Item item, Hero hero){
-		
+	@Override
+	public void use(Object obj1, Object obj2){
+		if(obj1 instanceof LockedExit && obj2 instanceof Hero && this instanceof Key){
+			if(this.exit == ((LockedExit)obj1)){
+				//remove key
+				this.exit.unlock();
+				System.out.println("Vous ouvre la porte");
+			}else{
+				System.out.println("Cette cle ne fonctionne pas sur cette porte");
+			}
+		}
 	}
 	
 	@Override
