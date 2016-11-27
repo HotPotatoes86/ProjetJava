@@ -11,7 +11,8 @@ public enum Command {
 	TAKE(" : prend l'objet"),	
 	TALK(" : parle au pnj"),
 	USE(" : utilise un objet, permet les fusions"),
-	UNEQUIP(" : range l'arme dans l'inventaire s'il y a de la place");
+	UNEQUIP(" : range l'arme dans l'inventaire s'il y a de la place"),
+	DELETE(" : supprime l'objet de l'inventaire");
 	
 	private final String description; 
 

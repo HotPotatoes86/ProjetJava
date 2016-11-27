@@ -10,8 +10,7 @@ public enum TypeDrink {
 	JAGERMEISTER(10),
 	BEER(5),
 	ENERGYDRINK(0);
-	
-	
+		
 	private int alcoholLevel;
 
 	private TypeDrink(int alcoholLevel){
@@ -25,6 +24,5 @@ public enum TypeDrink {
 	public void setAlcoholLevel(int alcoholLevel) {
 		this.alcoholLevel = alcoholLevel;
 	}
-
 
 }

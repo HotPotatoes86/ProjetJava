@@ -246,29 +246,40 @@ public class Hero {
 	}
 	
 	/**
-	 * add item to the hero's inventory
+	 * add item from the list "chest" to the hero's inventory
 	 * @param item item which add to the inventory
 	 */
 	public void pickUpItem(Item item, List<Item> chest){ //on ramasse l'objet
 		if(this.inventory.size()<INVENTORYSIZE){
 			this.inventory.add(item);
+			System.out.println("Vous ramassez " +item.getName());
 			chest.remove(item);
 		}else{
 			System.out.println("Votre inventaire est plein, veuillez jeter un objet avant dans ramasser un nouveau");
 		}
 	}
 	
+	/**
+	 * add item (of PNJ) to the hero's inventory
+	 * @param item item which add to the inventory
+	 */
 	public void pickUpItem(Item item){
 		if(this.inventory.size()<INVENTORYSIZE){
 			this.inventory.add(item);
+			System.out.println("Vous recevez " +item.getName());
 		}else{
 			System.out.println("Votre inventaire est plein, l'object est detruit");
 		}
 	}
 	
+	/**
+	 * remove item to the hero's inventory
+	 * @param item item which remove to the inventory
+	 */
 	public void deleteItem(Item item){
 		if(this.inventory.size() > 0){
 			this.inventory.remove(item);
+			System.out.println("Vous supprimez " +item.getName());
 		}
 	}
 	
@@ -288,6 +299,10 @@ public class Hero {
 		}
 	}
 	
+	/**
+	 * test if hero's inventory is full
+	 * @return true if hero's inventory is full
+	 */
 	public boolean isFull(){
 		boolean full = false;
 		if(this.inventory.size() == INVENTORYSIZE){
@@ -296,12 +311,17 @@ public class Hero {
 		return full;
 	}
 	
+	/**
+	 * unequip hero's weapon
+	 */
 	public void unequip(){
 		//System.out.println("blblb");
 		this.attack -= this.weapon.addAttack();
 		if(this.isFull()){
+			System.out.println("Votre inventaire est plein, vous detruisez donc " +this.weapon.getName());
 			deleteItem(this.weapon);
 		}else{
+			System.out.println("Vous remettez " + this.weapon.getName() + " dans votre inventaire");
 			this.inventory.add(this.weapon);
 		}
 		this.weapon = null;
@@ -313,11 +333,34 @@ public class Hero {
 	 */
 	public void use(Item item){
 		//if the hero have the item
-		item.use(this);;
+		//boolean test = false;
+		/*if(this.inventory.contains(item)){
+			item.use(this);
+		}*/
+				
+		/*for(int i=0; i<this.inventory.size() && !test; i++){
+			if(this.inventory.get(i) == item){
+				this.inventory.get(i).use(this);
+				test = true;
+			}
+		}
+		if(!test){
+			System.out.println("Vous ne possedez pas cet objet");
+		}	*/	
+		item.use(this);
 	}
 	
+	/**
+	 * combine 2 items with the same type
+	 * @param item1 (drink, food, weapon)
+	 * @param item2 (drink, food, weapon)
+	 */
 	public void use(Item item1, Item item2){
 		item1.use(item2,this);	
 	}
-
+	
+	/*public void useKey(Item key, LockedExit e){ 
+		
+	}*/
+	
 }

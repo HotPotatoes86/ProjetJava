@@ -185,6 +185,9 @@ public class Game {
 			    	case UNEQUIP:
 			    		CommandUnequip.use(hero);
 			    		break;
+			    	case DELETE:
+			    		CommandDelete.use(hero, parts[1]);
+			    		break;
 			    	default: break;
 		    	}
 			}
