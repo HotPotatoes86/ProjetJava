@@ -332,21 +332,6 @@ public class Hero {
 	 * @param item item you want to use
 	 */
 	public void use(Item item){
-		//if the hero have the item
-		//boolean test = false;
-		/*if(this.inventory.contains(item)){
-			item.use(this);
-		}*/
-				
-		/*for(int i=0; i<this.inventory.size() && !test; i++){
-			if(this.inventory.get(i) == item){
-				this.inventory.get(i).use(this);
-				test = true;
-			}
-		}
-		if(!test){
-			System.out.println("Vous ne possedez pas cet objet");
-		}	*/	
 		item.use(this);
 	}
 	
@@ -358,9 +343,5 @@ public class Hero {
 	public void use(Item item1, Item item2){
 		item1.use(item2,this);	
 	}
-	
-	/*public void useKey(Item key, LockedExit e){ 
 		
-	}*/
-	
 }
