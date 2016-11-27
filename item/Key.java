@@ -44,8 +44,6 @@ public class Key implements Item{
 	public void use(Object obj1, Object obj2){
 		if(obj1 instanceof LockedExit && obj2 instanceof Hero && this instanceof Key){
 			if(this.exit == ((LockedExit)obj1)){
-				//remove key
-				this.exit.unlock();
 				System.out.println("Vous ouvre la porte");
 			}else{
 				System.out.println("Cette cle ne fonctionne pas sur cette porte");
