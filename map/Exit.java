@@ -1,12 +1,17 @@
 package map;
+
+import character.Hero;
+
 public abstract class Exit {
 
 	protected Place place;
 	
 	/**
 	 * use the exit, display a simple string for the user
+	 * @param hero hero of the game
+	 * @return true if you use the exit
 	 */
-	public boolean use() {
+	public boolean use(Hero hero) {
 		if (this.place instanceof StreetPart){
 			System.out.println("Vous avancez dans la rue...");
 		}else if(this.place instanceof House){

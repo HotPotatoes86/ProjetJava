@@ -1,5 +1,6 @@
 package map;
 
+import character.Hero;
 import util.Choice;
 import util.ConsoleInput;
 
@@ -45,9 +46,10 @@ public class EnigmaExit extends Exit{
 	 * if the status is true, the user need to answer to an enigma
 	 * else the exit is like a simple exit
 	 */
-	public boolean use() {
+	@Override
+	public boolean use(Hero hero) {
 		if (!status){
-			return super.use();
+			return super.use(hero);
 		}
 		else{
 			System.out.println("Vous devez resoudre une enigme (0 pour abandonner)");
@@ -56,7 +58,7 @@ public class EnigmaExit extends Exit{
 			System.out.println(x + "*" + y + " = ?");
 			this.unlock(x*y);
 			if (!status){
-				return super.use();
+				return super.use(hero);
 			}
 			else{
 				return false;

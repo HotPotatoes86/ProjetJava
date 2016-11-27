@@ -2,6 +2,8 @@ package map;
 
 import java.util.HashMap;
 
+import character.Hero;
+
 public abstract class Place{
 	
 	//----------------------Attributes----------------------//
@@ -84,11 +86,11 @@ public abstract class Place{
 	 * @param direction direction you want to go (example : forward)
 	 * @return true if the hero can go to the direction
 	 */
-	public boolean go(String direction){
+	public boolean go(Hero hero,String direction){
 		boolean test = false;
 		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){
 			if (e.getKey().equals(direction)){
-				test = e.getValue().use();
+				test = e.getValue().use(hero);
 			}
 		}
 		return test;

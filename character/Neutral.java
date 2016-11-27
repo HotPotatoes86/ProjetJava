@@ -19,13 +19,13 @@ public class Neutral extends NPC {
 			System.out.println(this.name + " : Voulez-vous " + this.item.toString() + " ?");
 			String choice = scanner.stringScan();
 			if (choice.equals("yes") || choice.equals("oui")){
-				System.out.println("Tres bien ! Le voici !");
+				System.out.println(this.name + " : Tres bien ! Le voici !");
 				hero.pickUpItem(this.item);
 			}else{
 				System.out.println("Ok pas de soucis !");
 			}
 		}
-		System.out.println("Bon j'ai rendez-vous je m'en vais, amusez vous bien chez moi !");
+		System.out.println(this.name + " : Bon j'ai rendez-vous je m'en vais, amusez vous bien chez moi !");
 		this.status = false;
 	}
 	

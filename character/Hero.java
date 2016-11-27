@@ -108,7 +108,7 @@ public class Hero {
 				if (!((House)this.actualPlace).testdirection(direction)) return ;
 			}
 			//hero moves to the direction
-			if (this.actualPlace.go(direction)){
+			if (this.actualPlace.go(this,direction)){
 				this.actualPlace = this.actualPlace.getNextPlace(direction);
 			}
 			
@@ -199,7 +199,7 @@ public class Hero {
 				try{
 					if (npc.item != null){
 						ConsoleInput scanner = new ConsoleInput();
-						System.out.println("Voulez-vous " + npc.item.toString());
+						System.out.println("Voulez-vous " + npc.item.toString() + " ?");
 						String choice = scanner.stringScan();
 						if (choice.equals("yes") || choice.equals("oui")){
 							this.pickUpItem(npc.getItem());

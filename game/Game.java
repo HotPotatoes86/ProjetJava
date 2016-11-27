@@ -1,14 +1,8 @@
 package game;
 import character.Hero;
 import command.*;
-import map.House;
-import map.LockedExit;
-import map.Map;
-import map.Place;
-import map.Street;
-import map.StreetPart;
-import util.Choice;
-import util.ConsoleInput;
+import map.*;
+import util.*;
 
 public class Game {
 
@@ -151,6 +145,9 @@ public class Game {
 					case ATTACK:
 						CommandAttack.use(hero);
 						break;
+					case DELETE:
+			    		CommandDelete.use(hero, parts[1]);
+			    		break;
 					case GO:
 						CommandGo.use(hero, arg);
 			    		break;
@@ -184,9 +181,6 @@ public class Game {
 			    		break;
 			    	case UNEQUIP:
 			    		CommandUnequip.use(hero);
-			    		break;
-			    	case DELETE:
-			    		CommandDelete.use(hero, parts[1]);
 			    		break;
 			    	default: break;
 		    	}

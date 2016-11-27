@@ -1,5 +1,6 @@
 package map;
 
+import character.Hero;
 import item.Key;
 
 public class LockedExit extends Exit {
@@ -20,19 +21,20 @@ public class LockedExit extends Exit {
 	}
 	
 	//----------------------Methods----------------------//
-	public void unlock(){
-		this.status = false;
-		System.out.println("La porte est deverrouillee !");
-	}
-	
 	@Override
-	public boolean use() {
+	public boolean use(Hero hero) {
 		if (!status){
-			return super.use();
+			return super.use(hero);
 		}
 		else{
-			System.out.println("La porte est verrouillee, il faut trouver la cle");
-			return false;
+			if (hero.getInventory().contains(this.key)){
+				hero.getInventory().remove(this.key);
+				System.out.println("Vous deverrouillez la porte");
+				return super.use(hero);
+			}else{
+				System.out.println("La porte est verrouillee, il faut trouver la cle");
+				return false;
+			}
 		}
 	}
 
