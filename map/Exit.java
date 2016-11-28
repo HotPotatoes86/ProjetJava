@@ -17,7 +17,7 @@ public abstract class Exit {
 			ConsoleInput.displayString("Vous avancez dans la rue...");
 		}else if(this.place instanceof House){
 			ConsoleInput.displayString("Vous rentrez dans la maison de " + this.place.getName());
-			if (((House)this.place).getNPC() != null){
+			if (((House)this.place).getNPC() != null && ((House)this.place).getNPC().getStatus()){
 				ConsoleInput.displayString("\nVous rencontrez " + ((House)this.place).getNPC().getName() + "\n");
 				((House)this.place).getNPC().describe();
 			}else{

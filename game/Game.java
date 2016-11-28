@@ -117,10 +117,7 @@ public class Game {
 		 * The player does an action
 		 */
 		Command command;
-		do{
-			//display items if the hero is in a house with no npc
-			hero.displayHouseItems();
-			
+		do{	
 			System.out.println("\nVeuillez saisir une action :");
 			try{
 				String cmd = scanner.stringScan();

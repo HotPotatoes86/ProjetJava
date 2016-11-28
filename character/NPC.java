@@ -5,6 +5,7 @@ import item.Food;
 import item.Item;
 import item.Weapon;
 import util.Choice;
+import util.ConsoleInput;
 import util.Name;
 
 public abstract class NPC {
@@ -70,7 +71,8 @@ public abstract class NPC {
 		System.out.println(this.name + " perd " + dmg + "HP");
 		if (this.HP<=0){
 			this.status = false;
-			System.out.println(this.name + " : AAAAHHH je meurs !");
+			System.out.print("[" + this.name + "]" + " : ");
+			ConsoleInput.displayString("AAAAHHH je meurs !");
 		}else{
 			System.out.println("Il lui reste " + this.HP + "HP");
 		}

@@ -114,10 +114,6 @@ public class Hero {
 			
 			//alcohol level goes down
 			if (this.alcoholLevel>0) this.alcoholLevel--;
-			
-		}else if (this.actualPlace == this.house){
-			return;
-			
 		}else{
 				System.out.println("Direction impossible");
 				System.out.println("\nDirections possibles : ");
@@ -135,23 +131,6 @@ public class Hero {
 			return true;
 		}else{
 			return false;
-		}
-	}
-	
-	/**
-	 * method used to display items if the hero is in a house with no npc
-	 * call the method displayItems from the class house
-	 */
-	public void displayHouseItems(){
-		//display items in the house if there're no npc
-		if (this.actualPlace instanceof House){
-			if (((House)this.actualPlace).getNPC() != null){
-				if (!((House)this.actualPlace).getNPC().getStatus()){
-					((House)this.actualPlace).displayItems();
-				}
-			}else{
-				((House)this.actualPlace).displayItems();
-			}
 		}
 	}
 	
@@ -318,7 +297,6 @@ public class Hero {
 	 * unequip hero's weapon
 	 */
 	public void unequip(){
-		//System.out.println("blblb");
 		this.attack -= this.weapon.addAttack();
 		if(this.isFull()){
 			System.out.println("Votre inventaire est plein, vous detruisez donc " +this.weapon.getName());
@@ -372,7 +350,7 @@ public class Hero {
 			if(i-1 != j-1){
 				this.inventory.get(i-1).use(this.inventory.get(j-1), this);
 			}else{
-				System.out.println("Vous ne pouvez pas combiner l'objet avec lui même");
+				System.out.println("Vous ne pouvez pas combiner l'objet avec lui mï¿½me");
 			}
 		}else{
 			System.out.println("Vous ne possedez pas ces 2 objets");

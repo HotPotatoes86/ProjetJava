@@ -16,20 +16,23 @@ public class Enemy extends NPC {
 	}
 	
 	/**
-	 * display a simple string
+	 * display a simple string when hero comes in house
 	 */
 	public void describe(){
 		if (this.status){
 			System.out.print("[" + this.name + "]" + " : ");
-			ConsoleInput.displayString("Bonjour je suis un PNJ mechant");
+			ConsoleInput.displayString("Pourquoi rentrez-vous chez moi ? Sortez tout de suite !");
 		}else{
 			ConsoleInput.displayString("Il n'y a personne...");
 		}
 	}
 	
+	/**
+	 * talk to the hero, this type of character attack the hero
+	 */
 	public void talk(Hero hero){
 		if (this.status){
-			System.out.println("Le pnj refuse de vous parler.");
+			ConsoleInput.displayString("Le pnj refuse de vous parler.");
 			this.attack(hero);
 		}
 	}
