@@ -70,17 +70,6 @@ public class Food implements Item {
 		return res;
 	}
 	
-	/*public static boolean testItem(String item){
-		boolean test = false;
-		TypeFood[] tabFood = TypeFood.values();
-		for(int i=0; i<tabFood.length;i++){
-			if(item.toString().equals(tabFood[i].toString().toLowerCase())){
-				test = true;
-			}
-		}
-		return test;
-	}*/
-	
 	/**
 	 * convert the parameter item in a food
 	 * @param item which we want to convert as a food
@@ -150,7 +139,9 @@ public class Food implements Item {
 				}else{
 					System.out.println("Vous ne pouvez pas combiner ces 2 aliments");
 				}
-			}			
+			}else{
+				System.out.println("Vous n'avez pas saisi 2 aliments");
+			}
 		}
 	}
 

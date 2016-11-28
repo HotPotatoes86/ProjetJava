@@ -71,17 +71,6 @@ public class Drink implements Item {
 		return res;
 	}	
 	
-	/*public static boolean testItem(String item){
-		boolean test = false;
-		TypeDrink[] tabDrink = TypeDrink.values();
-		for(int i=0; i<tabDrink.length;i++){
-			if(item.toString().equals(tabDrink[i].toString().toLowerCase())){
-				test = true;
-			}
-		}
-		return test;
-	}*/	
-	
 	/**
 	 * convert the parameter item to a drink
 	 * @param item which we want to convert as a drink
@@ -136,6 +125,8 @@ public class Drink implements Item {
 				}else{
 					System.out.println("energydrink ne peut etre combiner uniquement avec vodka et jagermeister");
 				}					
+			}else{
+				System.out.println("Vous n'avez pas saisi 2 boissons");
 			}
 		}
 	}

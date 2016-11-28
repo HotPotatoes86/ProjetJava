@@ -69,17 +69,6 @@ public class Weapon implements Item {
 		return res;
 	}
 	
-	/*public static boolean testItem(String item){
-		boolean test = false;
-		TypeWeapon[] tabWeapon = TypeWeapon.values();
-		for(int i=0; i<tabWeapon.length;i++){
-			if(item.toString().equals(tabWeapon[i].toString().toLowerCase())){
-				test = true;
-			}
-		}
-		return test;
-	}*/
-	
 	/**
 	 * convert the parameter item to a Weapon
 	 * @param item which we want to convert as a weapon
@@ -146,6 +135,8 @@ public class Weapon implements Item {
 				}else{
 					System.out.println("Vous ne pouvez pas combiner ces 2 armes");
 				}
+			}else{
+				System.out.println("Vous n'avez pas saisi 2 armes");
 			}
 		}
 	}

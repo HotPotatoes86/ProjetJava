@@ -331,8 +331,8 @@ public class Hero {
 	}
 	
 	/**
-	 * use an item (drink, food, weapon)
-	 * @param item item you want to use
+	 * test if hero as an item (drink, food, weapon) and use it
+	 * @param item you want to use
 	 */
 	public void use(String item){
 		boolean test = false;
@@ -345,11 +345,10 @@ public class Hero {
 		if(!test){
 			System.out.println("Vous ne possedez pas cet objet");
 		}
-		//item.use(this);
 	}
 	
 	/**
-	 * combine 2 items with the same type
+	 * test if hero as 2 items and combine them 
 	 * @param item1 (drink, food, weapon)
 	 * @param item2 (drink, food, weapon)
 	 */
@@ -375,15 +374,9 @@ public class Hero {
 			}else{
 				System.out.println("Vous ne pouvez pas combiner l'objet avec lui même");
 			}
-			/*if(i-1 != j-1){
-				hero.use(hero.getInventory().get(i-1), hero.getInventory().get(j-1));
-			}else{
-				System.out.println("Vous ne pouvez pas combiner l'objet avec lui même");
-			}*/
 		}else{
 			System.out.println("Vous ne possedez pas ces 2 objets");
 		}
-		//item1.use(item2,this);	
 	}
 		
 }
