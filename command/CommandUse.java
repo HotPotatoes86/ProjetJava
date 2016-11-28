@@ -5,7 +5,7 @@ import character.Hero;
 public final class CommandUse {
 
 	public static void useItem(Hero hero, String item){
-		boolean test = false;
+		/*boolean test = false;
 		for(int i=0; i<hero.getInventory().size() && !test; i++){
 			if(hero.getInventory().get(i).toString().equals(item)){
 				hero.use(hero.getInventory().get(i));
@@ -14,12 +14,14 @@ public final class CommandUse {
 		}
 		if(!test){
 			System.out.println("Vous ne possedez pas cet objet");
-		}
+		}*/
+			hero.use(item);
+		
 		
 	}
 		
 	public static void combineItem(Hero hero, String item1, String item2){
-		boolean test1 = false;
+		/*boolean test1 = false;
 		boolean test2 = false;
 		int i = 0;
 		int j = 0;
@@ -42,6 +44,8 @@ public final class CommandUse {
 			}
 		}else{
 			System.out.println("Vous ne possedez pas ces 2 objets");
-		}
+		}*/
+		hero.use(item1, item2);
+		
 	}
 }

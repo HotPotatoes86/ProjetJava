@@ -17,7 +17,7 @@ public interface Item {
 	/**
 	 * use an object on a second
 	 * @param obj1 can be drink, food, weapon or key
-	 * @param obj2 can be drink, food, weapon or locketExit
+	 * @param obj2 can be Hero or locketExit
 	 */
 	public void use(Object obj1, Object obj2); 
 	

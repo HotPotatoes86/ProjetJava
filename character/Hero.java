@@ -331,8 +331,18 @@ public class Hero {
 	 * use an item (drink, food, weapon)
 	 * @param item item you want to use
 	 */
-	public void use(Item item){
-		item.use(this);
+	public void use(String item){
+		boolean test = false;
+		for(int i=0; i<this.inventory.size() && !test; i++){
+			if(this.inventory.get(i).toString().equals(item)){
+				this.inventory.get(i).use(this);
+				test = true;
+			}
+		}
+		if(!test){
+			System.out.println("Vous ne possedez pas cet objet");
+		}
+		//item.use(this);
 	}
 	
 	/**
@@ -340,8 +350,37 @@ public class Hero {
 	 * @param item1 (drink, food, weapon)
 	 * @param item2 (drink, food, weapon)
 	 */
-	public void use(Item item1, Item item2){
-		item1.use(item2,this);	
+	public void use(String item1, String item2){
+		boolean test1 = false;
+		boolean test2 = false;
+		int i = 0;
+		int j = 0;
+
+		for(i=0; i<this.inventory.size() && !test1; i++){
+			if(this.inventory.get(i).toString().equals(item1)){
+				test1 = true;
+			}
+		}
+		for(j=0; j<this.inventory.size() && !test2; j++){
+			if(this.inventory.get(j).toString().equals(item2) && j!=i-1){
+				test2 = true;
+			}
+		}
+		if(test1 && test2){
+			if(i-1 != j-1){
+				this.inventory.get(i-1).use(this.inventory.get(j-1), this);
+			}else{
+				System.out.println("Vous ne pouvez pas combiner l'objet avec lui même");
+			}
+			/*if(i-1 != j-1){
+				hero.use(hero.getInventory().get(i-1), hero.getInventory().get(j-1));
+			}else{
+				System.out.println("Vous ne pouvez pas combiner l'objet avec lui même");
+			}*/
+		}else{
+			System.out.println("Vous ne possedez pas ces 2 objets");
+		}
+		//item1.use(item2,this);	
 	}
 		
 }
