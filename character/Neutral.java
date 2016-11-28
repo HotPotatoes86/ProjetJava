@@ -9,23 +9,31 @@ public class Neutral extends NPC {
 	}
 	
 	public void describe(){
-		System.out.println(this.name + " : Bonjour je suis un PNJ gentil");
-		
+		if (this.status){
+			System.out.print("[" + this.name + "]" + " : ");
+			ConsoleInput.displayString("Bonjour je suis un PNJ gentil");
+		}else{
+			ConsoleInput.displayString("Il n'y a personne...");
+		}
 	}
 	
 	public void talk(Hero hero){
 		if (this.item != null){
 			ConsoleInput scanner = new ConsoleInput();
-			System.out.println(this.name + " : Voulez-vous " + this.item.toString() + " ?");
+			System.out.print("[" + this.name + "]" + " : ");
+			ConsoleInput.displayString("Voulez-vous " + this.item.toString() + " ?");
 			String choice = scanner.stringScan();
 			if (choice.equals("yes") || choice.equals("oui")){
-				System.out.println(this.name + " : Tres bien ! Le voici !");
+				System.out.print("[" + this.name + "]" + " : ");
+				ConsoleInput.displayString("Tres bien ! Le voici !");
 				hero.pickUpItem(this.item);
 			}else{
-				System.out.println("Ok pas de soucis !");
+				System.out.print("[" + this.name + "]" + " : ");
+				ConsoleInput.displayString("Ok tres bien, pas de soucis !");
 			}
 		}
-		System.out.println(this.name + " : Bon j'ai rendez-vous je m'en vais, amusez vous bien chez moi !");
+		System.out.print("[" + this.name + "]" + " : ");
+		ConsoleInput.displayString("Bon j'ai rendez-vous je m'en vais, amusez vous bien chez moi !");
 		this.status = false;
 	}
 	

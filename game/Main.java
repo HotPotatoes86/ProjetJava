@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import character.Hero;
 import map.Map;
+import util.ConsoleInput;
 
 public class Main {
 
@@ -21,10 +22,9 @@ public class Main {
 			InputStream ips=new FileInputStream(fichier); 
 			InputStreamReader ipsr=new InputStreamReader(ips);
 			BufferedReader br=new BufferedReader(ipsr);
-			String ligne;
-			while ((ligne=br.readLine())!=null){
-				System.out.println(ligne);
-				Thread.sleep(2000); // Temps d'attente entre chaque ligne
+			String line;
+			while ((line=br.readLine())!=null){
+				ConsoleInput.displayString(line);
 			}
 			br.close(); 
 		}		

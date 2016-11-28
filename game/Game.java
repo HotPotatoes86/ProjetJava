@@ -138,7 +138,7 @@ public class Game {
 				command = Command.valueOf(parts[0].toUpperCase());
 				
 				//cleans the console
-				System.out.print("\n\n\n");
+				System.out.print("\n\n");
 			    
 				//does the action related to the command
 				switch (command){

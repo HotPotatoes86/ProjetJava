@@ -15,7 +15,7 @@ import util.ConsoleInput;
 public class Hero {
 
 	//----------------------Attributes----------------------//
-	private int hp = 95; //si on mange on regagne des hp
+	private int hp = 100; //si on mange on regagne des hp
 	private int attack = 10; //si on boit on fait plus de degat
 	private int alcoholLevel = 15; //si on boit, le niveau d'alcool monte, si on atteint 100 = coma
 	private List<Item> inventory;
@@ -115,13 +115,13 @@ public class Hero {
 			//alcohol level goes down
 			if (this.alcoholLevel>0) this.alcoholLevel--;
 			
-			//we display the new possible exits
-			System.out.println("\nVous pouvez aller ici :");
-			this.actualPlace.displayExit();
+		}else if (this.actualPlace == this.house){
+			return;
+			
 		}else{
-			System.out.println("Direction impossible");
-			System.out.println("\nDirections possibles : ");
-			this.actualPlace.displayExit();
+				System.out.println("Direction impossible");
+				System.out.println("\nDirections possibles : ");
+				this.actualPlace.displayExit();
 		}
 	}
 	
@@ -161,6 +161,10 @@ public class Hero {
 	public void look(){
 		System.out.println("Vous regardez autour de vous");
 		this.actualPlace.describe();
+		// display items of the house
+		if (this.actualPlace instanceof House){
+			((House)this.actualPlace).displayItems();
+		}
 	}
 	
 	/**
@@ -211,9 +215,8 @@ public class Hero {
 				}
 			}
 			//if npc is still alive, he attacks
-			if (npc instanceof Enemy && npc.getStatus()){
-				System.out.println(npc.getName() + " riposte, vous perdez " + npc.getAttack() + "HP");
-				this.hp -= npc.getAttack();
+			if (npc instanceof Enemy){
+				((Enemy)npc).attack(this);
 			}
 			if (this.hp<=0){
 				try{

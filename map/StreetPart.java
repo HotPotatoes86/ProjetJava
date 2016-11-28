@@ -75,8 +75,8 @@ public class StreetPart extends Place{
 	 * describe the 2 houses of the StreetPart
 	 */
 	public void describe(){
-		System.out.print("House 1 : Maison de " + this.houses[0].getName());
-		System.out.print("House 2 : Maison de " + this.houses[1].getName());
+		System.out.println("House 1 : Maison de " + this.houses[0].getName());
+		System.out.println("House 2 : Maison de " + this.houses[1].getName());
 	}
 	
 	public void generateListSimpleExit(){

@@ -27,5 +27,22 @@ public class ConsoleInput implements UserInput{
 		res = this.scanner.nextInt();
 		return res;
 	}
+	
+	/**
+	 * display a string with a delay between all characters
+	 * @param s
+	 */
+	public static void displayString(String s){
+		try{
+			for (int i=0; i<s.length(); i++){
+				System.out.print(s.charAt(i));
+				Thread.sleep(50);
+			}
+			System.out.println();
+		}
+		catch (Exception e){
+			System.out.println(e);
+		}
+	}
 
 }

@@ -30,6 +30,7 @@ public class LockedExit extends Exit {
 			if (hero.getInventory().contains(this.key)){
 				hero.getInventory().remove(this.key);
 				System.out.println("Vous deverrouillez la porte");
+				this.status=false;
 				return super.use(hero);
 			}else{
 				System.out.println("La porte est verrouillee, il faut trouver la cle");

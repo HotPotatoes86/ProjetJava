@@ -1,6 +1,7 @@
 package map;
 
 import character.Hero;
+import util.ConsoleInput;
 
 public abstract class Exit {
 
@@ -13,17 +14,17 @@ public abstract class Exit {
 	 */
 	public boolean use(Hero hero) {
 		if (this.place instanceof StreetPart){
-			System.out.println("Vous avancez dans la rue...");
+			ConsoleInput.displayString("Vous avancez dans la rue...");
 		}else if(this.place instanceof House){
-			System.out.println("Vous rentrez dans la maison de " + this.place.getName());
+			ConsoleInput.displayString("Vous rentrez dans la maison de " + this.place.getName());
 			if (((House)this.place).getNPC() != null){
-				System.out.println("\nVous rencontrez " + ((House)this.place).getNPC().getName() + "\n");
+				ConsoleInput.displayString("\nVous rencontrez " + ((House)this.place).getNPC().getName() + "\n");
 				((House)this.place).getNPC().describe();
 			}else{
-				System.out.println("Il n'y a personne...");
+				ConsoleInput.displayString("Il n'y a personne...");
 			}
 		}else{
-			System.out.println("Vous avancez sur la  " + this.place.getName());
+			ConsoleInput.displayString("Vous avancez sur la  " + this.place.getName());
 		}
 		return true;
 	}
