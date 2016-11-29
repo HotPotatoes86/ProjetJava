@@ -1,6 +1,5 @@
 package item;
 
-import character.Hero;
 import map.LockedExit;
 
 public class Key implements Item{
@@ -16,6 +15,7 @@ public class Key implements Item{
 		this.name = "key" + id;
 	}
 	
+	//----------------------Getters----------------------//
 	public LockedExit getLockedExit(){
 		return this.exit;
 	}
@@ -24,15 +24,24 @@ public class Key implements Item{
 		return id;
 	}
 	
+	@Override
 	public String getName() {
 		return name;
 	}
+<<<<<<< HEAD
+	
+	//----------------------Setters----------------------//	
+=======
 
 	//----------------------Setters----------------------//
+>>>>>>> origin/master
 	public void setLockedExit(LockedExit e){
 		this.exit = e;
 	}
 	
+<<<<<<< HEAD
+	//----------------------Methods----------------------//	
+=======
 	//----------------------Methods----------------------//
 	/**
 	 * describe the value of the item
@@ -45,6 +54,7 @@ public class Key implements Item{
 		return 0;
 	}
 
+>>>>>>> origin/master
 	@Override
 	public void use(Object obj){
 		System.out.println("Vous devez utiliser la cle sur une porte");
@@ -52,13 +62,7 @@ public class Key implements Item{
 	
 	@Override
 	public void use(Object obj1, Object obj2){
-		if(obj1 instanceof LockedExit && obj2 instanceof Hero && this instanceof Key){
-			if(this.exit == ((LockedExit)obj1)){
-				System.out.println("Vous ouvrez la porte");
-			}else{
-				System.out.println("Cette cle ne fonctionne pas sur cette porte");
-			}
-		}
+		System.out.println("Pour utiliser une cle, avancer vers la maison correspondante, elle se deverouillera toute seule !");
 	}
 	
 	@Override
