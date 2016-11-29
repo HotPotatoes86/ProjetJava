@@ -78,6 +78,8 @@ public class Game {
 				testexit = true;
 			}else if (sth.getExit("house2") instanceof LockedExit){
 				hh = sth.getHouses()[1];
+				// no npc in the hero's house
+				hh.removeNPC();
 				hero.setHouse(hh);
 				testexit = true;
 			}
@@ -137,7 +139,7 @@ public class Game {
 				command = Command.valueOf(parts[0].toUpperCase());
 				
 				//cleans the console
-				System.out.print("\n\n");
+				System.out.print("\n");
 			    
 				//does the action related to the command
 				switch (command){

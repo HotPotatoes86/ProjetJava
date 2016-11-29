@@ -1,5 +1,6 @@
 package character;
 
+import util.Choice;
 import util.ConsoleInput;
 
 public class Neutral extends NPC {
@@ -16,7 +17,12 @@ public class Neutral extends NPC {
 	public void describe(){
 		if (this.status){
 			System.out.print("[" + this.name + "]" + " : ");
-			ConsoleInput.displayString("Bonjour, bienvenue chez moi :)");
+			// npc give a random description when hero enters
+			if (Choice.randomChoice()){
+				ConsoleInput.displayString("Bonjour, bienvenue chez moi :)");
+			}else{
+				ConsoleInput.displayString("Ah de la visite ! Faites comme chez vous ! :)");
+			}
 		}else{
 			ConsoleInput.displayString("Il n'y a personne...");
 		}

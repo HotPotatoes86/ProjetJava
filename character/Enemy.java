@@ -23,7 +23,12 @@ public class Enemy extends NPC {
 	public void describe(){
 		if (this.status){
 			System.out.print("[" + this.name + "]" + " : ");
-			ConsoleInput.displayString("Pourquoi rentrez-vous chez moi ? Sortez tout de suite !");
+			// npc give a random description when hero enters
+			if (Choice.randomChoice()){
+				ConsoleInput.displayString("Pourquoi rentrez-vous chez moi ? Sortez tout de suite !");
+			}else{
+				ConsoleInput.displayString("Ivrogne ! Sort de chez moi ou tu recevras la puissance de ma colere !");
+			}
 		}else{
 			ConsoleInput.displayString("Il n'y a personne...");
 		}

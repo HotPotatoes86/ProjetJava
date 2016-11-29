@@ -153,10 +153,10 @@ public class Hero {
 			if (this.actualPlace.testdirection(s)){
 				Place p = this.actualPlace.getNextPlace(s);
 				switch (s){
-					case "forward": System.out.println("Vous regardez devant vous"); break;
-					case "backward":System.out.println("Vous regardez derriere vous"); break;
-					case "house1":System.out.println("Vous regardez la maison a gauche"); break;
-					case "house2":System.out.println("Vous regardez la maison a droite"); break;
+					case "forward": ConsoleInput.displayString("Vous regardez devant vous"); break;
+					case "backward": ConsoleInput.displayString("Vous regardez derriere vous"); break;
+					case "house1": ConsoleInput.displayString("Vous regardez la maison a gauche"); break;
+					case "house2": ConsoleInput.displayString("Vous regardez la maison a droite"); break;
 					default: System.out.println("Vous regardez " + p.getName()); break;
 				}
 				p.describe();
