@@ -45,14 +45,14 @@ public class Weapon implements Item {
 		return name;
 	}	
 	
+	//----------------------Methods----------------------//	
 	/**
-	 * @return attack given by the weapon
+	 * describe the value of the item
 	 */
-	public int getLevel(){
-		return this.tWeapon.getAttack();
+	public void describe(){
+		System.out.println(this.name + " : " + "+" + this.tWeapon.getAttack() + " attack");
 	}
 	
-	//----------------------Methods----------------------//	
 	/**
 	 * create a new Weapon with a random TypeWeapon value
 	 * @return weapon

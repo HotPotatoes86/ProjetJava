@@ -27,10 +27,6 @@ public class Key implements Item{
 	public String getName() {
 		return name;
 	}
-	
-	public int getLevel(){
-		return 0;
-	}
 
 	//----------------------Setters----------------------//
 	public void setLockedExit(LockedExit e){
@@ -38,6 +34,13 @@ public class Key implements Item{
 	}
 	
 	//----------------------Methods----------------------//
+	/**
+	 * describe the value of the item
+	 */
+	public void describe(){
+		System.out.println("C'est une cle d'une maison");
+	}
+	
 	public int testItem(){
 		return 0;
 	}

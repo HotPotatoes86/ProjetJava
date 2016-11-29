@@ -165,7 +165,8 @@ public class Hero {
 				boolean test = false;
 				for(int i=0; i<this.inventory.size() && !test; i++){
 					if(this.inventory.get(i).toString().equals(s)){
-						System.out.println(s + " : " + this.inventory.get(i).getLevel());
+						System.out.println("Vous regardez dans votre inventaire");
+						this.inventory.get(i).describe();
 						test = true;
 					}
 				}

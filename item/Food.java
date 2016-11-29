@@ -45,14 +45,18 @@ public class Food implements Item {
 		return name;
 	}
 	
+	//----------------------Methods----------------------//
 	/**
-	 * @return hp given by the food
+	 * describe the value of the item
 	 */
-	public int getLevel(){
-		return this.tFood.getHp();
+	public void describe(){
+		if (this.tFood.getHp()>0){
+			System.out.println(this.name + " : " + "+" + this.tFood.getHp() + " HP");
+		}else{
+			System.out.println(this.name + " : " + this.tFood.getHp() + " HP");
+		}
 	}
 	
-	//----------------------Methods----------------------//
 	/**
 	 * create a new food with a random TypeFood value
 	 * @return food
