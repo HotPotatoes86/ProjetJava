@@ -105,6 +105,7 @@ public class Hero {
 		//if hero can go to the direction
 		if (this.actualPlace.testdirection(direction)){
 			if (this.actualPlace instanceof House){
+				//if a NPC (Enemy) blocks Hero, Hero can't move
 				if (!((House)this.actualPlace).testdirection(direction)) return ;
 			}
 			//hero moves to the direction

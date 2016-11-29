@@ -28,20 +28,13 @@ public class Key implements Item{
 	public String getName() {
 		return name;
 	}
-<<<<<<< HEAD
 	
-	//----------------------Setters----------------------//	
-=======
 
 	//----------------------Setters----------------------//
->>>>>>> origin/master
 	public void setLockedExit(LockedExit e){
 		this.exit = e;
 	}
 	
-<<<<<<< HEAD
-	//----------------------Methods----------------------//	
-=======
 	//----------------------Methods----------------------//
 	/**
 	 * describe the value of the item
@@ -50,11 +43,7 @@ public class Key implements Item{
 		System.out.println("C'est une cle d'une maison");
 	}
 	
-	public int testItem(){
-		return 0;
-	}
 
->>>>>>> origin/master
 	@Override
 	public void use(Object obj){
 		System.out.println("Vous devez utiliser la cle sur une porte");

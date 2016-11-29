@@ -12,7 +12,12 @@ import character.Hero;
 import item.Food;
 import map.House;
 
-public class TestFood {
+public class FoodTest {
+	
+	private Hero hero;
+	
+	public FoodTest(){
+	}
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -24,60 +29,48 @@ public class TestFood {
 
 	@Before
 	public void setUp() throws Exception {
+		hero = new Hero(new House("maison"));
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-	/*
-	 //private Food food;
-	private Hero hero;
-		
-	@Before
-	protected void setUp() throws Exception{
-		super.setUp();
-		//food = new Food("apple");
-		hero = new Hero(new House("maison"));
-	}
-		
-	protected void tearDown() throws Exception{
-		super.tearDown();
-		//food = null;
-	}	
-		
-	public void testCreateFood() throws Exception{
-		
+	
+	@Test	
+	public void testCreateFood(){
 		assertNotNull(Food.createFood());
 	}
 	
+	@Test
 	public void testUse1(){
 		hero.use("apple");
 		assertTrue(hero.getHp()==100);
 	}
 	
+	@Test
 	public void testUse2(){
 		hero.setHp(98);
 		hero.use("apple");
 		assertTrue(hero.getHp()==100);
 	}
+	
+	@Test
 	public void testUse3(){
 		hero.setHp(90);
 		hero.use("apple");
 		assertTrue(hero.getHp()==93);
 	}
 	
-	public void testUseFusion1(){			
+	@Test
+	public void testUseFusion1(){		
+		hero.use("apple","apple");
 		for(int i=0; i<hero.getInventory().size(); i++){
 			if(hero.getInventory().toString().equals("applepie")){
 				assertTrue(hero.getInventory().get(i).toString().equals("applepie"));
 			}			
 		}		
 	} 
-	 */
+
+	
 
 }
