@@ -17,7 +17,7 @@ public enum TypeWeapon {
 	}
 
 	public int getAttack() {
-		return attack;
+		return this.attack;
 	}
 
 	/*public void setAttack(int attack) {

@@ -5,10 +5,12 @@ import map.LockedExit;
 
 public class Key implements Item{
 
+	//----------------------Attributes----------------------//
 	private LockedExit exit;
 	private int id;
 	private String name;
 	
+	//----------------------Constructors----------------------//
 	public Key(int id){
 		this.id = id;
 		this.name = "key" + id;
@@ -17,10 +19,6 @@ public class Key implements Item{
 	public LockedExit getLockedExit(){
 		return this.exit;
 	}
-		
-	public void setLockedExit(LockedExit e){
-		this.exit = e;
-	}
 	
 	public int getId() {
 		return id;
@@ -28,6 +26,20 @@ public class Key implements Item{
 	
 	public String getName() {
 		return name;
+	}
+	
+	public int getLevel(){
+		return 0;
+	}
+
+	//----------------------Setters----------------------//
+	public void setLockedExit(LockedExit e){
+		this.exit = e;
+	}
+	
+	//----------------------Methods----------------------//
+	public int testItem(){
+		return 0;
 	}
 
 	@Override

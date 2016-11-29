@@ -44,6 +44,13 @@ public class Drink implements Item {
 		return this.name;
 	}
 	
+	/**
+	 * @return alcohol level given by the drink
+	 */
+	public int getLevel(){
+		return this.tDrink.getAlcoholLevel();
+	}
+	
 	//----------------------Methods----------------------//
 	/**
 	 * Create a new Drink with a random TypeDrink value 

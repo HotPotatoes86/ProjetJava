@@ -2,6 +2,7 @@ package command;
 
 public enum Command {
 	ATTACK(" : attaque le pnj face a vous"),	
+	DELETE(" : supprime l'objet de l'inventaire"),
 	GO(" : se rend dans une direction"),		
 	HELP(" : donne la liste des commandes"),	
 	INVENTORY(" : affiche votre inventaire"),
@@ -10,9 +11,9 @@ public enum Command {
 	STATUS(" : affiche vos statistiques actuelles"),
 	TAKE(" : prend l'objet"),	
 	TALK(" : parle au pnj"),
-	USE(" : utilise un objet, permet les fusions"),
 	UNEQUIP(" : range l'arme dans l'inventaire s'il y a de la place"),
-	DELETE(" : supprime l'objet de l'inventaire");
+	USE(" : utilise un objet, permet les fusions");
+	
 	
 	private final String description; 
 

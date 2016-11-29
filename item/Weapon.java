@@ -43,6 +43,13 @@ public class Weapon implements Item {
 		return name;
 	}	
 	
+	/**
+	 * @return attack given by the weapon
+	 */
+	public int getLevel(){
+		return this.tWeapon.getAttack();
+	}
+	
 	//----------------------Methods----------------------//	
 	/**
 	 * create a new Weapon with a random TypeWeapon value

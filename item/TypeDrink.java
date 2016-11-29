@@ -18,7 +18,7 @@ public enum TypeDrink {
 	}	
 
 	public int getAlcoholLevel() {
-		return alcoholLevel;
+		return this.alcoholLevel;
 	}
 
 	public void setAlcoholLevel(int alcoholLevel) {

@@ -15,7 +15,7 @@ public abstract class NPC {
 	protected int HP = 100;
 	protected String name = "Villageois";
 	protected boolean status = true; //true = alive / false = dead (or absent)
-	protected int attack;
+	protected int attack = 0;
 	protected Item item = itemGenerator();	// NPC can only have 0 or 1 item
 
 	//----------------------Getters----------------------//

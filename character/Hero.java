@@ -151,21 +151,35 @@ public class Hero {
 	 * @param s direction the hero looks
 	 */
 	public void look(String s){
-		//Description Place
-		Place p = null;
-		System.out.println(s);
-		p = this.actualPlace.getNextPlace(s);
-		if (p != null){
-			switch (s){
-				case "forward": System.out.println("Vous regardez devant vous"); break;
-				case "backward":System.out.println("Vous regardez derriere vous"); break;
-				case "house1":System.out.println("Vous regardez la maison a gauche"); break;
-				case "house2":System.out.println("Vous regardez la maison a droite"); break;
-				default: System.out.println("Vous regardez " + p.getName()); break;
+		// no direction
+		if (s.equals("")){
+			System.out.println("Vous regardez autour de vous");
+			this.actualPlace.describe();
+			// display items of the house
+			if (this.actualPlace instanceof House){
+				((House)this.actualPlace).displayItems();
 			}
-			p.describe();
 		}else{
-			System.out.println("Argument incorrect");
+			if (this.actualPlace.testdirection(s)){
+				Place p = this.actualPlace.getNextPlace(s);
+				switch (s){
+					case "forward": System.out.println("Vous regardez devant vous"); break;
+					case "backward":System.out.println("Vous regardez derriere vous"); break;
+					case "house1":System.out.println("Vous regardez la maison a gauche"); break;
+					case "house2":System.out.println("Vous regardez la maison a droite"); break;
+					default: System.out.println("Vous regardez " + p.getName()); break;
+				}
+				p.describe();
+			}else{
+				boolean test = false;
+				for(int i=0; i<this.inventory.size() && !test; i++){
+					if(this.inventory.get(i).toString().equals(s)){
+						System.out.println(s + " : " + this.inventory.get(i).getLevel());
+						test = true;
+					}
+				}
+				if (!test) System.out.println("Argument incorrect");
+			}
 		}
 	}
 	
