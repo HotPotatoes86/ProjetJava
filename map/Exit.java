@@ -5,8 +5,10 @@ import util.ConsoleInput;
 
 public abstract class Exit {
 
+	//----------------------Attributes----------------------//
 	protected Place place;
 	
+	//----------------------Methods----------------------//
 	/**
 	 * use the exit, display a simple string for the user
 	 * @param hero hero of the game

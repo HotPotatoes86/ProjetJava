@@ -29,6 +29,7 @@ public class Drink implements Item {
 		for(int i=0; i<tabDrink.length; i++){
 			if(name.equals(tabDrink[i].toString().toLowerCase())){
 				correctDrink = true;
+				this.tDrink = tabDrink[i];
 			}
 		}
 		if (correctDrink){

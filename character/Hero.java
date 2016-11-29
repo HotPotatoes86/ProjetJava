@@ -135,23 +135,12 @@ public class Hero {
 	}
 	
 	/**
-	 * Describe the actual place of the Hero
-	 */
-	public void look(){
-		System.out.println("Vous regardez autour de vous");
-		this.actualPlace.describe();
-		// display items of the house
-		if (this.actualPlace instanceof House){
-			((House)this.actualPlace).displayItems();
-		}
-	}
-	
-	/**
-	 * describe the position s
-	 * @param s direction the hero looks
+	 * describe the position or the item s
+	 * if s is empty the actual place of the hero is described
+	 * @param s direction/item the hero looks
 	 */
 	public void look(String s){
-		// no direction
+		// the string is empty
 		if (s.equals("")){
 			System.out.println("Vous regardez autour de vous");
 			this.actualPlace.describe();
@@ -160,6 +149,7 @@ public class Hero {
 				((House)this.actualPlace).displayItems();
 			}
 		}else{
+			// test if the string is a direction
 			if (this.actualPlace.testdirection(s)){
 				Place p = this.actualPlace.getNextPlace(s);
 				switch (s){
@@ -171,6 +161,7 @@ public class Hero {
 				}
 				p.describe();
 			}else{
+				// test if the string is an item
 				boolean test = false;
 				for(int i=0; i<this.inventory.size() && !test; i++){
 					if(this.inventory.get(i).toString().equals(s)){

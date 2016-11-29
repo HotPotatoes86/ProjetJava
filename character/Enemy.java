@@ -5,6 +5,7 @@ import util.ConsoleInput;
 
 public class Enemy extends NPC {
 	
+	//----------------------Constructors----------------------//
 	/**
 	 * Enemy has an attack from 10 to 25
 	 * @param name name of the enemy
@@ -15,6 +16,7 @@ public class Enemy extends NPC {
 		this.attack = Choice.randomChoice(8, 15);
 	}
 	
+	//----------------------Methods----------------------//
 	/**
 	 * display a simple string when hero comes in house
 	 */

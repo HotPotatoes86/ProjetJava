@@ -6,9 +6,11 @@ import util.*;
 
 public class Game {
 
+	//----------------------Attributes----------------------//
 	//Number of turns
 	private static int counter = 20;
 	
+	//----------------------Methods----------------------//
 	/**
 	 * initialize the map of the game
 	 * @return the map of the game

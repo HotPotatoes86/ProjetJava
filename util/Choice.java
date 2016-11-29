@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Choice {
 
+	//----------------------Methods----------------------//
 	/**
 	 * give randomly a boolean
 	 * @return true or false

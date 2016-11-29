@@ -29,6 +29,7 @@ public class Food implements Item {
 		for(int i=0; i<tabFood.length; i++){
 			if(name.equals(tabFood[i].toString().toLowerCase())){
 				correctFood = true;
+				this.tFood = tabFood[i];
 			}
 		}
 		if (correctFood){

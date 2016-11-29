@@ -4,10 +4,12 @@ import util.ConsoleInput;
 
 public class Neutral extends NPC {
 	
+	//----------------------Constructors----------------------//
 	public Neutral(String name){
 		this.chooseName(name);
 	}
 	
+	//----------------------Methods----------------------//
 	/**
 	 * display a simple string when hero comes in house
 	 */
