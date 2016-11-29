@@ -5,6 +5,7 @@ import util.ConsoleInput;
 
 public class Enemy extends NPC {
 	
+	//----------------------Constructors----------------------//
 	/**
 	 * Enemy has an attack from 10 to 25
 	 * @param name name of the enemy
@@ -15,13 +16,19 @@ public class Enemy extends NPC {
 		this.attack = Choice.randomChoice(8, 15);
 	}
 	
+	//----------------------Methods----------------------//
 	/**
 	 * display a simple string when hero comes in house
 	 */
 	public void describe(){
 		if (this.status){
 			System.out.print("[" + this.name + "]" + " : ");
-			ConsoleInput.displayString("Pourquoi rentrez-vous chez moi ? Sortez tout de suite !");
+			// npc give a random description when hero enters
+			if (Choice.randomChoice()){
+				ConsoleInput.displayString("Pourquoi rentrez-vous chez moi ? Sortez tout de suite !");
+			}else{
+				ConsoleInput.displayString("Ivrogne ! Sort de chez moi ou tu recevras la puissance de ma colere !");
+			}
 		}else{
 			ConsoleInput.displayString("Il n'y a personne...");
 		}

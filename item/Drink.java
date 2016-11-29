@@ -29,6 +29,7 @@ public class Drink implements Item {
 		for(int i=0; i<tabDrink.length; i++){
 			if(name.equals(tabDrink[i].toString().toLowerCase())){
 				correctDrink = true;
+				this.tDrink = tabDrink[i];
 			}
 		}
 		if (correctDrink){
@@ -45,6 +46,13 @@ public class Drink implements Item {
 	}
 	
 	//----------------------Methods----------------------//
+	/**
+	 * describe the value of the item
+	 */
+	public void describe(){
+		System.out.println(this.name + " : " + "+" + this.tDrink.getAlcoholLevel() + " alcool");
+	}
+	
 	/**
 	 * Create a new Drink with a random TypeDrink value 
 	 * @return drink

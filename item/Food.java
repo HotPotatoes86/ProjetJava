@@ -29,6 +29,7 @@ public class Food implements Item {
 		for(int i=0; i<tabFood.length; i++){
 			if(name.equals(tabFood[i].toString().toLowerCase())){
 				correctFood = true;
+				this.tFood = tabFood[i];
 			}
 		}
 		if (correctFood){
@@ -45,6 +46,17 @@ public class Food implements Item {
 	}
 	
 	//----------------------Methods----------------------//
+	/**
+	 * describe the value of the item
+	 */
+	public void describe(){
+		if (this.tFood.getHp()>0){
+			System.out.println(this.name + " : " + "+" + this.tFood.getHp() + " HP");
+		}else{
+			System.out.println(this.name + " : " + this.tFood.getHp() + " HP");
+		}
+	}
+	
 	/**
 	 * create a new food with a random TypeFood value
 	 * @return food

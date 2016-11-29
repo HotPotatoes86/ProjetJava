@@ -19,7 +19,7 @@ public enum TypeFood {
 	}
 
 	public int getHp() {
-		return hp;
+		return this.hp;
 	}
 
 	public void setHp(int hp) {

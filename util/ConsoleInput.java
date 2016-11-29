@@ -4,12 +4,15 @@ import java.util.Scanner;
 
 public class ConsoleInput implements UserInput{
 	
-	Scanner scanner;
+	//----------------------Attributes----------------------//
+	private Scanner scanner;
 	
+	//----------------------Constructors----------------------//
 	public ConsoleInput(){
 		this.scanner = new Scanner(System.in);
 	}
 	
+	//----------------------Methods----------------------//
 	/**
 	 * return a String given by the user
 	 */

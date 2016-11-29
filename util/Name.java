@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 
 public class Name {
 
+	//----------------------Methods----------------------//
 	/**
 	 * generate randomly a name from a file of data
 	 * @param link the path to the file
@@ -14,7 +15,7 @@ public class Name {
 	 * @return a randomly name of the file
 	 */
 	public static String generateName(String link, int line){
-		// Lire dans les donnees pour donner un nom a la rue
+		// read the file in link with a number of lines (line)
 		String name = "";
 		int cpt = Choice.randomChoice(1, line);
 		String fichier =link;
@@ -24,6 +25,7 @@ public class Name {
 			InputStreamReader ipsr=new InputStreamReader(ips);
 			BufferedReader br=new BufferedReader(ipsr);
 			String ligne;
+			// search the line we want 
 			while (cpt!=0 && (ligne=br.readLine())!=null){
 				name = ligne;
 				cpt--;

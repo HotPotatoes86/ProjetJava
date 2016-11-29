@@ -110,6 +110,9 @@ public class Hero {
 			//hero moves to the direction
 			if (this.actualPlace.go(this,direction)){
 				this.actualPlace = this.actualPlace.getNextPlace(direction);
+				//display all new directions
+				System.out.println("\nVous pouvez aller ici :");
+				this.actualPlace.displayExit();
 			}
 			
 			//alcohol level goes down
@@ -135,37 +138,43 @@ public class Hero {
 	}
 	
 	/**
-	 * Describe the actual place of the Hero
-	 */
-	public void look(){
-		System.out.println("Vous regardez autour de vous");
-		this.actualPlace.describe();
-		// display items of the house
-		if (this.actualPlace instanceof House){
-			((House)this.actualPlace).displayItems();
-		}
-	}
-	
-	/**
-	 * describe the position s
-	 * @param s direction the hero looks
+	 * describe the position or the item s
+	 * if s is empty the actual place of the hero is described
+	 * @param s direction/item the hero looks
 	 */
 	public void look(String s){
-		//Description Place
-		Place p = null;
-		System.out.println(s);
-		p = this.actualPlace.getNextPlace(s);
-		if (p != null){
-			switch (s){
-				case "forward": System.out.println("Vous regardez devant vous"); break;
-				case "backward":System.out.println("Vous regardez derriere vous"); break;
-				case "house1":System.out.println("Vous regardez la maison a gauche"); break;
-				case "house2":System.out.println("Vous regardez la maison a droite"); break;
-				default: System.out.println("Vous regardez " + p.getName()); break;
+		// the string is empty
+		if (s.equals("")){
+			ConsoleInput.displayString("Vous regardez autour de vous");
+			this.actualPlace.describe();
+			// display items of the house
+			if (this.actualPlace instanceof House){
+				((House)this.actualPlace).displayItems();
 			}
-			p.describe();
 		}else{
-			System.out.println("Argument incorrect");
+			// test if the string is a direction
+			if (this.actualPlace.testdirection(s)){
+				Place p = this.actualPlace.getNextPlace(s);
+				switch (s){
+					case "forward": ConsoleInput.displayString("Vous regardez devant vous"); break;
+					case "backward": ConsoleInput.displayString("Vous regardez derriere vous"); break;
+					case "house1": ConsoleInput.displayString("Vous regardez la maison a gauche"); break;
+					case "house2": ConsoleInput.displayString("Vous regardez la maison a droite"); break;
+					default: System.out.println("Vous regardez " + p.getName()); break;
+				}
+				p.describe();
+			}else{
+				// test if the string is an item
+				boolean test = false;
+				for(int i=0; i<this.inventory.size() && !test; i++){
+					if(this.inventory.get(i).toString().equals(s)){
+						ConsoleInput.displayString("Vous regardez dans votre inventaire");
+						this.inventory.get(i).describe();
+						test = true;
+					}
+				}
+				if (!test) System.out.println("Argument incorrect");
+			}
 		}
 	}
 	
@@ -174,7 +183,7 @@ public class Hero {
 	 * @param npc npc you want attack
 	 */
 	public void attack(NPC npc){
-		if (npc != null){
+		if (npc != null && npc.getStatus()){
 			//attack is calculated with attack AND alcohol level of the hero
 			npc.takeDmg(this.attack+this.alcoholLevel);
 			if (!npc.getStatus()){
@@ -182,7 +191,8 @@ public class Hero {
 				try{
 					if (npc.item != null){
 						ConsoleInput scanner = new ConsoleInput();
-						System.out.println("Voulez-vous " + npc.item.toString() + " ?");
+						ConsoleInput.displayString(npc.getName() + " laisse tomber " + npc.getItem().toString());
+						ConsoleInput.displayString("Voulez-vous le ramasser ?");
 						String choice = scanner.stringScan();
 						if (choice.equals("yes") || choice.equals("oui")){
 							this.pickUpItem(npc.getItem());

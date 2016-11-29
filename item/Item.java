@@ -17,4 +17,6 @@ public interface Item {
 	public void use(Object obj1, Object obj2); 
 	
 	public String getName();
+	
+	public void describe();
 }

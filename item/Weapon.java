@@ -4,6 +4,7 @@ import character.Hero;
 import util.Choice;
 
 public class Weapon implements Item {
+	
 	//----------------------Attributes----------------------//
 	private TypeWeapon tWeapon;
 	private String name;
@@ -28,6 +29,7 @@ public class Weapon implements Item {
 		for(int i=0; i<tabWeapon.length; i++){
 			if(name.equals(tabWeapon[i].toString().toLowerCase())){
 				correctWeapon = true;
+				this.tWeapon = tabWeapon[i];
 			}
 		}
 		if (correctWeapon){
@@ -44,6 +46,13 @@ public class Weapon implements Item {
 	}	
 	
 	//----------------------Methods----------------------//	
+	/**
+	 * describe the value of the item
+	 */
+	public void describe(){
+		System.out.println(this.name + " : " + "+" + this.tWeapon.getAttack() + " attack");
+	}
+	
 	/**
 	 * create a new Weapon with a random TypeWeapon value
 	 * @return weapon

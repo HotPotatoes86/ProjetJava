@@ -58,8 +58,15 @@ public class House extends Place{
 	public NPC getNPC(){
 		return this.npc;
 	}
-	
+
 	//----------------------Methods----------------------//
+	/**
+	 * remove npc from house (for the hero's house)
+	 */
+	public void removeNPC(){
+		this.npc = null;
+	}
+	
 	/**
 	 * add an item in the list of items
 	 * @param i item which will add to the list
