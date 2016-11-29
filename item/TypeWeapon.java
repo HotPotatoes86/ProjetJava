@@ -4,6 +4,7 @@ public enum TypeWeapon {
 	STICK(1),
 	ROPE(2),
 	STONE(2),
+	BOTTLESHAKER(3),
 	WHIP(4),
 	SLINGSHOT(5),
 	SPEARS(5),

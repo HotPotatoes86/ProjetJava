@@ -16,6 +16,7 @@ public abstract class Place{
 	 * @param s key of the exit we want
 	 * @return the exit which have the key "s"
 	 */
+	
 	public Exit getExit(String s){
 		Exit exit = null;
 		for (HashMap.Entry<String, Exit> e : this.exits.entrySet()){

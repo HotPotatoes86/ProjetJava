@@ -131,7 +131,7 @@ public class Food implements Item {
 
 	@Override
 	public String toString() {
-		return "" + name ;
+		return name ;
 	}	
 	
 }

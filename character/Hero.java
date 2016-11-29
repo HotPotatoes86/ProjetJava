@@ -37,7 +37,7 @@ public class Hero {
 		this.inventory.add(new Food("apple"));
 		this.inventory.add(new Drink("beer"));
 		this.inventory.add(new Drink("vodka"));
-		this.inventory.add(new Weapon("stick"));
+		this.inventory.add(new Weapon("bottleshaker"));
 	}
 	
 	//----------------------Getters----------------------//
@@ -319,7 +319,7 @@ public class Hero {
 				this.inventory.get(i).use(this);
 				test = true;
 			}
-		}
+		}	
 		if(!test){
 			System.out.println("Vous ne possedez pas cet objet");
 		}

@@ -142,7 +142,7 @@ public class Weapon implements Item {
 	
 	@Override
 	public String toString() {
-		return "" + name;
+		return name;
 	}
 	
 }
