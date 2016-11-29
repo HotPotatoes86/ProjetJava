@@ -14,11 +14,6 @@ public class Key implements Item{
 		this.name = "key" + id;
 	}
 	
-	public int testItem(){
-		int i = 0;
-		return i;
-	}
-
 	public LockedExit getLockedExit(){
 		return this.exit;
 	}

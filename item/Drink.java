@@ -55,22 +55,7 @@ public class Drink implements Item {
 		Drink res = new Drink(randomDrink);
 		return res;		
 	}
-	
-	/**
-	 * test if the actual item is a drink
-	 */
-	@Override
-	public int testItem(){ 
-		TypeDrink[] tabDrink = TypeDrink.values();
-		int res = 0;
-		for(int i=0; i<tabDrink.length; i++){
-			if (this.toString().equals(tabDrink[i].toString().toLowerCase())){
-				res = 2;
-			}
-		}
-		return res;
-	}	
-	
+		
 	/**
 	 * convert the parameter item to a drink
 	 * @param item which we want to convert as a drink
@@ -92,7 +77,7 @@ public class Drink implements Item {
 	 */
 	@Override
 	public void use(Object obj){
-		if(this.testItem()==2 && obj instanceof Hero){	
+		if(obj instanceof Hero){	
 			((Hero)obj).setAlcoholLevel(convertToDrink(this).tDrink.getAlcoholLevel());
 			System.out.println("Vous utilisez " +this.name);
 			System.out.println("Votre alcoolemie augmente de " + convertToDrink(this).tDrink.getAlcoholLevel());
@@ -106,28 +91,26 @@ public class Drink implements Item {
 	@Override
 	public void use(Object obj1, Object obj2){ //obj1 = item & obj2 = hero
 		if(obj1 instanceof Item && obj2 instanceof Hero){
-			if(this.testItem()==2 && ((Item)obj1).testItem()==2){
-				if(this.toString().equals("energydrink") && ((Item)obj1).toString().equals("jagermeister")  || this.toString().equals("jagermeister") && ((Item)obj1).toString().equals("energydrink")){
-					((Hero)obj2).getInventory().remove(this);
-					((Hero)obj2).getInventory().remove((Item)obj1);
-					((Hero)obj2).getInventory().add(new Drink("jagerbomb"));
-					System.out.println("Vous recevez jagerbomb");
-				}else if(this.toString().equals("energydrink") && ((Item)obj1).toString().equals("vodka")  || this.toString().equals("vodka") && ((Item)obj1).toString().equals("energydrink")){
-					((Hero)obj2).getInventory().remove(this);
-					((Hero)obj2).getInventory().remove(((Item)obj1));
-					((Hero)obj2).getInventory().add(new Drink("vodkaenergy"));
-					System.out.println("Vous recevez vodkaenergy");
-				}else if(!this.toString().equals("energydrink") && !((Item)obj1).toString().equals("energydrink")){
-					((Hero)obj2).getInventory().remove(this);
-					((Hero)obj2).getInventory().remove(((Item)obj1));
-					((Hero)obj2).getInventory().add(new Drink("gnole"));
-					System.out.println("Vous recevez gnole");
-				}else{
-					System.out.println("energydrink ne peut etre combiner uniquement avec vodka et jagermeister");
-				}					
+			if(this.toString().equals("energydrink") && ((Item)obj1).toString().equals("jagermeister")  || this.toString().equals("jagermeister") && ((Item)obj1).toString().equals("energydrink")){
+				((Hero)obj2).getInventory().remove(this);
+				((Hero)obj2).getInventory().remove((Item)obj1);
+				((Hero)obj2).getInventory().add(new Drink("jagerbomb"));
+				System.out.println("Vous recevez jagerbomb");
+			}else if(this.toString().equals("energydrink") && ((Item)obj1).toString().equals("vodka")  || this.toString().equals("vodka") && ((Item)obj1).toString().equals("energydrink")){
+				((Hero)obj2).getInventory().remove(this);
+				((Hero)obj2).getInventory().remove(((Item)obj1));
+				((Hero)obj2).getInventory().add(new Drink("vodkaenergy"));
+				System.out.println("Vous recevez vodkaenergy");
+			}else if(!this.toString().equals("energydrink") && !((Item)obj1).toString().equals("energydrink")){
+				((Hero)obj2).getInventory().remove(this);
+				((Hero)obj2).getInventory().remove(((Item)obj1));
+				((Hero)obj2).getInventory().add(new Drink("gnole"));
+				System.out.println("Vous recevez gnole");
 			}else{
-				System.out.println("Vous n'avez pas saisi 2 boissons");
-			}
+				System.out.println("energydrink ne peut etre combiner uniquement avec vodka et jagermeister");
+			}					
+		}else{
+			System.out.println("Vous n'avez pas saisi 2 boissons");
 		}
 	}
 

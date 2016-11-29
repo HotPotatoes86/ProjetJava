@@ -55,21 +55,7 @@ public class Food implements Item {
 		Food res = new Food(randomFood);		
 		return res;		
 	}
-	
-	/**
-	 * test if the actual item is a Food
-	 */
-	public int testItem(){ //pour tester si l'item est une food
-		TypeFood[] tabFood = TypeFood.values();
-		int res = 0;
-		for(int i=0; i<tabFood.length; i++){
-			if (this.toString().equals(tabFood[i].toString().toLowerCase())){
-				res = 1;
-			}
-		}
-		return res;
-	}
-	
+		
 	/**
 	 * convert the parameter item in a food
 	 * @param item which we want to convert as a food
@@ -91,7 +77,7 @@ public class Food implements Item {
 	 */
 	@Override
 	public void use(Object obj){
-		if(this.testItem()==1 && obj instanceof Hero){	
+		if(obj instanceof Hero){	
 			if(((Hero)obj).getHp()==100){
 				System.out.println("Vous n'avez pas besoin de manger, votre vie est au maximum");
 			}else if (((Hero)obj).getHp()<100){
@@ -115,33 +101,31 @@ public class Food implements Item {
 	@Override
 	public void use(Object obj1, Object obj2){ //obj1 = item & obj2 = hero
 		if(obj1 instanceof Item && obj2 instanceof Hero){
-			if(this.testItem()==1 && ((Item)obj1).testItem()==1){
-				if(this.toString().equals("chocolate") && ((Item)obj1).toString().equals("banana")  || ((Item)obj1).toString().equals("banana") && this.toString().equals("chocolate")){
-					((Hero)obj2).getInventory().remove(this);
-					((Hero)obj2).getInventory().remove(((Item)obj1));
-					((Hero)obj2).getInventory().add(new Food("chocolatebanana"));
-					System.out.println("Vous recevez chocolatebanana");
-				}else if(this.toString().equals("apple") && ((Item)obj1).toString().equals("apple")  || ((Item)obj1).toString().equals("apple") && this.toString().equals("apple")){
-					((Hero)obj2).getInventory().remove(this);
-					((Hero)obj2).getInventory().remove(((Item)obj1));
-					((Hero)obj2).getInventory().add(new Food("applepie"));
-					System.out.println("Vous recevez applepie");
-				}else if(this.toString().equals("spice") && ((Item)obj1).toString().equals("chips")  || ((Item)obj1).toString().equals("chips") && this.toString().equals("spice")){
-					((Hero)obj2).getInventory().remove(this);
-					((Hero)obj2).getInventory().remove(((Item)obj1));
-					((Hero)obj2).getInventory().add(new Food("spicychips"));
-					System.out.println("Vous recevez spicychips");
-				}else if(this.toString().equals("spice") && ((Item)obj1).toString().equals("chicken")  || ((Item)obj1).toString().equals("chicken") && this.toString().equals("spice")){
-					((Hero)obj2).getInventory().remove(this);
-					((Hero)obj2).getInventory().remove(((Item)obj1));
-					((Hero)obj2).getInventory().add(new Food("spicychicken"));
-					System.out.println("Vous recevez spicychicken");
-				}else{
-					System.out.println("Vous ne pouvez pas combiner ces 2 aliments");
-				}
+			if(this.toString().equals("chocolate") && ((Item)obj1).toString().equals("banana")  || ((Item)obj1).toString().equals("banana") && this.toString().equals("chocolate")){
+				((Hero)obj2).getInventory().remove(this);
+				((Hero)obj2).getInventory().remove(((Item)obj1));
+				((Hero)obj2).getInventory().add(new Food("chocolatebanana"));
+				System.out.println("Vous recevez chocolatebanana");
+			}else if(this.toString().equals("apple") && ((Item)obj1).toString().equals("apple")  || ((Item)obj1).toString().equals("apple") && this.toString().equals("apple")){
+				((Hero)obj2).getInventory().remove(this);
+				((Hero)obj2).getInventory().remove(((Item)obj1));
+				((Hero)obj2).getInventory().add(new Food("applepie"));
+				System.out.println("Vous recevez applepie");
+			}else if(this.toString().equals("spice") && ((Item)obj1).toString().equals("chips")  || ((Item)obj1).toString().equals("chips") && this.toString().equals("spice")){
+				((Hero)obj2).getInventory().remove(this);
+				((Hero)obj2).getInventory().remove(((Item)obj1));
+				((Hero)obj2).getInventory().add(new Food("spicychips"));
+				System.out.println("Vous recevez spicychips");
+			}else if(this.toString().equals("spice") && ((Item)obj1).toString().equals("chicken")  || ((Item)obj1).toString().equals("chicken") && this.toString().equals("spice")){
+				((Hero)obj2).getInventory().remove(this);
+				((Hero)obj2).getInventory().remove(((Item)obj1));
+				((Hero)obj2).getInventory().add(new Food("spicychicken"));
+				System.out.println("Vous recevez spicychicken");
 			}else{
-				System.out.println("Vous n'avez pas saisi 2 aliments");
+				System.out.println("Vous ne pouvez pas combiner ces 2 aliments");
 			}
+		}else{
+			System.out.println("Vous n'avez pas saisi 2 aliments");
 		}
 	}
 

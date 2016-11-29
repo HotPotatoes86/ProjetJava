@@ -2,11 +2,6 @@ package item;
 
 public interface Item {
 	
-	/**
-	 * test if item is a drink, food, weapon or key	
-	 * @return integer with different values for different type of item
-	 */
-	public int testItem();
 
 	/**
 	 * use an object on hero
