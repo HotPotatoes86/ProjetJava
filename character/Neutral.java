@@ -44,14 +44,19 @@ public class Neutral extends NPC {
 				System.out.print("[" + this.name + "]" + " : ");
 				ConsoleInput.displayString("Tres bien ! Le voici !");
 				hero.pickUpItem(this.item);
+				this.item = null;
 			}else{
 				System.out.print("[" + this.name + "]" + " : ");
 				ConsoleInput.displayString("Ok tres bien, pas de soucis !");
 			}
 		}
 		System.out.print("[" + this.name + "]" + " : ");
-		ConsoleInput.displayString("Bon j'ai rendez-vous je m'en vais, amusez vous bien chez moi !");
-		this.status = false;
+		if (Choice.randomChoice()){
+			ConsoleInput.displayString("Bon j'ai rendez-vous je m'en vais, amusez vous bien chez moi !");
+			this.status = false;
+		}else{
+			ConsoleInput.displayString("Avez-vous un soucis ?");
+		}
 	}
 	
 	public void setHP(int hp){

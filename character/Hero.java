@@ -110,6 +110,9 @@ public class Hero {
 			//hero moves to the direction
 			if (this.actualPlace.go(this,direction)){
 				this.actualPlace = this.actualPlace.getNextPlace(direction);
+				//display all new directions
+				System.out.println("\nVous pouvez aller ici :");
+				this.actualPlace.displayExit();
 			}
 			
 			//alcohol level goes down
@@ -142,7 +145,7 @@ public class Hero {
 	public void look(String s){
 		// the string is empty
 		if (s.equals("")){
-			System.out.println("Vous regardez autour de vous");
+			ConsoleInput.displayString("Vous regardez autour de vous");
 			this.actualPlace.describe();
 			// display items of the house
 			if (this.actualPlace instanceof House){
@@ -165,7 +168,7 @@ public class Hero {
 				boolean test = false;
 				for(int i=0; i<this.inventory.size() && !test; i++){
 					if(this.inventory.get(i).toString().equals(s)){
-						System.out.println("Vous regardez dans votre inventaire");
+						ConsoleInput.displayString("Vous regardez dans votre inventaire");
 						this.inventory.get(i).describe();
 						test = true;
 					}
@@ -180,7 +183,7 @@ public class Hero {
 	 * @param npc npc you want attack
 	 */
 	public void attack(NPC npc){
-		if (npc != null){
+		if (npc != null && npc.getStatus()){
 			//attack is calculated with attack AND alcohol level of the hero
 			npc.takeDmg(this.attack+this.alcoholLevel);
 			if (!npc.getStatus()){
@@ -188,7 +191,8 @@ public class Hero {
 				try{
 					if (npc.item != null){
 						ConsoleInput scanner = new ConsoleInput();
-						System.out.println("Voulez-vous " + npc.item.toString() + " ?");
+						ConsoleInput.displayString(npc.getName() + " laisse tomber " + npc.getItem().toString());
+						ConsoleInput.displayString("Voulez-vous le ramasser ?");
 						String choice = scanner.stringScan();
 						if (choice.equals("yes") || choice.equals("oui")){
 							this.pickUpItem(npc.getItem());
