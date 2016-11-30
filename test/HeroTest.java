@@ -1,7 +1,5 @@
 package test;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -33,7 +31,7 @@ public class HeroTest {
 
 	@Test
 	public void test() {
-		assertTrue()
+		
 	}
 
 }

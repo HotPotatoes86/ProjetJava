@@ -43,12 +43,14 @@ public class FoodTest {
 	
 	@Test
 	public void testUse1(){
+		hero.pickUpItem(new Food("apple"));
 		hero.use("apple");
 		assertTrue(hero.getHp()==100);
 	}
 	
 	@Test
 	public void testUse2(){
+		hero.pickUpItem(new Food("apple"));
 		hero.setHp(98);
 		hero.use("apple");
 		assertTrue(hero.getHp()==100);
@@ -56,6 +58,7 @@ public class FoodTest {
 	
 	@Test
 	public void testUse3(){
+		hero.pickUpItem(new Food("apple"));
 		hero.setHp(90);
 		hero.use("apple");
 		assertTrue(hero.getHp()==93);
@@ -63,6 +66,8 @@ public class FoodTest {
 	
 	@Test
 	public void testUseFusion1(){		
+		hero.pickUpItem(new Food("apple"));
+		hero.pickUpItem(new Food("apple"));
 		hero.use("apple","apple");
 		for(int i=0; i<hero.getInventory().size(); i++){
 			if(hero.getInventory().toString().equals("applepie")){

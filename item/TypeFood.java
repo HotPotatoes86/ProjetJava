@@ -5,7 +5,7 @@ public enum TypeFood {
 	CHIPS(2),
 	CHOCOLATE(3),
 	APPLE(3),
-	BANANA(3),
+	BANANA(4),
 	SPICYCHIPS(5),
 	CHICKEN(6),
 	APPLEPIE(7),

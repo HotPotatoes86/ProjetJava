@@ -22,7 +22,7 @@ public class Hero {
 	private Weapon weapon = null;
 	private House house = null;
 	private Place actualPlace;
-	private static final int INVENTORYSIZE = 10;
+	private static final int INVENTORYSIZE = 15;
 
 	//----------------------Constructors----------------------//
 	/**
@@ -32,11 +32,6 @@ public class Hero {
 	public Hero(Place p) {
 		this.actualPlace = p;
 		this.inventory = new ArrayList<>(INVENTORYSIZE);
-		this.inventory.add(new Food("apple"));
-		this.inventory.add(new Weapon("knife"));
-		this.inventory.add(new Food("apple"));
-		this.inventory.add(new Drink("beer"));
-		this.inventory.add(new Drink("vodka"));
 		this.inventory.add(new Weapon("bottleshaker"));
 	}
 	
