@@ -1,16 +1,21 @@
 package test;
 
+import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import character.Enemy;
 import character.Hero;
+import map.House;
 
 public class HeroTest {
 
 	private Hero hero;
+	private House house;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -21,8 +26,7 @@ public class HeroTest {
 	}
 
 	@Before
-	public void setUp() throws Exception {
-		
+	public void setUp() throws Exception {		
 	}
 
 	@After
@@ -30,7 +34,15 @@ public class HeroTest {
 	}
 
 	@Test
-	public void test() {
+	public void testGo1() {
+		house = new House("maison");
+		hero = new Hero(house);
+		house.removeNPC();
+		house.setNPC(new Enemy("pnj"));
+		assertTrue(!house.testdirection("street"));
+	}
+	
+	public void testGo2(){
 		
 	}
 

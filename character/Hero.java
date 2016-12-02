@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import item.Drink;
-import item.Food;
 import item.Item;
 import item.Weapon;
 import map.House;
@@ -89,6 +87,10 @@ public class Hero {
 	
 	public void setHouse(House h){
 		this.house = h;
+	}
+	
+	public void setPlace(Place p){
+		this.actualPlace = p;
 	}
 	
 	//----------------------Methods----------------------//

@@ -58,6 +58,10 @@ public class House extends Place{
 	public NPC getNPC(){
 		return this.npc;
 	}
+	
+	public void setNPC(NPC npc){
+		this.npc = npc;
+	}
 
 	//----------------------Methods----------------------//
 	/**
