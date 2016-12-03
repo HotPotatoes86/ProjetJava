@@ -1,1 +1,1 @@
-Pour lancer le jeu, lancer l'executable "jeu", il faut avoir le paquet "java" dans Linux.
+Pour lancer le jeu (uniquement sur Linux), lancer l'executable "jeu", il faut avoir le paquet "java".
