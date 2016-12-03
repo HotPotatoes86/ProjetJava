@@ -59,6 +59,10 @@ public class Hero {
 		return attack;
 	}
 	
+	public House getHouse() {
+		return house;
+	}
+	
 	//----------------------Setters----------------------//
 	
 	public void setInventory(List<Item> inventory) {
