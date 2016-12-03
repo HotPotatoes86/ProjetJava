@@ -1,3 +1,1 @@
---> Créer un script qui compile et lance la classe Main
-
-Expliquer ici comment lancer le script
+Pour lancer le jeu, lancer l'executable "jeu", il faut avoir le paquet "java" dans Linux.
