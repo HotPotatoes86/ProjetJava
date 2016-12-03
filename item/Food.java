@@ -113,7 +113,7 @@ public class Food implements Item {
 	@Override
 	public void use(Object obj1, Object obj2){ //obj1 = item & obj2 = hero
 		if(obj1 instanceof Item && obj2 instanceof Hero){
-			if(this.toString().equals("chocolate") && ((Item)obj1).toString().equals("banana")  || ((Item)obj1).toString().equals("banana") && this.toString().equals("chocolate")){
+			if(this.toString().equals("chocolate") && ((Item)obj1).toString().equals("banana")  || ((Item)obj1).toString().equals("chocolate") && this.toString().equals("banana")){
 				((Hero)obj2).getInventory().remove(this);
 				((Hero)obj2).getInventory().remove(((Item)obj1));
 				((Hero)obj2).getInventory().add(new Food("chocolatebanana"));
@@ -123,12 +123,12 @@ public class Food implements Item {
 				((Hero)obj2).getInventory().remove(((Item)obj1));
 				((Hero)obj2).getInventory().add(new Food("applepie"));
 				System.out.println("Vous recevez applepie");
-			}else if(this.toString().equals("spice") && ((Item)obj1).toString().equals("chips")  || ((Item)obj1).toString().equals("chips") && this.toString().equals("spice")){
+			}else if(this.toString().equals("spice") && ((Item)obj1).toString().equals("chips")  || ((Item)obj1).toString().equals("spice") && this.toString().equals("chips")){
 				((Hero)obj2).getInventory().remove(this);
 				((Hero)obj2).getInventory().remove(((Item)obj1));
 				((Hero)obj2).getInventory().add(new Food("spicychips"));
 				System.out.println("Vous recevez spicychips");
-			}else if(this.toString().equals("spice") && ((Item)obj1).toString().equals("chicken")  || ((Item)obj1).toString().equals("chicken") && this.toString().equals("spice")){
+			}else if(this.toString().equals("spice") && ((Item)obj1).toString().equals("chicken")  || ((Item)obj1).toString().equals("spice") && this.toString().equals("chicken")){
 				((Hero)obj2).getInventory().remove(this);
 				((Hero)obj2).getInventory().remove(((Item)obj1));
 				((Hero)obj2).getInventory().add(new Food("spicychicken"));
