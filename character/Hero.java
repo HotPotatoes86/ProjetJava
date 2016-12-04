@@ -90,6 +90,8 @@ public class Hero {
 	}
 	
 	public void setHouse(House h){
+		// no npc in the hero's house
+		h.removeNPC();
 		this.house = h;
 	}
 	

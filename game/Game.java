@@ -65,6 +65,7 @@ public class Game {
 		Place p = map.getStreets()[0];	// = first street
 		Hero hero = new Hero(p);
 		boolean testexit = false; //we search a house with a locked exit
+		//we choose randomly the house of the hero
 		while (!testexit){
 			//Street of Hero
 			Street sh = ((Street)map.getStreets()[Choice.randomChoice(0, map.getNbStreet()-1)]);
@@ -78,8 +79,6 @@ public class Game {
 				testexit = true;
 			}else if (sth.getExit("house2") instanceof LockedExit){
 				hh = sth.getHouses()[1];
-				// no npc in the hero's house
-				hh.removeNPC();
 				hero.setHouse(hh);
 				testexit = true;
 			}
