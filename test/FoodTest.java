@@ -14,13 +14,11 @@ import map.House;
 
 public class FoodTest {
 	
-	private Hero hero;
+	private static Hero hero;
 	
-	public FoodTest(){
-	}
-
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		hero = new Hero(new House("maison"));
 	}
 
 	@AfterClass
@@ -29,11 +27,11 @@ public class FoodTest {
 
 	@Before
 	public void setUp() throws Exception {
-		hero = new Hero(new House("maison"));
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		hero.getInventory().removeAll(hero.getInventory());
 	}
 	
 	@Test	
@@ -44,6 +42,7 @@ public class FoodTest {
 	@Test
 	public void testUse1(){
 		hero.pickUpItem(new Food("apple"));
+		hero.setHp(100);
 		hero.use("apple");
 		assertTrue(hero.getHp()==100);
 	}
@@ -65,7 +64,7 @@ public class FoodTest {
 	}
 	
 	@Test
-	public void testUseFusion1(){		
+	public void testUseFusion(){		
 		hero.pickUpItem(new Food("apple"));
 		hero.pickUpItem(new Food("apple"));
 		hero.use("apple","apple");

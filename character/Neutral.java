@@ -10,6 +10,12 @@ public class Neutral extends NPC {
 		this.chooseName(name);
 	}
 	
+	//----------------------Setters----------------------//
+
+	public void setHP(int hp){
+		this.HP+=hp;
+	}
+	
 	//----------------------Methods----------------------//
 	/**
 	 * display a simple string when hero comes in house
@@ -59,8 +65,4 @@ public class Neutral extends NPC {
 		}
 	}
 	
-	public void setHP(int hp){
-		this.HP+=hp;
-	}
-
 }

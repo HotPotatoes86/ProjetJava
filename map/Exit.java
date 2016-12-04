@@ -8,6 +8,12 @@ public abstract class Exit {
 	//----------------------Attributes----------------------//
 	protected Place place;
 	
+	//----------------------Getters----------------------//
+	
+	public Place getPlace(){
+		return this.place;
+	}
+	
 	//----------------------Methods----------------------//
 	/**
 	 * use the exit, display a simple string for the user
@@ -29,10 +35,6 @@ public abstract class Exit {
 			ConsoleInput.displayString("Vous avancez sur la  " + this.place.getName());
 		}
 		return true;
-	}
-	
-	public Place getPlace(){
-		return this.place;
 	}
 		
 }

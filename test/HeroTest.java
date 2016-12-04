@@ -19,12 +19,14 @@ import map.Place;
 
 public class HeroTest {
 
-	private Hero hero;
-	private House house;
+	private static Hero hero;
+	private static House house;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-	}
+		house = new House("maison");
+		house.setNPC(new Neutral("pnj"));
+		hero = new Hero(house);	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
@@ -32,16 +34,11 @@ public class HeroTest {
 
 	@Before
 	public void setUp() throws Exception {	
-		house = new House("maison");
-		house.setNPC(new Neutral("pnj"));
-		hero = new Hero(house);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		for(int i=0; i<hero.getInventory().size(); i++){
-			hero.getInventory().remove(i);
-		}
+		hero.getInventory().removeAll(hero.getInventory());
 	}
 
 	@Test

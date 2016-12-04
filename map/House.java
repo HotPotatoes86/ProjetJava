@@ -27,7 +27,6 @@ public class House extends Place{
 	 */
 	public House(String name) {
 		this.name = name;
-		//this.inventory = this.ItemGenerator();
 		this.inventory = new ArrayList<Item>(this.itemGenerator());
 		if (Choice.randomChoice()){
 			if (Choice.randomChoice()){
@@ -58,6 +57,8 @@ public class House extends Place{
 	public NPC getNPC(){
 		return this.npc;
 	}
+	
+	//----------------------Setters----------------------//
 	
 	public void setNPC(NPC npc){
 		this.npc = npc;
